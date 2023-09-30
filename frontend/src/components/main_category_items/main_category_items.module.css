@@ -1,0 +1,84 @@
+.main.description {
+    margin-bottom: 80px
+}
+
+.main.description .item_description_title {
+    font-size: 30px
+}
+
+.main_category_items {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin: -20px -15px 40px
+}
+
+.main_category_items .main_category_item {
+    margin: 15px;
+    padding: 0;
+    background-color: #fff;
+    width: calc(100%/3 - 30px)
+}
+
+.main_category_items .main_category_item:nth-child(5n) {
+    width: calc(100%/3*2 - 30px)
+}
+
+.main_category_items .main_category_item .category_link img {
+    -webkit-transition: .4s all;
+    transition: .4s all;
+    z-index: 1001;
+    width: 100%;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.main_category_items .main_category_item .category_link:hover img {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%)
+}
+
+.main_category_items .main_category_item .category_link span {
+    z-index: 1002;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 900;
+    position: absolute;
+    text-transform: uppercase;
+    max-width: calc(100% - 20px);
+    padding: 5px 10px;
+    margin: 25px;
+    white-space: normal;
+    background-color: #fff
+}
+
+.main_category_items .main_category_item .category_link span:hover {
+    color: var(--mainSchemeColor)
+}
+
+.more_category {
+    display: block;
+    text-align: center;
+    width: 300px;
+    margin: 20px auto 110px;
+    border-radius: 0;
+    padding: 10px 40px;
+    background-size: auto 200%;
+    text-transform: uppercase;
+    font-weight: 900;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#fff),color-stop(50%,#fff),color-stop(50%,var(--mainContrastSchemeColor)),to(var(--mainContrastSchemeColor)));
+    background-image: linear-gradient(to bottom,#fff 0,#fff 50%,var(--mainContrastSchemeColor) 50%,var(--mainContrastSchemeColor) 100%);
+    border: 2px solid var(--mainContrastSchemeColor);
+    -webkit-transition: .2s ease-in;
+    transition: .2s ease-in
+}
+.content a {
+    color: inherit;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.bottom_menu .inner .categories ul .level_2 li a:hover, a {
+    color: var(--mainContrastSchemeColor);
+}

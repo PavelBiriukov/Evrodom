@@ -1,0 +1,88 @@
+body.rate_4 footer {
+    padding-bottom: 80px
+}
+.block, .inner div.inner {
+    width: 100%;
+}
+footer {
+    line-height: 1.5;
+    background: #f8f8f8;
+    position: relative;
+}
+footer .inner {
+    padding: 70px 0;
+    font-size: 16px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.articles, .news, footer .inner {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+}
+.inner, .menu #menu_list, header {
+    position: relative;
+}
+.inner {
+    width: var(--inner-width);
+    max-width: var(--inner-max-width);
+    margin: 0 auto;
+}
+footer .inner {
+    padding: 70px 0;
+    font-size: 16px;
+    -webkit-box-pack: justify;
+    justify-content: space-between
+}
+
+footer .inner .fmenu {
+    max-width: 25%
+}
+
+footer .inner .fmenu .footer_subtitle {
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 10px
+}
+
+footer .inner .fmenu ul {
+    list-style-type: none
+}
+
+footer .inner .fmenu ul li a {
+    text-decoration: none;
+    line-height: 2;
+    color: #333
+}
+
+footer .inner .fmenu .footer_phone {
+    font-size: 24px;
+    text-decoration: none;
+    color: #333
+}
+
+footer .inner .fmenu .footer_phone:hover,footer .inner .fmenu .policy a:hover,footer .inner .fmenu .user_agreement_link a:hover {
+    color: var(--mainContrastSchemeColor)
+}
+
+footer .inner .fmenu .copyright {
+    margin-bottom: 5px
+}
+
+footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
+    font-size: 14px;
+    margin: 5px 0
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

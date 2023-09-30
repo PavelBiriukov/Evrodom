@@ -1,0 +1,22 @@
+.main_text {
+    padding: 0
+}
+
+.main_text h1 {
+    font-size: 36px;
+    text-align: left;
+    margin: 0
+}
+
+.main_text h2 {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 10px
+}
+
+.main_text li,.main_text p {
+    margin: 5px 0;
+    line-height: 1.7;
+    font-weight: 200
+}
