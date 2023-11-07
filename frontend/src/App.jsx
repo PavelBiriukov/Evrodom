@@ -1,20 +1,24 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes, } from 'react-router-dom';
+import CardID from './components/CardID/CardID';
 import About_company from './components/pages/about_company/about_company';
-import CategoryForm from './components/pages/admin/admin';
-import Bulochnye_izdeliya from './components/pages/categories/bulochnye_izdeliya/bulochnye_izdeliya';
+import CreateCard from './components/pages/createCard/createCard';
+import Admin_main from './components/pages/admin_main/admin_main';
 import Categories from './components/pages/categories/categories';
-import Cookies from './components/pages/categories/cookies/cookies';
-import Gastronomiya from './components/pages/categories/gastronomiya/gastronomiya';
-import Hleba from './components/pages/categories/hleba/hleba';
-import Konditerskie_izdeliya from './components/pages/categories/konditerskie_izdeliya/konditerskie_izdeliya';
+import CategoriesCreate from './components/pages/categoriesCreate/categoriesCreate';
 import Contacts from './components/pages/contacts/contacts';
+import DeleteCard from './components/pages/deleteCard/deleteCard';
+import DeleteCategories from './components/pages/deleteCategories/deleteCategories';
 import Delivery_and_payment from './components/pages/delivery_and_payment/delivery_and_payment';
 import Main from './components/pages/main/main';
 import News from './components/pages/news/news';
 import Personal_data from './components/pages/personal_data/personal_data';
 import Privacy_policy from './components/pages/privacy_policy/privacy_policy';
-
+import UpdateCard from './components/pages/updateCard/updateCard';
+import UpdateCategories from './components/pages/updateCategories/updateCategories';
+import Products_from_the_category from './components/pages/products_from_the_category/products_from_the_category';
+import Basket from './components/pages/basket/basket';
+/* цвет: #45dcdd */
 const App = () => {
   return (
     <BrowserRouter>
@@ -27,12 +31,16 @@ const App = () => {
           <Route path="/politika-konfidencialnosti" element={<Privacy_policy/>} />
           <Route path="/news" element={<News/>} />
           <Route path="/categories" element={<Categories/>} />
-          <Route path="/categories/hleba/" element={<Hleba/>} />
-          <Route path="/categories/bulochnye-izdeliya/" element={<Bulochnye_izdeliya/>} />
-          <Route path="/categories/gastronomiya/" element={<Gastronomiya/>} />
-          <Route path="/categories/konditerskie-izdeliya/" element={<Konditerskie_izdeliya/>} />
-          <Route path="/categories/novaya-kategoriya/" element={<Cookies/>} />
-          <Route path="/admin" element={<CategoryForm/>}/>
+          <Route path="/categories/:categoryName" element={<Products_from_the_category/>} />
+          <Route path="/admin" element={<Admin_main/>}/>
+          <Route path="/items/:id" element={<CardID/>}/>
+          <Route path="/admin/updateCard" element={<UpdateCard/>}/>
+          <Route path="/admin/deleteCard" element={<DeleteCard/>}/>
+          <Route path="/admin/createCard" element={<CreateCard/>}/>
+          <Route path="/admin/updateCategories" element={<UpdateCategories/>}/>
+          <Route path="/admin/deleteCategories" element={<DeleteCategories/>}/>
+          <Route path="/admin/createCategories" element={<CategoriesCreate/>}/>
+          <Route path="/basket" element={<Basket/>}/>
       </Routes>
     </BrowserRouter>
   );

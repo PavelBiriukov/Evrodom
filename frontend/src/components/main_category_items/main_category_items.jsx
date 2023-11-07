@@ -1,49 +1,50 @@
 import cl from "./main_category_items.module.css";
-import img1 from "../../img/bulochnye-izdeliya_16303856390801.jpg"
-import img2 from "../../img/gastronomiya_16303856826797.jpg"
-import img3 from "../../img/hleba_16303855636628.jpg"
-import img4 from "../../img/konditerskie-izdeliya_16303857358731.jpg"
-import img5 from "../../img/pechen-e_16303857652385.jpg"
+import dveri from "../../img/main_Catigorios_items/Dveri_2.png"
+import Caideng_veniloviy from "../../img/main_Catigorios_items/Caideng_veniloviy_1.png"
+import linolium from "../../img/main_Catigorios_items/Linolium.png"
+import mdf_paneli from "../../img/main_Catigorios_items/mdf_paneli.png"
+import Plastic_potoloxysq_PVH from "../../img/main_Catigorios_items/Plactic_potolochniy_PVH.png"
+
 const Main_category_items = () => {
     return (
         <div className={cl.main_category_items}>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/hleba/">
-                    <span>Хлеб</span>
+                <a className={cl.category_link} href="/categories/Двери/">
+                    <span>Двери</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
-                        <img src={img1} alt="Хлеб"/>
+                        <img src={dveri} alt="Двери"/>
                     </div>
                 </a>
             </div>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/bulochnye-izdeliya/">
-                    <span>Булочные изделия</span>
+                <a className={cl.category_link} href="/categories/Линолиум/">
+                    <span>Линолиум</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
-                        <img src={img2} alt="Булочные изделия"/>
+                        <img src={linolium} alt="Линолиум"/>
                     </div>
                 </a>
             </div>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/gastronomiya/">
-                    <span>Гастрономия</span>
+                <a className={cl.category_link} href="/categories/САЙДЕНГ ВИНИЛОВЫЙ ФОСАДНЫЙ/">
+                    <span>САЙДЕНГ ВИНИЛОВЫЙ ФОСАДНЫЙ</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
-                        <img src={img3} alt="Гастрономия"/>
+                        <img src={Caideng_veniloviy} alt="САЙДЕНГ ВИНИЛОВЫЙ ФОСАДНЫЙ"/>
                     </div>
                 </a>
             </div>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/konditerskie-izdeliya/">
-                    <span>Кондитерские изделия</span>
+                <a className={cl.category_link} href="/categories/ПЛАСТИК ПОТОЛОЧНЫЙ ПВХ/">
+                    <span>ПЛАСТИК ПОТОЛОЧНЫЙ ПВХ</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
-                        <img src={img4} alt="Кондитерские изделия"/>
+                        <img src={Plastic_potoloxysq_PVH} alt="ПЛАСТИК ПОТОЛОЧНЫЙ ПВХ"/>
                     </div>
                 </a>
             </div>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/novaya-kategoriya/">
-                    <span>Печенье</span>
+                <a className={cl.category_link} href="/categories/МДФ ПАНЕЛИ/">
+                    <span>МДФ ПАНЕЛИ</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
-                        <img src={img5} alt="Печенье"/>
+                        <img src={mdf_paneli} alt="МДФ ПАНЕЛИ"/>
                     </div>
                 </a>
             </div>

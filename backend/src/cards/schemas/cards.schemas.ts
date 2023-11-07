@@ -6,10 +6,10 @@ export type CardsDocument = HydratedDocument<Cards>;
 @Schema()
 export class Cards {
   @Prop()
-  name: string;
+  name: string; 
 
   @Prop()
-  prise: string;
+  price: string;
 
   @Prop()
   description: string;
@@ -18,16 +18,19 @@ export class Cards {
   maker: string;
 
   @Prop()
-  product_availability: boolean;
+  product_availability: string;
 
   @Prop()
-  picture: string;
+  picture: any[];
 
   @Prop()
-  parameters: string;
+  unique_parameters: string;
 
   @Prop()
   category: string;
+
+  @Prop()
+  unit_of_measurement: string;
 }
 
 export const CardsSchema = SchemaFactory.createForClass(Cards);

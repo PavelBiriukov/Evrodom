@@ -1,0 +1,39 @@
+.serch_icon {
+    width: 24px;
+    height: 24px;
+}
+.mimi_popup_serch {
+    background-color: #fff;
+    margin-top: 4px;
+    width: 43%;
+    color: #000;
+    display: none;
+    z-index: 2;
+    position: absolute;
+    user-select: none;
+    padding: 0;
+    border: 3px rgb(182, 176, 173) solid;
+    border-radius: 7px;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    box-sizing: border-box;
+}
+.mimi_popup_serch_visibiliti {
+    display: block;
+}
+.item_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 7px;
+    
+}
+.item_list:hover {
+    background-color: #c4262636;
+}
+.img_item_list {
+    width: 45px;
+    height: auto;
+}

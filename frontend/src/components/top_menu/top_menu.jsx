@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../styles/styles.css";
 import "../../styles/dop_styles.css";
-
+import telephon from '../../img/icon/free-icon-smartphone-call-15874.png'
 const Top_menu = () => {
     return (
         <div className="top_menu">
@@ -19,7 +19,23 @@ const Top_menu = () => {
                             <li className="li"><a href="/kontakty/" className="" title="Контакты">Контакты</a></li>
                             <h2>Категории товаров</h2>
                             <div className="categories">
-                                <ul className="level_1"><li><a href="/categories/hleba/" className="" title="Хлеб">Хлеб</a></li><li><a href="/categories/bulochnye-izdeliya/" className="" title="Булочные изделия">Булочные изделия</a></li><li><a href="/categories/gastronomiya/" className="" title="Гастрономия">Гастрономия</a></li><li><a href="/categories/konditerskie-izdeliya/" className="" title="Кондитерские изделия">Кондитерские изделия</a></li><li><a href="/categories/novaya-kategoriya/" className="" title="Печенье">Печенье</a></li></ul>
+                                <ul className="level_1">
+                                    <li>
+                                        <a href="/categories/hleba/" className="" title="Хлеб">Двери</a>
+                                    </li>
+                                    <li>
+                                        <a href="/categories/bulochnye-izdeliya/" className="" title="Булочные изделия">Линолиум</a>
+                                    </li>
+                                    <li>
+                                        <a href="/categories/gastronomiya/" className="" title="Гастрономия">САЙДЕНГ ВИНИЛОВЫЙ ФОСАДНЫЙ</a>
+                                    </li>
+                                    <li>
+                                        <a href="/categories/konditerskie-izdeliya/" className="" title="Кондитерские изделия">ПЛАСТИК ПОТОЛОЧНЫЙ ПВХ</a>
+                                    </li>
+                                    <li>
+                                        <a href="/categories/novaya-kategoriya/" className="" title="Печенье">МДФ ПАНЕЛИ</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -48,8 +64,8 @@ const Top_menu = () => {
                 <div className="top_menu_right">
 
                     <div className="phone">
-                        <img src="/img/t/taymyr/mobile-phone.svg"/>
-                            <a href="tel:84950554698">8-495-055-46-98</a>
+                        <img src={telephon}/>
+                            <a href="tel:84950554698">+996 501 23 03 90</a>
                     </div>
                 </div>
             </div>

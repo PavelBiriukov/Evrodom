@@ -21,7 +21,7 @@ const Sort_show = () => {
                                     <div className="field">
                                         <span className="irs irs--round js-irs-1 irs-with-grid">
                                             <span className="irs">
-                                                <span className="irs-line" tabindex="0"></span>
+                                                <span className="irs-line" tabIndex="0"></span>
                                                 <span className="irs-min" style={{}}>27</span>
                                                 <span className="irs-max" style={{}}>45</span>
                                                 <span className="irs-from">0</span>
@@ -70,7 +70,7 @@ const Sort_show = () => {
                                                 <i></i>
                                             </span>
                                         </span>
-                                        <input className="range js-range-slider irs-hidden-input" data-skin="round" data-type="double" data-min="27.00" data-max="45.00" data-from="27.00" data-to="45.00" data-grid="true" type="text" value="" tabindex="-1" readonly=""/>
+                                        <input className="range js-range-slider irs-hidden-input" data-skin="round" data-type="double" data-min="27.00" data-max="45.00" data-from="27.00" data-to="45.00" data-grid="true" type="text" value="" tabIndex="-1" readonly=""/>
                                     </div>
                             </div>
                         </div>

@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import "../../styles/styles.css";
 import "../../styles/dop_styles.css";
 import "../../styles/swiper.css";
-import Background from '../../img/pexels-pixabay-461060_1630385893183.jpg'
-import Background1 from '../../img/pexels-klaus-nielsen-6287298_1630385996187.jpg'
+import cl from "./block_slider.module.css";
+import Background from '../../img/77da07047e0be99b5c5b1a850bd325ac.jpg'
+import Background1 from '../../img/quelle-ecole-de-commerce-choisir.png'
+import left_arrow from '../../img/icon/free-icon-left-arrow-line-symbol-54321.png'
+import right_arrow from '../../img/icon/free-icon-right-arrow-angle-54833.png'
 const Block_slider = () => {
 
     const [nextStyle, setNextStyle] = useState({
@@ -90,9 +93,13 @@ const Block_slider = () => {
                             <div className="bg"></div>
                             <div className="inner">
                                 <div className="item_content">
-                                    <div className="title">Скидка 50% после 18 часов</div>
-                                    <div className="descr">Получите 50% скидку на всю продукцию Вкусного хлебушка после 18 часов</div>
-                                    <a className="slide_btn" href="/categories/hleba/">Купить хлеб</a>
+                                    <div className="title">Мы делаем ваш дом красивым и надежным.</div>
+                                    <div className="descr">Евродом - это качество, надежность, доступность. Мы знаем толк в стройке.</div>
+                                    <a href="/categories/hleba/">
+                                        <div className={cl.button}>
+                                            Купить двери
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -100,16 +107,22 @@ const Block_slider = () => {
                             <div className="bg"></div>
                             <div className="inner">
                                 <div className="item_content">
-                                    <div className="title">Высочайшее качество продукции</div>
-                                    <div className="descr">В своих продуктах мы используем сырье самого высокого качества и технологии, позволяющие сделать вкусный хлеб в кратчайшие сроки</div>
-                                    <a className="slide_btn" href="/categories/">В каталог</a>
+                                    <div className="title">Строй с умом, выбирай нас!</div>
+                                    <div className="descr">
+                                        Добро пожаловать в мир качественных стройматериалов — добро пожаловать в Евродом!
+                                    </div>
+                                    <a href="/categories">
+                                        <div className={cl.button}>
+                                            В каталог
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
-                        <span className={`swiper-pagination-bullet ${currentSlide === 2 - 1 ? 'swiper-pagination-bullet-active' : ''}`} tabindex="0" role="button" aria-label="Go to slide 1"></span>
-                        <span className={`swiper-pagination-bullet ${currentSlide === 0 ? 'swiper-pagination-bullet-active' : ''}`} tabindex="0" role="button" aria-label="Go to slide 2"></span>
+                        <span className={`swiper-pagination-bullet ${currentSlide === 2 - 1 ? 'swiper-pagination-bullet-active' : ''}`} tabIndex="0" role="button" aria-label="Go to slide 1"></span>
+                        <span className={`swiper-pagination-bullet ${currentSlide === 0 ? 'swiper-pagination-bullet-active' : ''}`} tabIndex="0" role="button" aria-label="Go to slide 2"></span>
                     </div>
                     <div
                         onClick={clickNext}
@@ -119,7 +132,7 @@ const Block_slider = () => {
                         aria-label="Next slide"
                         aria-disabled={currentSlide === 2 - 1 ? 'true' : 'false'}
                     >
-                        <i className="f7-icons">chevron_right</i>
+                        <img className="f7-icons" src={right_arrow} alt="стрелочка" />
                     </div>
                     <div
                         onClick={clickBack}
@@ -129,7 +142,7 @@ const Block_slider = () => {
                         aria-label="Previous slide"
                         aria-disabled={currentSlide === 0 ? 'true' : 'false'}
                     >
-                        <i className="f7-icons">chevron_left</i>
+                        <img className="f7-icons" src={left_arrow} alt="стрелочка" />
                     </div>
                     <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
             </div>

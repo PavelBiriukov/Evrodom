@@ -8,25 +8,21 @@
     background-size: auto 200%;
     text-transform: uppercase;
     font-weight: 900;
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#fff),color-stop(50%,#fff),color-stop(50%,var(--mainContrastSchemeColor)),to(var(--mainContrastSchemeColor)));
-    background-image: linear-gradient(to bottom,#fff 0,#fff 50%,var(--mainContrastSchemeColor) 50%,var(--mainContrastSchemeColor) 100%);
+    color: #fff;
+    background-color: #C32033;
+    transition: all .2s ease;
     border: 2px solid var(--mainContrastSchemeColor);
-    -webkit-transition: .2s ease-in;
-    transition: .2s ease-in
 }
 
 .more_category a {
     text-decoration: none;
     line-height: 30px;
-    color: var(--bodyTextColor)
 }
 
 .more_category:hover {
+    text-decoration: none;
+    background-color: #00ADEF;
+    color: #000;
     background-position: bottom center;
     cursor: pointer
-}
-
-.more_category:hover a {
-    text-decoration: underline;
-    color: var(--menuColor)
 }

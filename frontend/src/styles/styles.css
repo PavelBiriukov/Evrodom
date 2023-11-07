@@ -1767,13 +1767,6 @@ body:not(.superior):not(.victoria) .slider div.swiper-button-next,body:not(.supe
     background-color: rgba(196,196,196,.18)
 }
 
-body:not(.superior):not(.victoria) .slider div.swiper-button-prev:hover {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E")
-}
-
-body:not(.superior):not(.victoria) .slider div.swiper-button-next:hover {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E")
-}
 
 body:not(.superior):not(.victoria) .slider .swiper-button-prev {
     left: 0;
@@ -1884,7 +1877,7 @@ body:not(.superior):not(.victoria) .slider .swiper-slide {
     box-shadow: 0 5px 5px rgba(0,0,0,.15),0 3px 3px rgba(0,0,0,.2)
 }
 
-.main .filter_bar .checkbox_container.color_id input[type=checkbox]:checked~.checkmark {
+.main .filter_bar .checkbox_container.color input[type=checkbox]:checked~.checkmark {
     border-color: #e2e2e2;
     background: var(--checkboxCheckedBG);
     margin-top: 2px;

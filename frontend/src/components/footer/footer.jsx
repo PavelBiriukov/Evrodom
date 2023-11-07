@@ -12,22 +12,21 @@ const Footer = () => {
                         <li><a href="/o-kompanii/">О компании</a></li>
                         <li><a href="/dostavka-i-oplata/">Доставка и оплата</a></li>
                         <li><a href="/kontakty/">Контакты</a></li>
-                        <li><a href="/news/" title="Новости">Новости</a></li>
                     </ul>
                 </div>
                 <div className={[cl.fmenu ,cl.catalog].join(' ')}>
                     <div className={cl.footer_subtitle}>Каталог</div>
                     <ul>
-                        <li><a href="/categories/hleba/" title="Хлеб">Хлеб</a></li>
-                        <li><a href="/categories/bulochnye-izdeliya/" title="Булочные изделия">Булочные изделия</a></li>
-                        <li><a href="/categories/gastronomiya/" title="Гастрономия">Гастрономия</a></li>
-                        <li><a href="/categories/konditerskie-izdeliya/" title="Кондитерские изделия">Кондитерские изделия</a></li>
-                        <li><a href="/categories/novaya-kategoriya/" title="Печенье">Печенье</a></li>
+                        <li><a href="/categories/hleba/" title="Двери">Двери</a></li>
+                        <li><a href="/categories/bulochnye-izdeliya/" title="Линолиум">Линолиум</a></li>
+                        <li><a href="/categories/gastronomiya/" title="САЙДЕНГ ВИНИЛОВЫЙ ФОСАДНЫЙ">Сайденг виниловый фосадный</a></li>
+                        <li><a href="/categories/konditerskie-izdeliya/" title="ПЛАСТИК ПОТОЛОЧНЫЙ ПВХ">Пластик потолочный пвх</a></li>
+                        <li><a href="/categories/novaya-kategoriya/" title="МДФ ПАНЕЛИ">Мдф панели</a></li>
                     </ul>
                 </div>
                 <div className={[cl.fmenu ,cl.contact_us].join(' ')}>
                     <div className={cl.footer_subtitle}>Мы на связи</div>
-                    <a className={cl.footer_phone} href="tel:84950554698">8-495-055-46-98</a>
+                    <a className={cl.footer_phone} href="tel:84950554698">+996 501 23 03 90</a>
                     <div className={cl.social}>
                         <a target="_blank" href="https://vk.com/addshop_ru" className={cl.link_vk}></a>
                         <a target="_blank" href="https://facebook.com/#" className={cl.link_fb}></a>
@@ -37,7 +36,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className={[cl.fmenu ,cl.copylicy].join(' ')}>
-                    <div className={cl.copyright}>© 2023 Вкусный хлебушек</div>
+                    <div className={cl.copyright}>© 2023 Евродом</div>
                     <div className={cl.footer_site_info}>
                         <p>Используя данный сайт, вы автоматически принимаете условия пользовательского соглашения и соглашаетесь с политикой конфиденциальности.</p>
                     </div>
