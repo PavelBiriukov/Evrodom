@@ -7,6 +7,7 @@ import { join } from "path";
 import { CategoriesModule } from "./category/category.module";
 import { CartItemsModule } from "./cart-item/cart-item.module";
 import { UserModule } from "./user/user.module";
+import { TokenModule } from "./token/token.module";
 
 
 @Module({
@@ -17,6 +18,7 @@ import { UserModule } from "./user/user.module";
         CategoriesModule,
         CartItemsModule,
         UserModule,
+        TokenModule,
         ServeStaticModule.forRoot({
             rootPath: join(__dirname, '..', 'static'),
         }),

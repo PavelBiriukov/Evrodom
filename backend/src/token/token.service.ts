@@ -6,7 +6,7 @@ import { Token } from './schemas/token.schema';
 
 @Injectable()
 export class TokenService {
-    constructor(@InjectModel(Token.name) private readonly tokenModel: Model<Token>) {}
+    constructor(@InjectModel(Token.name) private tokenModel: Model<Token>) {}
 
     generateTokens(payload: any): { accessToken: string; refreshToken: string } {
         const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, { expiresIn: '15s' });

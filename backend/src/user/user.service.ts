@@ -12,9 +12,9 @@ import { MailService } from 'src/mail/mail.service';
 @Injectable()
 export class UserService {
     constructor(
-        @InjectModel(User.name) private readonly userModel: Model<User>,
-        private readonly tokenService: TokenService,
-        private readonly mailService: MailService,
+        @InjectModel(User.name) private userModel: Model<User>,
+        private tokenService: TokenService,
+        private mailService: MailService,
     ) {}
 
     async registration(email: string, password: string): Promise<any> {
