@@ -11,11 +11,15 @@ export class UserController {
     @UsePipes(new ValidationPipe()) // Подобно express-validator, здесь используем ValidationPipe
     async registration(@Req() req: Request, @Res() res: Response) {
         try {
+            console.log(req.body);
             const userData = await this.userService.registration(req.body.email, req.body.password);
+            console.log(userData);
+            
             res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
             return res.json(userData);
         } catch (e) {
-            throw ApiError.BadRequest('Ошибка при валидации', e.array());
+            console.log(e);
+            throw ApiError.BadRequest('Ошибка при валидации', e);
         }
     }
 
@@ -26,7 +30,7 @@ export class UserController {
             res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
             return res.json(userData);
         } catch (e) {
-            throw ApiError.BadRequest('Ошибка при валидации', e.array());
+            throw ApiError.BadRequest('Ошибка при валидации', e);
         }
     }
 
@@ -38,7 +42,7 @@ export class UserController {
             res.clearCookie('refreshToken');
             return res.json(token);
         } catch (e) {
-            throw ApiError.BadRequest('Ошибка при валидации', e.array());
+            throw ApiError.BadRequest('Ошибка при валидации', e);
         }
     }
 
@@ -48,19 +52,19 @@ export class UserController {
             await this.userService.activate(link);
             return res.redirect(process.env.CLIENT_URL);
         } catch (e) {
-            throw ApiError.BadRequest('Ошибка при валидации', e.array());
+            throw ApiError.BadRequest('Ошибка при валидации', e);
         }
     }
 
-    @Post('refresh')
+    @Get('refresh')
     async refresh(@Req() req: Request, @Res() res: Response) {
         try {
-            const { refreshToken } = req.cookies;
+            const {refreshToken} = req.cookies;
             const userData = await this.userService.refresh(refreshToken);
-            res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
             return res.json(userData);
         } catch (e) {
-            throw ApiError.BadRequest('Ошибка при валидации', e.array());
+            throw ApiError.BadRequest('Ошибка при валидации', e);
         }
     }
 
@@ -70,7 +74,7 @@ export class UserController {
             const users = await this.userService.getAllUsers();
             return res.json(users);
         } catch (e) {
-            throw ApiError.BadRequest('Ошибка при валидации', e.array());
+            throw ApiError.BadRequest('Ошибка при валидации', e);
         }
     }
 }

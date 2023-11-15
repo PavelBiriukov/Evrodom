@@ -2,23 +2,39 @@ import { createTransport, Transporter } from "nodemailer";
 
 export class MailService {
     private transporter: Transporter<any>;
+
     constructor() {
+        const {
+            SMTP_HOST="smtp.yandex.ru",
+            SMTP_PORT=465,
+            SMTP_USER,
+            SMTP_PASSWORD,
+            API_URL = 'http://localhost:5000',
+            CLIENT_URL = 'http://localhost:3000'
+        } = process.env;
+
         this.transporter = createTransport({
-            host: process.env.SMTP_HOST || 'smtp.example.com',
-            port: Number(process.env.SMTP_PORT) || 587, // Значение по умолчанию 587, если порт не установлен в переменных окружения
+            service: "gmail",
+            host: "smtp.gmail.com",
+            port: 587,
             secure: false,
             auth: {
-                user: process.env.SMTP_USER || 'user@example.com',
-                pass: process.env.SMTP_PASSWORD || 'password'
+                user: "pobritay@gmail.com",
+                pass: "yfrx rvut gzvx xpiq",
+            },
+            tls: {
+                rejectUnauthorized: false
             }
-        })
+        });
     }
 
     async sendActivationMail(to: string, link: string) {
+        const { API_URL, CLIENT_URL } = process.env;
+
         await this.transporter.sendMail({
             from: process.env.SMTP_USER,
             to,
-            subject: 'Активация аккаунта на ' + process.env.API_URL || 'http://localhost:3000', // Значение по умолчанию, если API_URL не установлено
+            subject: 'Активация аккаунта на ' + (API_URL || 'http://localhost:5000'),
             text: '',
             html:
                 `
@@ -27,6 +43,6 @@ export class MailService {
                         <a href="${link}">${link}</a>
                     </div>
                 `
-        })
+        });
     }
 }

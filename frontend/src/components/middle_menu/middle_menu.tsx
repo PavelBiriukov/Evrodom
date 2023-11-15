@@ -9,16 +9,47 @@ import "../../styles/styles.css";
 import { ICard } from '../../type/cards';
 import { ICartItem } from '../../type/cartItem';
 import cl from "./middle_menu.module.css";
+import icon_user from "../../img/icon/free-icon-font-circle-user-9821479.png";
+
 const Middle_menu = () => {
     const { searchCard } = useActions()
     const [query, setQuery] = useState<string>('');
     const [cards, setCards] = useState<ICard[] | any>();
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
-
     const { cartItems } = useTypedSelector(state => state.cartItems);
     const [cartLength, setCartLength] = useState(0);
     const [totalPrice, setTotalPrice] = useState<number>(0);
+    const { user, isLoading, isAuth } = useTypedSelector(state => state.users);
+    const { checkAuth, logout, } = useActions();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                if (localStorage.getItem('token')) {
+                    await checkAuth();
+                }
+            } catch (error) {
+                console.error("Error fetching user:", error);
+                // Обработка ошибки, например, установка статуса ошибки в локальный state
+            }
+        };
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        // Код, который должен выполниться после получения пользователя
+        console.log(user);
+
+        console.log(isLoading);
+        console.log(isAuth);
+    
+        // Добавьте здесь условие, чтобы избежать вывода undefined
+        if (isAuth && user) {
+
+            console.log(user.email);
+        }
+    }, [user, isLoading, isAuth]);
 
     useEffect(() => {
         // При изменении cartItems пересчитываем общую стоимость товаров
@@ -36,16 +67,16 @@ const Middle_menu = () => {
 
     useEffect(() => {
         const closePopup = (e: any) => {
-          const popup = document.querySelector(`.${cl.mimi_popup_serch}`);
-          if (isPopupVisible && popup && !popup.contains(e.target)) {
-            setPopupVisible(false);
-          }
+            const popup = document.querySelector(`.${cl.mimi_popup_serch}`);
+            if (isPopupVisible && popup && !popup.contains(e.target)) {
+                setPopupVisible(false);
+            }
         };
         document.addEventListener('click', closePopup);
         return () => {
-          document.removeEventListener('click', closePopup);
+            document.removeEventListener('click', closePopup);
         };
-      }, [isPopupVisible]);
+    }, [isPopupVisible]);
 
     const search = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -67,6 +98,16 @@ const Middle_menu = () => {
         }
     }
 
+    const handleLogout = async () => {
+        console.log("Before logout:", isAuth);
+        await logout(); // Вызов функции logout при клике на "Выйти"
+        console.log("After logout:", isAuth);
+        // Можешь добавить здесь дополнительные действия, если необходимо
+    };
+
+    if (isLoading) {
+        return <div>Загрузка...</div>
+    }
     return (
         <div className="middle_menu">
             <div className="inner">
@@ -76,7 +117,7 @@ const Middle_menu = () => {
                     </a>
                     <p className="slogan">Качественные материалы для вашего дома с бесплатной доставкой.</p>
                 </div>
-                <div className="search_form" style={{ width: '43%' }}>
+                <div className="search_form" style={{ width: '35%' }}>
                     <form method="GET" action="/search/">
                         <input
                             style={{ width: '100%' }}
@@ -115,6 +156,20 @@ const Middle_menu = () => {
                     <div className="search_open">
                         <img src={searchIMG} />
                     </div>
+                    <div className="login_or_reg">
+                        <img src={icon_user} />
+                        {isAuth ? (
+                            <div className="icon_cont">
+                                <p>{user?.email}</p>
+                                <a onClick={handleLogout} href="/">Выйти</a>
+                            </div>
+                        ) : (
+                            <div className="icon_cont">
+                                <a href="/login/">Вход</a>
+                                <a href="/registration/">Регистрация</a>
+                            </div>
+                        )}
+                    </div>
                     <div className="basket">
                         <a href="/basket/">
                             <img src={shopping} />
@@ -122,7 +177,7 @@ const Middle_menu = () => {
                         </a>
                         <div className="icon_cont">
                             <div className="basket-title">Товаров на сумму:</div>
-                            
+
                             <div className="pop_up_price">{totalPrice} сом.</div>
                         </div>
                     </div>

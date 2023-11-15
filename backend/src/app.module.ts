@@ -9,10 +9,9 @@ import { CartItemsModule } from "./cart-item/cart-item.module";
 import { UserModule } from "./user/user.module";
 import { TokenModule } from "./token/token.module";
 
-
 @Module({
     imports: [
-        MongooseModule.forRoot(process.env.DB_URL),
+        MongooseModule.forRoot('mongodb+srv://user:user@cluster0.6ds8idn.mongodb.net/?retryWrites=true&w=majority'),
         CardsModule,
         FileModule,
         CategoriesModule,

@@ -8,6 +8,7 @@ import { TokenService } from '../token/token.service';
 import * as bcrypt from 'bcryptjs';
 import * as uuid from 'uuid'
 import { MailService } from 'src/mail/mail.service';
+import { ApiError } from 'src/exceptions/api-error';
 
 @Injectable()
 export class UserService {
@@ -24,10 +25,10 @@ export class UserService {
         }
         const hashPassword = await bcrypt.hash(password, 3);
         const activationLink = uuid.v4(); // v34fa-asfasf-142saf-sa-asf
-
         const user = await this.userModel.create({ email, password: hashPassword, activationLink });
-        await this.mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
 
+        await this.mailService.sendActivationMail(email, `http://localhost:5000/users/activate/${activationLink}`);
+        
         const userDto = new UserDto(user); // id, email, isActivated
         const tokens = this.tokenService.generateTokens({ ...userDto });
         await this.tokenService.saveToken(userDto.id, tokens.refreshToken);
@@ -42,6 +43,7 @@ export class UserService {
         }
         user.isActivated = true;
         await user.save();
+        
     }
 
     async login(email: string, password: string): Promise<any> {
@@ -67,23 +69,24 @@ export class UserService {
 
     async refresh(refreshToken: string): Promise<any> {
         if (!refreshToken) {
-            throw new UnauthorizedException();
+            throw ApiError.UnauthorizedError();
         }
         const userData = this.tokenService.validateRefreshToken(refreshToken);
         const tokenFromDb = await this.tokenService.findToken(refreshToken);
         if (!userData || !tokenFromDb) {
-            throw new UnauthorizedException();
+            throw ApiError.UnauthorizedError();
         }
         const user = await this.userModel.findById(userData.id);
         const userDto = new UserDto(user);
-        const tokens = this.tokenService.generateTokens({ ...userDto });
+        const tokens = this.tokenService.generateTokens({...userDto});
 
         await this.tokenService.saveToken(userDto.id, tokens.refreshToken);
-        return { ...tokens, user: userDto };
+        return {...tokens, user: userDto}
     }
 
     async getAllUsers(): Promise<any[]> {
         const users = await this.userModel.find();
         return users;
+
     }
 }

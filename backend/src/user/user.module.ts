@@ -10,7 +10,7 @@ import { UserService } from "./user.service";
 @Module({
     imports: [TokenModule, MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])],
     controllers: [UserController],
-    providers: [UserService, MailService, TokenService]
+    providers: [UserService, MailService]
 })
 export class UserModule {
     

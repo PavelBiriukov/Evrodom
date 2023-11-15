@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { sign, verify } from 'jsonwebtoken';
 import { Model } from 'mongoose';
-import jwt from 'jsonwebtoken';
 import { Token } from './schemas/token.schema';
 
 @Injectable()
@@ -9,14 +9,14 @@ export class TokenService {
     constructor(@InjectModel(Token.name) private tokenModel: Model<Token>) {}
 
     generateTokens(payload: any): { accessToken: string; refreshToken: string } {
-        const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, { expiresIn: '15s' });
-        const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, { expiresIn: '30s' });
+        const accessToken = sign(payload, 'jwt-secret-key', { expiresIn: '1d' });
+        const refreshToken = sign(payload, 'jwt-refresh-secret-key', { expiresIn: '30d' });
         return { accessToken, refreshToken };
     }
 
     validateAccessToken(token: string): any {
         try {
-            const userData = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+            const userData = verify(token, 'jwt-secret-key');
             return userData;
         } catch (e) {
             return null;
@@ -25,7 +25,7 @@ export class TokenService {
 
     validateRefreshToken(token: string): any {
         try {
-            const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
+            const userData = verify(token, 'jwt-refresh-secret-key');
             return userData;
         } catch (e) {
             return null;

@@ -18,6 +18,8 @@ import UpdateCard from './components/pages/updateCard/updateCard';
 import UpdateCategories from './components/pages/updateCategories/updateCategories';
 import Products_from_the_category from './components/pages/products_from_the_category/products_from_the_category';
 import Basket from './components/pages/basket/basket';
+import RegistrationForm from './components/registration/registration';
+import Login from './components/login/login';
 /* цвет: #45dcdd */
 const App = () => {
   return (
@@ -41,6 +43,8 @@ const App = () => {
           <Route path="/admin/deleteCategories" element={<DeleteCategories/>}/>
           <Route path="/admin/createCategories" element={<CategoriesCreate/>}/>
           <Route path="/basket" element={<Basket/>}/>
+          <Route path="/registration" element={<RegistrationForm/>}/>
+          <Route path="/login" element={<Login/>}/>
       </Routes>
     </BrowserRouter>
   );
