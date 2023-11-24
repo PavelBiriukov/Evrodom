@@ -1,37 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import useActions from '../../../hooks/useAcrions';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { ICard } from '../../../type/cards';
-import { ICartItem } from '../../../type/cartItem';
 import Footer from '../../footer/footer';
 import Header from '../../header/header';
-
+import cl from './basket.module.css';
+import imgClouse from '../../../img/icon/free-icon-font-cross-3917189.png';
 const Basket = () => {
-    const { cartItems } = useTypedSelector(state => state.cartItems);
-    const [cartLength, setCartLength] = useState(0);
-    const [totalPrice, setTotalPrice] = useState<number>(0);
+    const { items, totalPrice } = useTypedSelector(state => state.basket);
+    const { isAuth, user } = useTypedSelector(state => state.users);
+    const { removeFromCart, getBasket, updateBasketAction } = useActions()
+
+    const updateBasket = useCallback(
+        (updatedItems: any) => {
+            const basketItems = {
+                items: updatedItems,
+                userId: [user.id],
+            };
+            updateBasketAction(basketItems);
+            getBasket(user.id)
+        },
+        [updateBasketAction, user.id]
+    );
+
+    const increaseQuantity = useCallback(
+        (item: ICard) => {
+            const updatedItems = items?.map((basketItem: any) =>
+                basketItem._id === item._id ? { ...basketItem, quantity: basketItem.quantity + 1 } : basketItem
+            );
+            updateBasket(updatedItems);
+            getBasket(user.id)
+        },
+        [items, updateBasket]
+    );
+
+    const decreaseQuantity = useCallback(
+        (item: ICard) => {
+            const updatedItems = items?.map((basketItem: any) =>
+                basketItem._id === item._id && basketItem.quantity > 1
+                    ? { ...basketItem, quantity: basketItem.quantity - 1 }
+                    : basketItem
+            );
+            updateBasket(updatedItems);
+            getBasket(user.id)
+        },
+        [items, updateBasket]
+    );
+
+    const removeItemsBasket = useCallback(
+        (item: ICard) => {
+            const backetItems = {
+                items: items,
+                userId: [user.id],
+            };
+            removeFromCart(backetItems, item._id);
+            getBasket(user.id)
+        },
+        [items, removeFromCart, user.id]
+    );
 
     useEffect(() => {
-        // При изменении cartItems пересчитываем общую стоимость товаров
-        setCartLength(cartItems.reduce((acc, item) => acc + item.quantity, 0));
-        let totalPrice = 0;
-        if (cartItems.length > 0) {
-            totalPrice = cartItems.reduce((acc: number, cartItem: ICartItem) => {
-                const price = parseFloat(cartItem.item.price); // Предполагаем, что цена товара является числом
-                const quantity = cartItem.quantity;
-                return acc + (price * quantity);
-            }, 0);
-        }
-        setTotalPrice(totalPrice);
-    }, [cartItems]);
-
-    function getTotalQuantity(cartItems: ICartItem[], item: ICard): number {
-        return cartItems.reduce((total: number, cartItem: ICartItem) => {
-            if (cartItem.item._id === item._id) {
-                return total + cartItem.quantity;
-            }
-            return total;
-        }, 0);
-    }
+        getBasket(user.id);
+        
+    }, []);
+    console.log(items);
+    
     return (
         <div className='wrapper'>
             <Header />
@@ -47,77 +80,87 @@ const Basket = () => {
                                 <span>Корзина</span>
                             </div>
                             <h1 className="shop-title">Корзина</h1>
-                            <div className="promo-descr" ></div>
-                            <div id="basket_list">
-                                <div className="basket_item_wrapp">
-                                    <div className="item_in_basket_titles">
-                                        <div className="title">Наименование товара</div>
-                                        <div className="img"></div>
-                                        <div className="price">Цена</div>
-                                        <div className="quantity">Количество</div>
-                                        <div className="total">Стоимость</div>
-                                        <div className="remove" data-index="0"></div>
-                                    </div>
-                                    {cartItems && cartItems.length > 0 ? (
-                                        cartItems.map((item: any, index: number) => (
-                                            <div className="item_in_basket">
-                                                <div className="image">
-                                                    <img src={`http://localhost:5000/${item.item.picture[0]}`} />
-                                                </div>
-                                                <div className="title">
-                                                    <a href={`/items/${item.item._id}`}>
-                                                        {item.item.name}
-                                                    </a>
-                                                    <br />
-                                                    <span className="v_code">Код товара: {item.item._id}</span>
-                                                    <span className="v_code"></span>
-                                                </div>
-                                                <div className="price">
-                                                    <div> </div>
-                                                    <span className="">{item.item.price} сом.
-                                                        <span></span>
-                                                    </span>
-                                                </div>
-                                                <div className="quantity">
-                                                    <div className="count">
-                                                        <div className="count_minus">-</div>
-                                                        <input data-index="0" type="text" name="quantity" className="number_input" value="1.00" min="1.00" step="1.00" max="100.00" />
-                                                        <div className="count_plus">+</div>
+                            <div className="promo-descr"></div>
+                            {isAuth ? (
+                                <div id="basket_list">
+                                    {items && items?.length > 0 ? (
+                                        items.map((item: any, index: number) => (
+                                            <div key={index} className="basket_item_wrapp">
+                                                <div className="item_in_basket_titles">
+                                                    <div className="title">Наименование товара</div>
+                                                    <div className="img"></div>
+                                                    <div className="price">Цена</div>
+                                                    <div className="quantity">Количество</div>
+                                                    <div className="total">Стоимость</div>
+                                                    <div onClick={() => removeItemsBasket(item)} className="remove" data-index="0">
+                                                        <img style={{width: '15px'}}  src={imgClouse} alt="закрыть" />
                                                     </div>
                                                 </div>
-                                                <div className="total">
-                                                    <div className="total_new"></div>
-                                                    <span className="">сом.</span>
+                                                <div className="item_in_basket" key={index}>
+                                                    <div className="image">
+                                                        <img src={`http://localhost:5000/${item.picture[0]}`} alt={item.name} />
+                                                    </div>
+                                                    <div className="title">
+                                                        <a href={`/items/${item._id}`}>
+                                                            {item.name}
+                                                        </a>
+                                                        <br />
+                                                        <span className="v_code">Код товара: {item._id}</span>
+                                                    </div>
+                                                    <div className="price">
+                                                        <div> </div>
+                                                        <span className="">{item.price} сом.</span>
+                                                    </div>
+                                                    <div className="quantity">
+                                                        <div className="count">
+                                                            <div onClick={() => decreaseQuantity(item)} className="count_minus">-</div>
+                                                            <input
+                                                                data-index={index}
+                                                                type="text"
+                                                                name="quantity"
+                                                                className="number_input"
+                                                                value={item.quantity}
+                                                                min="1"
+                                                                step="1"
+                                                                max="100"
+                                                                readOnly
+                                                            />
+                                                            <div onClick={() => increaseQuantity(item)} className="count_plus">+</div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="total">
+                                                        <div className="total_new">{item.price * item.quantity}</div>
+                                                        <span className="">сом.</span>
+                                                    </div>
+                                                    <div className=""> </div>
                                                 </div>
-                                                <div className="">  </div>
                                             </div>
-                                        )))
-                                        :
-                                        (<div className={`empty-cart-message`}>Корзина пуста</div>)
-                                    }
-                                </div>
-                                <div className="basket_end">
-                                    {/* <div className="left">
-                                <div className="promo">
-                                    <form method="POST" id="apply_promo">
-                                        <input name="action" type="hidden" value="apply_promo"/>
-                                        <input type="text" name="promo" className="promo" value="" placeholder="Введите промокод ..."/>
-                                        <button className="get_promo">Применить</button>
-                                    </form>
-                                </div>
-                            </div> */}
-                                    <div className="right">
-                                        <div className="total_basket_wrapp">
-                                            <span>Итоговая сумма: </span>
-                                            <span id="basket_total">
-                                                <span className="">{totalPrice}</span>
-                                                &nbsp;
-                                            </span> сом.
+                                        ))
+                                    ) : (
+                                        <div className={`empty-cart-message`}>Корзина пуста</div>
+                                    )}
+                                    <div className="basket_end">
+                                        <div className="right">
+                                            <div className="total_basket_wrapp">
+                                                <span>Итоговая сумма: </span>
+                                                <span id="basket_total">
+                                                    <span className="">{totalPrice}</span>
+                                                    &nbsp;
+                                                </span> сом.
+                                            </div>
+                                            <a className="checkout_btn" href="/checkout/">Оформить заказ</a>
                                         </div>
-                                        <a className="checkout_btn" href="/checkout/">Оформить заказ</a>
                                     </div>
                                 </div>
-                            </div>
+                            ) : (
+                                <div className={cl.auntif}>
+                                    <h1>Пользователь не авторизован</h1>
+                                    <div className="icon_cont">
+                                        <a className={cl.link} href="/login/">Вход</a>
+                                        <a className={cl.link} href="/registration/">Регистрация</a>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

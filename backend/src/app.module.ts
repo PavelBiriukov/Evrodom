@@ -5,7 +5,7 @@ import { CardsModule } from "./cards/cards.module";
 import { FileModule } from "./files/file.module";
 import { join } from "path";
 import { CategoriesModule } from "./category/category.module";
-import { CartItemsModule } from "./cart-item/cart-item.module";
+import { BasketModule } from "./cart-item/cart-item.module";
 import { UserModule } from "./user/user.module";
 import { TokenModule } from "./token/token.module";
 
@@ -15,7 +15,7 @@ import { TokenModule } from "./token/token.module";
         CardsModule,
         FileModule,
         CategoriesModule,
-        CartItemsModule,
+        BasketModule,
         UserModule,
         TokenModule,
         ServeStaticModule.forRoot({

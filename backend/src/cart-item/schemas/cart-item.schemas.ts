@@ -1,22 +1,30 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { Document } from 'mongoose';
 
-export type CartItemDocument = HydratedDocument<CartItem>;
+export type BasketItem = {
+  _id: string;
+  name: string;
+  picture: any[];
+  price: number;
+  quantity: number;
+};
+
+export type BasketDocument = Document & {
+  userId: string;
+  items: BasketItem[];
+  totalPrice: number;
+};
 
 @Schema()
-export class CartItem {
-  @Prop()
-  name: string;
+export class Basket {
+  @Prop({ unique: true })
+  userId: string;
 
-  @Prop()
-  price: number;
+  @Prop({ type: [{ type: Object }] })
+  items: BasketItem[];
 
-  @Prop()
-  id: number;
-
-  @Prop()
-  quantity: number;
-
+  @Prop({ default: 0 }) // Устанавливаем значение по умолчанию как 0
+  totalPrice: number;
 }
 
-export const CartItemSchema = SchemaFactory.createForClass(CartItem);
+export const BasketSchema = SchemaFactory.createForClass(Basket);

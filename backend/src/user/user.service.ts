@@ -9,6 +9,7 @@ import * as bcrypt from 'bcryptjs';
 import * as uuid from 'uuid'
 import { MailService } from 'src/mail/mail.service';
 import { ApiError } from 'src/exceptions/api-error';
+import { verify } from 'jsonwebtoken';
 
 @Injectable()
 export class UserService {
@@ -87,6 +88,19 @@ export class UserService {
     async getAllUsers(): Promise<any[]> {
         const users = await this.userModel.find();
         return users;
+    }
 
+    async getCurrentUserId(token: string): Promise<string> {
+        if (!token) {
+            throw ApiError.UnauthorizedError();
+        }
+        try {
+            const decodedToken: any = verify(token, 'jwt-secret-key'); // Замените 'your_secret_key' на ваш секретный ключ
+            // Предположим, что в токене есть поле 'userId'
+            const userId = decodedToken;
+            return userId;
+        } catch (error) {
+            throw ApiError.UnauthorizedError();
+        }
     }
 }

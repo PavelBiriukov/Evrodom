@@ -15,7 +15,7 @@ import Footer from '../../footer/footer';
 import Basket_popup_wrapper from '../../basket_popup_wrapper/basket_popup_wrapper';
 
 const Products_from_the_category = () => {
-    const { fetchCard, addToCart } = useActions();
+    const { fetchCard, } = useActions();
     const { cards } = useTypedSelector(state => state.card);
     const { categoryName } = useParams();
     const [cardsItem, setCardsItem] = useState<ICard[] | any>();
@@ -141,7 +141,6 @@ const Products_from_the_category = () => {
     const [showPopup, setShowPopup] = useState(false);
 
     const handleAddToCart = (item: ICard) => {
-        addToCart(item);
         setShowPopup(true);
     };
 

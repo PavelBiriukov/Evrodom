@@ -3533,7 +3533,7 @@ footer .bottom .footer_site_info a {
     height: 15px;
     color: var(--mainSchemeColor);
     cursor: pointer;
-    /* background: url(/img/main/close.svg) no-repeat center; */
+    background: url('http://new16303841753545.myaddshop.ru/img/main/close.svg') no-repeat center;
     background-size: 100%
 }
 

@@ -7,7 +7,6 @@ import ava from "../../img/logo/LOGO_EVRODOM.png";
 import "../../styles/dop_styles.css";
 import "../../styles/styles.css";
 import { ICard } from '../../type/cards';
-import { ICartItem } from '../../type/cartItem';
 import cl from "./middle_menu.module.css";
 import icon_user from "../../img/icon/free-icon-font-circle-user-9821479.png";
 
@@ -17,12 +16,10 @@ const Middle_menu = () => {
     const [cards, setCards] = useState<ICard[] | any>();
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
-    const { cartItems } = useTypedSelector(state => state.cartItems);
-    const [cartLength, setCartLength] = useState(0);
-    const [totalPrice, setTotalPrice] = useState<number>(0);
     const { user, isLoading, isAuth } = useTypedSelector(state => state.users);
-    const { checkAuth, logout, } = useActions();
-
+    const { items, totalPrice } = useTypedSelector(state => state.basket);
+    const { checkAuth, logout, getBasket } = useActions();
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -38,32 +35,12 @@ const Middle_menu = () => {
     }, []);
 
     useEffect(() => {
-        // Код, который должен выполниться после получения пользователя
-        console.log(user);
-
-        console.log(isLoading);
-        console.log(isAuth);
-    
         // Добавьте здесь условие, чтобы избежать вывода undefined
         if (isAuth && user) {
-
-            console.log(user.email);
+            getBasket(user.id)  
         }
     }, [user, isLoading, isAuth]);
 
-    useEffect(() => {
-        // При изменении cartItems пересчитываем общую стоимость товаров
-        setCartLength(cartItems.reduce((acc, item) => acc + item.quantity, 0));
-        let totalPrice = 0;
-        if (cartItems.length > 0) {
-            totalPrice = cartItems.reduce((acc: number, cartItem: ICartItem) => {
-                const price = parseFloat(cartItem.item.price); // Предполагаем, что цена товара является числом
-                const quantity = cartItem.quantity;
-                return acc + (price * quantity);
-            }, 0);
-        }
-        setTotalPrice(totalPrice);
-    }, [cartItems]);
 
     useEffect(() => {
         const closePopup = (e: any) => {
@@ -173,10 +150,10 @@ const Middle_menu = () => {
                     <div className="basket">
                         <a href="/basket/">
                             <img src={shopping} />
-                            <div className="pop_up_count">{cartLength}</div>
+                            <div className="pop_up_count">{items?.length || 0} </div>
                         </a>
                         <div className="icon_cont">
-                            <div className="basket-title">Товаров на сумму:</div>
+                            <div className="basket-title">Товаров на сумму: </div>
 
                             <div className="pop_up_price">{totalPrice} сом.</div>
                         </div>

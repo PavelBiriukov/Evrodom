@@ -1,41 +1,78 @@
+import axios from "axios";
 import { Dispatch } from "react";
-import { ICard } from "../../type/cards";
-import { CartAction, CartActionType } from "../../type/cartItem";
+import { BasketAction, BasketActionType } from "../../type/basket";
 
-export const addToCart = (item: ICard) => {
-    return async (dispatch: Dispatch<CartAction>) => {
+export const addToBasket = (item: any,) => {
+    return async (dispatch: Dispatch<BasketAction>) => {
         try {
-            dispatch({ type: CartActionType.ADD_TO_CART, payload: item });
+            const response = await axios.post('http://localhost:5000/users/basket/add', item);
+            // Асинхронные операции, если необходимо
+            console.log(item);
+            dispatch({ type: BasketActionType.ADD_TO_BASKET, payload: item.items[0] });
         } catch (error) {
             dispatch({
-                type: CartActionType.ADD_TO_CART_ERROR,
-                payload: 'Произошла ошибка при добавлении товара в корзину'
+                type: BasketActionType.ADD_TO_BASKET_ERROR,
+                payload: `Произошла ошибка при добавлении товара в корзину: ${error}`
             });
         }
     };
 };
 
-export const removeFromCart = (itemId: string) => {
-    return async (dispatch: Dispatch<CartAction>) => {
+export const updateBasketAction = (basketItems: any) => {
+    return async (dispatch: Dispatch<BasketAction>) => {
         try {
-            dispatch({ type: CartActionType.REMOVE_FROM_CART, payload: itemId });
+            const response = await axios.post('http://localhost:5000/users/basket/update', basketItems);
+            dispatch({ type: BasketActionType.UPDATE_BASKET, payload: response.data });
         } catch (error) {
             dispatch({
-                type: CartActionType.REMOVE_FROM_CART_ERROR,
-                payload: 'Произошла ошибка при удалении товара из корзины'
+                type: BasketActionType.UPDATE_BASKET_ERROR,
+                payload: `Произошла ошибка при обновлении корзины: ${error}`
             });
         }
     };
 };
 
-export const clearCart = () => {
-    return async (dispatch: Dispatch<CartAction>) => {
+export const removeFromCart = (items: any, itemId: string) => {
+    return async (dispatch: Dispatch<BasketAction>) => {
         try {
-            dispatch({ type: CartActionType.CLEAR_CART });
+            const response = await axios.post('http://localhost:5000/users/basket/remove', {items, itemId});
+            console.log(response.data);
+            
+            dispatch({ type: BasketActionType.REMOVE_FROM_BASKET, payload: itemId });
         } catch (error) {
             dispatch({
-                type: CartActionType.CLEAR_CART_ERROR,
-                payload: 'Произошла ошибка при очистке корзины'
+                type: BasketActionType.REMOVE_FROM_BASKET_ERROR,
+                payload: `Произошла ошибка при удалении товара из корзины: ${error}`
+            });
+        }
+    };
+};
+
+export const clearCart = (id: string) => {
+    return async (dispatch: Dispatch<BasketAction>) => {
+        try {
+            const response = await axios.post(`http://localhost:5000/users/basket/clear/${id}`);
+            dispatch({ type: BasketActionType.CLEAR_BASKET });
+        } catch (error) {
+            dispatch({
+                type: BasketActionType.CLEAR_BASKET_ERROR,
+                payload: `Произошла ошибка при очистке корзины: ${error}`
+            });
+        }
+    };
+};
+
+export const getBasket = (userId: string) => {
+    return async (dispatch: Dispatch<BasketAction>) => {
+        try {
+            const response = await axios.get(`http://localhost:5000/users/basket/user/${userId}`);
+            console.log(response.data);
+            
+            dispatch({ type: BasketActionType.GET_BASKET, payload: response.data });
+        } catch (error) {
+            dispatch({
+                type: BasketActionType.GET_BASKET_ERROR,
+                payload: `Произошла ошибка при получении товаров из корзины: ${error}`
             });
         }
     };

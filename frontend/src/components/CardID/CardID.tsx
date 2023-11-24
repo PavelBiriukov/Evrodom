@@ -13,19 +13,19 @@ import ReactImageZoom from 'react-image-zoom';
 import { relative } from 'path';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
-import useShoppingCart from '../../hooks/useShoppingCart';
 import Basket_popup_wrapper from '../basket_popup_wrapper/basket_popup_wrapper';
 
 const CardID: React.FC<CardItemProps> = () => {
     const { id } = useParams<{ id: string }>();
     const [card, setCard] = useState<ICard | any>();
-    const { getCardById, fetchCard, addToCart } = useActions()
+    const { getCardById, fetchCard, addToBasket, getBasket } = useActions()
     const [cardsItem, setCardsItem] = useState<ICard[] | any>();
     const { cards } = useTypedSelector(state => state.card);
+    const { user } = useTypedSelector(state => state.users);
+    const { items } = useTypedSelector(state => state.basket);
 
     useEffect(() => {
         fetchCard();
-        
     }, []);
     
     useEffect(() => {
@@ -84,7 +84,11 @@ const CardID: React.FC<CardItemProps> = () => {
     const [showPopup, setShowPopup] = useState(false);
 
     const handleAddToCart = (item: ICard) => {
-        addToCart(item);
+        const basketDto = {
+            userId: user.id,
+            items: [item],
+        };
+        addToBasket(basketDto)
         setShowPopup(true);
     };
 
@@ -197,15 +201,15 @@ const CardID: React.FC<CardItemProps> = () => {
                             <div className="main description">
                                 <div className="item_description_title">Описание товара</div>
                                 <div className="item_description">
-                                    {arrayUniqueParameters?.map((parameter: string) =>
-                                        <p>{parameter}</p>
+                                    {arrayUniqueParameters?.map((parameter: string, index: any) =>
+                                        <p key={index}>{parameter}</p>
                                     )}
                                 </div>
                             </div>
                             <h2 className="shop-title">Рекомендуем посмотреть</h2>
                             <div className='items equivalent_items'>
-                                {cardsItem?.map((cardCatigor: ICard) =>
-                                    <div className="item" data-discount-type="" data-code="89238">
+                                {cardsItem?.map((cardCatigor: ICard, index: string) =>
+                                    <div key={index} className="item" data-discount-type="" data-code="89238">
                                         <div className="image">
                                             <div className="item_tags">
                                             </div>

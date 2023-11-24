@@ -1,0 +1,11 @@
+.auntif {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.link{
+    margin: 10px;
+    font-size: 25px;
+    font-weight: 700;
+}

@@ -1,59 +1,50 @@
-import { CartAction, CartActionType, CartState } from "../../type/cartItem";
+import localforage from "localforage";
+import { BasketAction, BasketActionType, BasketState } from "../../type/basket";
 
-const initialCartState: CartState = {
-    cartItems: [],
-    error: '',
+
+const initialState: BasketState = {
+    userId: '', // Здесь может быть идентификатор пользователя
+    items: [],
+    totalPrice: 0,
+    error: ''
 };
 
-export const cartReducer = (state = initialCartState, action: CartAction): CartState => {
+const basketReducer = (state = initialState, action: BasketAction): BasketState => {
     switch (action.type) {
-        case CartActionType.ADD_TO_CART:
-            // Проверяем, есть ли товар уже в корзине
-            const existingItemIndex = state.cartItems.findIndex(item => item.item._id === action.payload._id);
-
-            if (existingItemIndex !== -1) {
-                const updatedCart = [...state.cartItems];
-                updatedCart[existingItemIndex].quantity += 1;
-                return {
-                    ...state,
-                    cartItems: updatedCart,
-                };
-            } else {
-                return {
-                    ...state,
-                    cartItems: [
-                        ...state.cartItems,
-                        {
-                            item: action.payload,
-                            quantity: 1,
-                        },
-                    ],
-                };
-            }
-
-        case CartActionType.REMOVE_FROM_CART:
-            const updatedCart = state.cartItems.filter(item => item.item._id !== action.payload);
+        case BasketActionType.ADD_TO_BASKET:
             return {
                 ...state,
-                cartItems: updatedCart,
+                items: [...state.items, action.payload],
             };
 
-        case CartActionType.CLEAR_CART:
+        case BasketActionType.REMOVE_FROM_BASKET:
+            console.log(state);
+            console.log(action.payload);
             return {
                 ...state,
-                cartItems: [],
+                items: state.items.filter((item: any) => item._id !== action.payload),
             };
-            
-        case CartActionType.ADD_TO_CART_ERROR:
-        case CartActionType.REMOVE_FROM_CART_ERROR:
-        case CartActionType.CLEAR_CART_ERROR:
+
+        case BasketActionType.CLEAR_BASKET:
             return {
                 ...state,
-                error: action.payload
-            };    
-
+                items: [],
+            };
+        case BasketActionType.GET_BASKET:
+            return {
+                ...state,
+                items: action.payload.items,
+                totalPrice: action.payload.totalPrice,
+                userId: action.payload.userId,
+            };
+        case BasketActionType.ADD_TO_BASKET_ERROR:
+        case BasketActionType.CLEAR_BASKET_ERROR:
+        case BasketActionType.GET_BASKET_ERROR:
+        case BasketActionType.REMOVE_FROM_BASKET_ERROR:
+            return { ...state, error: action.payload || state.error }; // Обработка всех действий, связанных с ошибками
         default:
             return state;
     }
 };
 
+export default basketReducer;
