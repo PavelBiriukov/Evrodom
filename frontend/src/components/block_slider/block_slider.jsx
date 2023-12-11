@@ -125,24 +125,26 @@ const Block_slider = () => {
                         <span className={`swiper-pagination-bullet ${currentSlide === 0 ? 'swiper-pagination-bullet-active' : ''}`} tabIndex="0" role="button" aria-label="Go to slide 2"></span>
                     </div>
                     <div
+                        
                         onClick={clickNext}
-                        className={`swiper-button-next swiper-button-white ${currentSlide === 2 - 1 ? 'swiper-button-disabled' : ''}`}
+                        className={`swiper-button-next-slider swiper-button-white ${currentSlide === 2 - 1 ? 'swiper-button-disabled' : ''}`}
                         tabIndex="0"
                         role="button"
                         aria-label="Next slide"
                         aria-disabled={currentSlide === 2 - 1 ? 'true' : 'false'}
                     >
-                        <img className="f7-icons" src={right_arrow} alt="стрелочка" />
+                        <img style={{content: 'выф'}} className="" src={right_arrow} alt="стрелочка" />
                     </div>
                     <div
                         onClick={clickBack}
-                        className={`swiper-button-prev swiper-button-white ${currentSlide === 0 ? 'swiper-button-disabled' : ''}`}
+                        
+                        className={`swiper-button-prev-slider swiper-button-white ${currentSlide === 0 ? 'swiper-button-disabled' : ''}`}
                         tabIndex="0"
                         role="button"
                         aria-label="Previous slide"
                         aria-disabled={currentSlide === 0 ? 'true' : 'false'}
                     >
-                        <img className="f7-icons" src={left_arrow} alt="стрелочка" />
+                        <img className={cl.iconsSlider} src={left_arrow} alt="стрелочка" />
                     </div>
                     <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
             </div>

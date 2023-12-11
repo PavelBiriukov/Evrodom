@@ -15,7 +15,7 @@ export class BasketService {
     return items.reduce((total, item) => total + item.quantity * item.price, 0);
   }
 
-  addToBasket(basketDto: BasketDto) {
+  async addToBasket(basketDto: BasketDto) {
     const { items, userId } = basketDto;
     const quantity = 1
     // Поиск товара с тем же _id в массиве items
@@ -32,30 +32,34 @@ export class BasketService {
           ...item,
           quantity,
         });
+
+        
       }
     }
-
+    this.basket.totalPrice = this.calculateTotal(this.basket.items);
     // Сохраняем обновленную корзину в базу данных или в памяти, в зависимости от вашей реализации
-    this.saveBasketToDatabase(userId, this.basket);
+    return this.saveBasketToDatabase(userId, this.basket);
   }
 
   private findItemInBasket(itemId: string): BasketItem | undefined {
     return this.basket.items.find((item) => item._id === itemId);
   }
 
-  async saveBasketToDatabase(userId: string, updatedBasket: Basket): Promise<void> {
+  async saveBasketToDatabase(userId: string, updatedBasket: Basket): Promise<any> {
     try {
       // Поиск корзины пользователя по userId
       const existingBasket = await this.basketModel.findOne({ userId });
-
       if (existingBasket) {
         // Если корзина пользователя существует, обновляем ее
         existingBasket.items = updatedBasket.items;
+        existingBasket.totalPrice = updatedBasket.totalPrice;
         await existingBasket.save();
+        return existingBasket
       } else {
         // Если корзины пользователя нет, создаем новую
-        const newBasket = new this.basketModel({ userId, items: updatedBasket.items });
+        const newBasket = new this.basketModel({ userId, items: updatedBasket.items, totalPrice: 0 });
         await newBasket.save();
+        return newBasket
       }
     } catch (error) {
       console.error('Error saving basket to database:', error);
@@ -66,8 +70,6 @@ export class BasketService {
 
   async removeFromBasket(basketDto: BasketDto, itemId: any) {
     // Поиск товара с тем же _id в массиве items корзины
-    console.log(basketDto);
-    
     const existingItemIndex = basketDto.items.findIndex((basketItem) => basketItem._id === itemId);
     
     if (existingItemIndex !== -1) {
@@ -77,8 +79,12 @@ export class BasketService {
       // Обновляем общую стоимость после удаления товара
       basketDto.totalPrice = this.calculateTotal(basketDto.items);
 
+      // Обновляем this.basket
+      this.basket.items = basketDto.items;
+      this.basket.totalPrice = basketDto.totalPrice;
+
       // Сохраняем обновленную корзину в базу данных или в памяти, в зависимости от вашей реализации
-      await this.saveBasketToDatabase(basketDto.userId, basketDto);
+      return await this.saveBasketToDatabase(basketDto.userId, basketDto);
     }
   }
 
@@ -88,7 +94,7 @@ export class BasketService {
 
   async getUserBasket(userId: string): Promise<{ items: BasketItem[]; totalPrice: number, userId: string }> {
     const userBasket = await this.basketModel.findOne({ userId });
-
+    /* return userBasket */
     if (userBasket) {
       const total = this.calculateTotal(userBasket.items);
       userBasket.totalPrice = total;
@@ -109,6 +115,7 @@ export class BasketService {
         existingBasket.items = basketDto.items;
         existingBasket.totalPrice = this.calculateTotal(basketDto.items);
         await existingBasket.save();
+        return await this.saveBasketToDatabase(basketDto.userId, existingBasket);
       } else {
         // Если корзины пользователя нет, создаем новую
         const newBasket = new this.basketModel({
@@ -117,6 +124,7 @@ export class BasketService {
           totalPrice: this.calculateTotal(basketDto.items),
         });
         await newBasket.save();
+        return await this.saveBasketToDatabase(basketDto.userId, newBasket);
       }
     } catch (error) {
       console.error('Error updating basket in database:', error);

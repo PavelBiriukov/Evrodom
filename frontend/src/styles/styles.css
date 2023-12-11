@@ -1761,20 +1761,20 @@ body:not(.superior):not(.victoria) .slider .swiper-slide {
     background-size: cover
 }
 
-body:not(.superior):not(.victoria) .slider div.swiper-button-next,body:not(.superior):not(.victoria) .slider div.swiper-button-prev {
+body:not(.superior):not(.victoria) .slider div.swiper-button-next-slider,body:not(.superior):not(.victoria) .slider div.swiper-button-prev-slider {
     width: 33px;
     height: 57px;
     background-color: rgba(196,196,196,.18)
 }
 
 
-body:not(.superior):not(.victoria) .slider .swiper-button-prev {
+body:not(.superior):not(.victoria) .slider .swiper-button-prev-slider {
     left: 0;
     background-size: 12px 44px;
     background-color: rgba(0,0,0,.3)
 }
 
-body:not(.superior):not(.victoria) .slider .swiper-button-next {
+body:not(.superior):not(.victoria) .slider .swiper-button-next-slider {
     right: 0;
     background-size: 12px 44px;
     background-color: rgba(0,0,0,.3)
@@ -3979,7 +3979,7 @@ main form .more i.f7-icons,main form button i.f7-icons,main form input[type=subm
 }
 
 #checkout_form .delivery_block .radio_title,#checkout_form .delivery_pay .radio_title,#checkout_form .user_data .radio_title,#checkout_form .user_type .radio_title {
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: 10px
 }
 

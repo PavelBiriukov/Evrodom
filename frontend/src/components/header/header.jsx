@@ -6,7 +6,7 @@ import Top_menu from '../top_menu/top_menu';
 const Header = () => {
     return (
         <header>
-            <Top_menu/>
+           {/*  <Top_menu/> */}
             <Middle_menu/>
             <Bottom_menu/>
         </header>

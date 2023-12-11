@@ -1,0 +1,158 @@
+.dropdown__content_wrapper{
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    display: none;
+    z-index: 1000;
+    bottom: auto;
+    right: auto;
+    background-color: #fff;
+    font-style: normal;
+}
+.dropdown__content {
+    width: 300px;
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    margin-top: 0px;
+}
+.div_u_inrzchron {
+    width: 100%;
+    position: relative;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 91vh;
+    border-top-style: none;
+    border-top-width: 1px;
+    border-right-style: none;
+    border-right-width: 1px;
+    border-bottom-style: none;
+    border-bottom-width: 1px;
+    border-left-style: none;
+    border-left-width: 1px;
+}
+.mosaic_shop2_folders_u_iwvpglffu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+.mosaic-shop2-folders--u-iwvpglffu .mosaic_shop2_folders__list {
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    display: block;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    overflow-x: unset;
+    overflow-y: unset;
+    list-style-type: none;
+    height: auto;
+}
+.mosaic-shop2-folders--u-iwvpglffu .mosaic_shop2_folders__item {
+    width: 100%;
+    flex-shrink: 0;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    position: relative;
+}
+.mosaic-shop2-folders--u-iwvpglffu .mosaic_shop2_folders__link {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+}
+.mosaic-shop2-folders--u-iwvpglffu .mosaic_shop2_folders__icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: right 0px center;
+    background-size: 12.8px auto;
+    background-attachment: scroll;
+}
+.mosaic-shop2-folders--u-iwvpglffu .mosaic_shop2_folders__sub_list {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    z-index: 10;
+    position: static;
+    list-style-type: none;
+    flex-wrap: nowrap;
+    top: 0;
+    left: 100%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    display: none;
+}
+.mosaic-shop2-folders--u-iwvpglffu .mosaic-shop2-folders__sub-list > .mosaic_shop2_folders__sub_item {
+    width: 100%;
+    position: relative;
+}
+.mosaic-shop2-folders--u-iwvpglffu .mosaic-shop2-folders__sub-list > .mosaic_shop2_folders__sub_item > .mosaic_shop2_folders__sub_link {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-top-left-radius: 250px;
+    border-top-right-radius: 250px;
+    border-bottom-right-radius: 250px;
+    border-bottom-left-radius: 250px;
+    padding-left: 15px;
+    padding-right: 15px;
+}

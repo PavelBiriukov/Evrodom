@@ -42,9 +42,15 @@ export class CardsServis {
 
     async update(id: ObjectId, dto: CreateCardDto, picture: any[]): Promise<Cards> {
         try {
-            const picturePath = await this.fileService.createFile(FileType.IMAGE, picture);
-            const updatedCard = await this.cardsModel.findByIdAndUpdate(id, { ...dto, listens: 0, picture: picturePath });
-            return updatedCard;
+            console.log(picture);
+            if(picture === undefined || picture[0] === ''){
+                const updatedCard = await this.cardsModel.findByIdAndUpdate(id, { ...dto, listens: 0});
+                return updatedCard;
+            }else{
+                const picturePath = await this.fileService.createFile(FileType.IMAGE, picture);
+                const updatedCard = await this.cardsModel.findByIdAndUpdate(id, { ...dto, listens: 0, picture: picturePath });
+                return updatedCard;
+            }
         } catch (error) {
             console.error(error);
             throw new HttpException('Failed to update card', HttpStatus.INTERNAL_SERVER_ERROR);

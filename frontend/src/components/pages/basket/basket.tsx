@@ -10,7 +10,8 @@ const Basket = () => {
     const { items, totalPrice } = useTypedSelector(state => state.basket);
     const { isAuth, user } = useTypedSelector(state => state.users);
     const { removeFromCart, getBasket, updateBasketAction } = useActions()
-
+    console.log(items);
+    
     const updateBasket = useCallback(
         (updatedItems: any) => {
             const basketItems = {
@@ -18,7 +19,6 @@ const Basket = () => {
                 userId: [user.id],
             };
             updateBasketAction(basketItems);
-            getBasket(user.id)
         },
         [updateBasketAction, user.id]
     );
@@ -29,7 +29,6 @@ const Basket = () => {
                 basketItem._id === item._id ? { ...basketItem, quantity: basketItem.quantity + 1 } : basketItem
             );
             updateBasket(updatedItems);
-            getBasket(user.id)
         },
         [items, updateBasket]
     );
@@ -42,7 +41,6 @@ const Basket = () => {
                     : basketItem
             );
             updateBasket(updatedItems);
-            getBasket(user.id)
         },
         [items, updateBasket]
     );
@@ -54,16 +52,13 @@ const Basket = () => {
                 userId: [user.id],
             };
             removeFromCart(backetItems, item._id);
-            getBasket(user.id)
         },
         [items, removeFromCart, user.id]
     );
 
     useEffect(() => {
         getBasket(user.id);
-        
     }, []);
-    console.log(items);
     
     return (
         <div className='wrapper'>

@@ -47,8 +47,9 @@
 }
 
 :root {
-    --bodyFontFamily: 'Bellota Text', cursive;
-    --bodyFontSize: 16px;
+    /* --bodyFontFamily: 'Bellota Text', cursive; */
+    --bodyFontFamily: 'Roboto', sans-serif;
+    --bodyFontSize: 21px;
     --bodyFontWeight: 400;
     --bodyTextColor: #222630;
     --items-count-grid: 4;
@@ -111,11 +112,11 @@ a:hover {
     font-size: 18px
 }
 
-.swiper-container .swiper-button-next {
+.swiper-container .swiper-button-next-slider {
     right: -50px
 }
 
-.swiper-container .swiper-button-prev {
+.swiper-container .swiper-button-prev-slider {
     left: -50px
 }
 
@@ -528,12 +529,12 @@ a:hover {
 }
 
 .bottom_menu .inner .categories a,.bottom_menu .inner .categories span.current {
-    font-weight: 900;
+    font-weight: 700;
     padding: 10px 20px 10px 0;
     color: #000;
     -webkit-transform: scale(1,1.1);
     transform: scale(1,1.1);
-    font-size: 14px
+    font-size: 17px
 }
 
 .bottom_menu .inner .categories span.current {
@@ -649,11 +650,11 @@ a:hover {
     opacity: .4
 }
 
-.slider:hover .swiper-button-next {
+.slider:hover .swiper-button-next-slider {
     right: 0
 }
 
-.slider:hover .swiper-button-prev {
+.slider:hover .swiper-button-prev-slider {
     left: 0
 }
 

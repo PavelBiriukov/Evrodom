@@ -6,7 +6,6 @@ export const fetchCard = () => {
     return async (dispatch: Dispatch<CardAction>) => {
         try {
            const response = await axios.get('http://localhost:5000/cards');
-           console.log(response.data);
            
            dispatch({type: CardActionType.FETCH_CARDS, payload: response.data})
         } catch (error) {
@@ -52,6 +51,8 @@ export const getCardById = (id: string | undefined) => {
 export const updateCardById = (id: string | undefined, dto: any) => {    
     return async (dispatch: Dispatch<CardAction>) => {
         try {
+            console.log(dto);
+            
            const response = await axios.put(`http://localhost:5000/cards/${id}`, dto);
            console.log(response.data);
            

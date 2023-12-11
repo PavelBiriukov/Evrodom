@@ -11,7 +11,7 @@ interface PopupProps {
 
 const Basket_popup_wrapper: React.FC<PopupProps> = ({ style, handleClosePopup }) => {
     const { isAuth,} = useTypedSelector(state => state.users);
-    const { items, totalPrice } = useTypedSelector(state => state.basket);
+    const { items, totalPrice,  } = useTypedSelector(state => state.basket);
    
     return (
         <div className={cl.basket_popup_wrapper} style={{ display: style ? 'block' : 'none' }}>
@@ -31,7 +31,7 @@ const Basket_popup_wrapper: React.FC<PopupProps> = ({ style, handleClosePopup })
                                             </div>
                                             <div className={cl.descr}>
                                                 <div className={cl.title}>{item.name}</div>
-                                                <div className={cl.quantity_prise}>Количество: {items?.length}</div>
+                                                <div className={cl.quantity_prise}>Количество: {item?.quantity}</div>
                                                 <div className={cl.quantity_prise}>{`Цена: ${item.price} сом.`}</div>
                                                 {/* <div className={cl.price_new">Цена со скидкой: 37.05 руб.</div> */}
                                             </div>

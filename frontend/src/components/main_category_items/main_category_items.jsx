@@ -17,18 +17,18 @@ const Main_category_items = () => {
                 </a>
             </div>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/Линолиум/">
-                    <span>Линолиум</span>
+                <a className={cl.category_link} href="/categories/Линолеум/">
+                    <span>Линолеум</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
-                        <img src={linolium} alt="Линолиум"/>
+                        <img src={linolium} alt="Линолеум"/>
                     </div>
                 </a>
             </div>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/САЙДЕНГ ВИНИЛОВЫЙ ФОСАДНЫЙ/">
-                    <span>САЙДЕНГ ВИНИЛОВЫЙ ФОСАДНЫЙ</span>
+                <a className={cl.category_link} href="/categories/САЙДИНГ ВИНИЛОВЫЙ ФОСАДНЫЙ/">
+                    <span>САЙДИНГ ВИНИЛОВЫЙ ФОСАДНЫЙ</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
-                        <img src={Caideng_veniloviy} alt="САЙДЕНГ ВИНИЛОВЫЙ ФОСАДНЫЙ"/>
+                        <img src={Caideng_veniloviy} alt="САЙДИНГ ВИНИЛОВЫЙ ФОСАДНЫЙ"/>
                     </div>
                 </a>
             </div>

@@ -7,8 +7,8 @@ export const addToBasket = (item: any,) => {
         try {
             const response = await axios.post('http://localhost:5000/users/basket/add', item);
             // Асинхронные операции, если необходимо
-            console.log(item);
-            dispatch({ type: BasketActionType.ADD_TO_BASKET, payload: item.items[0] });
+            console.log(response.data);
+            dispatch({ type: BasketActionType.ADD_TO_BASKET, payload: response.data });
         } catch (error) {
             dispatch({
                 type: BasketActionType.ADD_TO_BASKET_ERROR,
@@ -36,9 +36,8 @@ export const removeFromCart = (items: any, itemId: string) => {
     return async (dispatch: Dispatch<BasketAction>) => {
         try {
             const response = await axios.post('http://localhost:5000/users/basket/remove', {items, itemId});
-            console.log(response.data);
             
-            dispatch({ type: BasketActionType.REMOVE_FROM_BASKET, payload: itemId });
+            dispatch({ type: BasketActionType.REMOVE_FROM_BASKET, payload: response.data});
         } catch (error) {
             dispatch({
                 type: BasketActionType.REMOVE_FROM_BASKET_ERROR,

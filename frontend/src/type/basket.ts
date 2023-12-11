@@ -17,7 +17,7 @@ export interface IBasketItem {
     _id: string;
     name: string;
     picture: any[]; // Предположим, что это массив строк с URL изображений
-    price: string;
+    price: number;
 }
 
 export interface BasketState {
@@ -34,12 +34,12 @@ export interface BasketStateItems {
 
 export interface AddToBasketAction {
     type: BasketActionType.ADD_TO_BASKET;
-    payload: ICard;
+    payload: BasketStateItems;
 }
 
 export interface RemoveFromBasketAction {
     type: BasketActionType.REMOVE_FROM_BASKET;
-    payload: string;
+    payload: BasketStateItems;
 }
 
 export interface ClearBasketAction {
@@ -73,7 +73,7 @@ export interface GetBasketErrorAction {
 
 export interface UpdateBasketAction {
     type: BasketActionType.UPDATE_BASKET;
-    payload: ICard; 
+    payload: BasketStateItems; 
 }
 
 export interface UpdateBasketErrorAction {

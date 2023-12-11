@@ -14,7 +14,9 @@ const basketReducer = (state = initialState, action: BasketAction): BasketState 
         case BasketActionType.ADD_TO_BASKET:
             return {
                 ...state,
-                items: [...state.items, action.payload],
+                items: action.payload.items,
+                totalPrice: action.payload.totalPrice,
+                userId: action.payload.userId,
             };
 
         case BasketActionType.REMOVE_FROM_BASKET:
@@ -22,9 +24,18 @@ const basketReducer = (state = initialState, action: BasketAction): BasketState 
             console.log(action.payload);
             return {
                 ...state,
-                items: state.items.filter((item: any) => item._id !== action.payload),
+                items: action.payload.items,
+                totalPrice: action.payload.totalPrice,
+                userId: action.payload.userId,
             };
-
+        case BasketActionType.UPDATE_BASKET:
+            
+            return {
+                ...state,
+                items: action.payload.items,
+                totalPrice: action.payload.totalPrice,
+                userId: action.payload.userId,
+            };
         case BasketActionType.CLEAR_BASKET:
             return {
                 ...state,
@@ -40,6 +51,7 @@ const basketReducer = (state = initialState, action: BasketAction): BasketState 
         case BasketActionType.ADD_TO_BASKET_ERROR:
         case BasketActionType.CLEAR_BASKET_ERROR:
         case BasketActionType.GET_BASKET_ERROR:
+        case BasketActionType.UPDATE_BASKET_ERROR:
         case BasketActionType.REMOVE_FROM_BASKET_ERROR:
             return { ...state, error: action.payload || state.error }; // Обработка всех действий, связанных с ошибками
         default:

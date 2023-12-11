@@ -8,7 +8,7 @@ const Top_menu = () => {
             <div className="inner">
                 <div className="top_menu_left">
                     <div className="mob_menu">
-                        <img src="/img/t/taymyr/menu.svg"/>
+                        <img  src="/img/t/taymyr/menu.svg"/>
                     </div>
                     <div className="menu_popup_mob">
                         <i className="f7-icons close">multiply</i>
@@ -62,7 +62,6 @@ const Top_menu = () => {
                     </div>
                 </div>
                 <div className="top_menu_right">
-
                     <div className="phone">
                         <img src={telephon}/>
                             <a href="tel:84950554698">+996 501 23 03 90</a>

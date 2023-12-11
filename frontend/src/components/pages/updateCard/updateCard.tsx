@@ -2,20 +2,24 @@ import React, { useEffect, useState } from 'react';
 import useActions from '../../../hooks/useAcrions';
 import { useInput } from '../../../hooks/useInput';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { ICard } from '../../../type/cards';
 import FileUpload from '../../fileUpload/FileUpload';
 import cl from './update.module.css';
 
 const UpdateCard = () => {
   const id = useInput('');
-  const [card, setCard] = useState<any>();
+  const [card, setCard] = useState<ICard | any>();
   const [picture, setPicture] = useState<any>();
-
   const { updateCardById } = useActions()
   const { getCardById, fetchCategories } = useActions()
   const { categories, error } = useTypedSelector(state => state.categories);
+  const [sending, setSending] = useState(false); // Состояние для отслеживания статуса отправки
+  const [operationStatus, setOperationStatus] = useState(''); // Состояние для отображения статуса операции
+
   useEffect(() => {
     fetchCategories()
   }, [])
+
   const fetchData = async () => {
     try {
       const cardData = await getCardById(id.value);
@@ -25,6 +29,7 @@ const UpdateCard = () => {
       console.error('Error fetching card data:', error);
     }
   };
+
   useEffect(() => {
     setTimeout(() => {
       fetchData()
@@ -32,33 +37,57 @@ const UpdateCard = () => {
   }, [id.value]);
 
   const handleInputChange = (event: any) => {
-    event.preventDefault()
+    event.preventDefault();
     const { value, name } = event.target;
     setCard({ ...card, [name]: value });
   };
 
   const updateCard = async () => {
     try {
-      const formData = new FormData();
-      formData.append('name', card.name);
-      formData.append('category', card.category);
-      formData.append('description', card.description);
-      formData.append('maker', card.maker);
-      formData.append('price', card.price);
-      formData.append('product_availability', card.product_availability);
-      formData.append('unique_parameters', card.unique_parameters);
-      formData.append('unit_of_measurement', card.unit_of_measurement);
-      for (let i = 0; i < picture.length; i++) {
-        formData.append('picture', picture[i]);
-      };      
-      updateCardById(card?._id, formData)
+      setSending(true);
+      if (!card || !card._id) {
+        console.error('Invalid card data');
+        return;
+      }
+      setTimeout(() => {
+        const formData = new FormData();
+        formData.append('name', card.name);
+        formData.append('category', card.category);
+        formData.append('description', card.description);
+        formData.append('maker', card.maker);
+        formData.append('price', card.price);
+        formData.append('product_availability', card.product_availability);
+        formData.append('unique_parameters', card.unique_parameters);
+        formData.append('unit_of_measurement', card.unit_of_measurement);
+
+        if (picture && picture.length > 0) {
+          console.log(picture);
+          for (let i = 0; i < picture.length; i++) {
+            formData.append('picture', picture[i]);
+          }
+        } else {
+          console.log(card.picture);
+          for (let i = 0; i < card.picture.length; i++) {
+            formData.append('picture', card.picture[i]);
+          }
+        }
+        if (card?._id && formData) {
+          console.log('Данные успешно обнавленны:', formData);
+          setSending(false);
+          setOperationStatus('Успешно обнавленны!');
+          updateCardById(card?._id, formData)
+        }
+        else {
+          console.error('Ошибка при обновлении данных:', error);
+          setSending(false);
+          setOperationStatus('Ошибка при обновлении данных');
+        }
+      }, 1000);
       console.log('Card updated successfully!');
     } catch (error) {
       console.error('Error updating card:', error);
     }
   };
-  console.log(picture);
-  const fdsfdsf = picture ? picture : card?.picture;
   return (
     <div className={cl.container}>
       <div className={cl.menu}>
@@ -134,7 +163,19 @@ const UpdateCard = () => {
           )
         )}
       </div>
-      <button className={cl.button} onClick={updateCard}>Update Card</button>
+      <p>{operationStatus}</p>
+      <div >
+        <button className={cl.button} onClick={updateCard}>
+          {sending ? 'Обновленние данных...' : 'Обновить товар'}
+        </button>
+        {card?._id 
+        ? 
+          <button className={cl.button}> 
+            <a target="_blank" href={`http://localhost:3000/items/${card?._id}`}>Передти на странницу товара</a>
+          </button> 
+        : <a></a>}
+      </div>
+
     </div>
   );
 };

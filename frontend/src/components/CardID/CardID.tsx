@@ -27,7 +27,7 @@ const CardID: React.FC<CardItemProps> = () => {
     useEffect(() => {
         fetchCard();
     }, []);
-    
+
     useEffect(() => {
         if (cards.length > 0 && card?.category) {
             const filteredCards = cards.filter((cardCategory: ICard) => cardCategory.category === card?.category);
@@ -173,11 +173,14 @@ const CardID: React.FC<CardItemProps> = () => {
                                             <div className="sizes"></div>
                                         </div> */}
                                     </div>
-                                    <div className="item_price" data-discount="5.00" data-discount-type="percent">
-                                        <div>
-                                            <button onClick={() => handleAddToCart(card)}   style={{ width: '250px', alignItems: 'end' }} className="item_add_to_cart">В корзину</button>
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }} className="item_price" data-discount="5.00" data-discount-type="percent">
+                                        <div className="total_price">
+                                            <span className="total_new">37.05 руб.</span>
                                         </div>
-                                        <Basket_popup_wrapper style={showPopup} handleClosePopup={handleClosePopup}/>
+                                        <div>
+                                            <button onClick={() => handleAddToCart(card)} style={{ width: '250px', alignItems: 'end' }} className="item_add_to_cart">В корзину</button>
+                                        </div>
+                                        <Basket_popup_wrapper style={showPopup} handleClosePopup={handleClosePopup} />
                                     </div>
                                     <div className="properties">
                                         <div className="properties_basis">
@@ -194,7 +197,7 @@ const CardID: React.FC<CardItemProps> = () => {
                                                 <div className="prop_val">{card.unit_of_measurement}</div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -208,28 +211,30 @@ const CardID: React.FC<CardItemProps> = () => {
                             </div>
                             <h2 className="shop-title">Рекомендуем посмотреть</h2>
                             <div className='items equivalent_items'>
-                                {cardsItem?.map((cardCatigor: ICard, index: string) =>
-                                    <div key={index} className="item" data-discount-type="" data-code="89238">
-                                        <div className="image">
-                                            <div className="item_tags">
+                                {cardsItem
+                                    ?.filter((cardCatigor: ICard) => cardCatigor._id !== card._id)
+                                    .map((cardCatigor: ICard, index: string) => 
+                                        <div key={index} className="item" data-discount-type="" data-code="89238">
+                                            <div className="image">
+                                                <div className="item_tags">
+                                                </div>
+                                                <div className="bg_dark"></div>
+                                                <img src={`http://localhost:5000/${cardCatigor.picture[0]}`} alt={cardCatigor.name} width="280px" height="280px" loading="lazy" />
+                                                <a href={`/items/${cardCatigor._id}/`}></a>
                                             </div>
-                                            <div className="bg_dark"></div>
-                                            <img src={`http://localhost:5000/${cardCatigor.picture[0]}`} alt={cardCatigor.name} width="280px" height="280px" loading="lazy" />
-                                            <a href={`/items/${cardCatigor._id}/`}></a>
-                                        </div>
-                                        <div className="item_content">
-                                            <div className="descr">
-                                                <a className="item_link" href={`/items/${cardCatigor._id}/`}>{cardCatigor.name}</a>
-                                            </div>
-                                            <div className="all_prices " data-discount="">
-                                                <div className="price ">
-                                                    {cardCatigor.price}
-                                                    сом.
+                                            <div className="item_content">
+                                                <div className="descr">
+                                                    <a className="item_link" href={`/items/${cardCatigor._id}/`}>{cardCatigor.name}</a>
+                                                </div>
+                                                <div className="all_prices " data-discount="">
+                                                    <div className="price ">
+                                                        {cardCatigor.price}
+                                                        сом.
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                )}
+                                    )}
                             </div>
                         </div>
                     </div>

@@ -17,7 +17,7 @@ const CardItem: React.FC<CardItemProps> = ({card}) => {
                 <div className="image">
                     <div className="item_tags"></div>
                     <div className="bg_dark"></div>
-                    <img className={cl.img} src={'http://localhost:5000/' + card.picture[0]} alt={card.name}/>
+                    <img  className={cl.img} src={'http://localhost:5000/' + card.picture[0]} alt={card.name}/>
                     
                 </div>
                 <div className={cl.block_tytle_price}>

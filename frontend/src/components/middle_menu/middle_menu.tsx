@@ -9,17 +9,15 @@ import "../../styles/styles.css";
 import { ICard } from '../../type/cards';
 import cl from "./middle_menu.module.css";
 import icon_user from "../../img/icon/free-icon-font-circle-user-9821479.png";
-
+import telephon from '../../img/icon/free-icon-phone-10320613.png'
+import whatsapp from '../../img/icon/free-icon-whatsapp-3536445.png'
+import telegram from '../../img/icon/free-icon-telegram-906377.png'
 const Middle_menu = () => {
-    const { searchCard } = useActions()
-    const [query, setQuery] = useState<string>('');
-    const [cards, setCards] = useState<ICard[] | any>();
-    const [isPopupVisible, setPopupVisible] = useState(false);
-    const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
+
     const { user, isLoading, isAuth } = useTypedSelector(state => state.users);
     const { items, totalPrice } = useTypedSelector(state => state.basket);
     const { checkAuth, logout, getBasket } = useActions();
-    
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -37,43 +35,12 @@ const Middle_menu = () => {
     useEffect(() => {
         // Добавьте здесь условие, чтобы избежать вывода undefined
         if (isAuth && user) {
-            getBasket(user.id)  
+            getBasket(user.id)
         }
     }, [user, isLoading, isAuth]);
 
 
-    useEffect(() => {
-        const closePopup = (e: any) => {
-            const popup = document.querySelector(`.${cl.mimi_popup_serch}`);
-            if (isPopupVisible && popup && !popup.contains(e.target)) {
-                setPopupVisible(false);
-            }
-        };
-        document.addEventListener('click', closePopup);
-        return () => {
-            document.removeEventListener('click', closePopup);
-        };
-    }, [isPopupVisible]);
 
-    const search = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        setQuery(value);
-        if (timer) {
-            clearTimeout(timer);
-            setTimer(null);
-        }
-        if (value.trim() === '') {
-            setCards(null); // Очистить карточки, если инпут пустой
-        } else {
-            setTimer(
-                setTimeout(async () => {
-                    const result = await searchCard(value);
-                    setCards(result);
-                    setPopupVisible(!!result);
-                }, 500)
-            );
-        }
-    }
 
     const handleLogout = async () => {
         console.log("Before logout:", isAuth);
@@ -88,13 +55,46 @@ const Middle_menu = () => {
     return (
         <div className="middle_menu">
             <div className="inner">
-                <div className="logo_wrapper">
-                    <a href="/" className="logo">
-                        <img src={ava} alt="Вкусный хлебушек" />
-                    </a>
-                    <p className="slogan">Качественные материалы для вашего дома с бесплатной доставкой.</p>
+                <div className="top_menu_right">
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
+                        <img style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
+                        <a style={{ fontSize: "20px" }} href="tel:996501230390">+996 557 23 03 90</a>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
+                        <img style={{ width: '25px', marginRight: "10px" }} src={telephon} />
+                        <a style={{ fontSize: "20px" }} href="tel:996501230390">+996 501 23 03 90</a>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
+                        <img style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
+                        <a style={{ fontSize: "20px" }} href="tel:996501230390">+996 555 46 28 90</a>
+                    </div>
+
+                    {/* <div style={{ fontSize: '20px', fontWeight: '600', display: 'flex', flexDirection: 'column', justifyContent: 'center',alignItems: 'center' }} className='categories'>
+                        График работы:
+                        <ul id="menu_list" style={{width: '100%',overflow: 'visible' ,display: 'flex', flexDirection: 'row',justifyContent: 'space-evenly'}}>
+                            <li className="li">
+                                <a href="#">ВС</a>
+                            </li>
+                            <li className="li">
+                                <a href="#">ПН</a>
+                            </li>
+                            <li className="li">
+                                <a href="#">ВТ</a>
+                            </li>
+                            <li className="li">
+                                <a href="#">СР</a>
+                            </li>
+                            <li className="li">
+                                <a href="#">ЧВ</a>
+                            </li>
+                            <li className="li">
+                                <a href="#">ПТ</a>
+                            </li>
+                        </ul>
+                    </div> */}
+
                 </div>
-                <div className="search_form" style={{ width: '35%' }}>
+                {/* <div className="search_form" style={{ width: '35%' }}>
                     <form method="GET" action="/search/">
                         <input
                             style={{ width: '100%' }}
@@ -112,6 +112,7 @@ const Middle_menu = () => {
                         </button>
                         <div id="autocomplete"></div>
                     </form>
+
                     <div className={`${cl.mimi_popup_serch} ${isPopupVisible ? cl.mimi_popup_serch_visibiliti : ''}`}>
                         <ul>
                             {cards && cards.length > 0 ? (
@@ -128,6 +129,12 @@ const Middle_menu = () => {
                             )}
                         </ul>
                     </div>
+                </div> */}
+                <div className="logo_wrapper">
+                    <a href="/" className="logo">
+                        <img src={ava} alt="Вкусный хлебушек" />
+                    </a>
+                    {/* <p className="slogan">Качественные материалы для вашего дома с бесплатной доставкой.</p> */}
                 </div>
                 <div className="middle-right">
                     <div className="search_open">

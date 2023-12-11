@@ -20,6 +20,7 @@ import Products_from_the_category from './components/pages/products_from_the_cat
 import Basket from './components/pages/basket/basket';
 import RegistrationForm from './components/registration/registration';
 import Login from './components/login/login';
+import Order_registration from './components/pages/order_registration/order_registration';
 /* цвет: #45dcdd */
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="/basket" element={<Basket/>}/>
           <Route path="/registration" element={<RegistrationForm/>}/>
           <Route path="/login" element={<Login/>}/>
+          <Route path="/checkout" element={<Order_registration/>}/>
       </Routes>
     </BrowserRouter>
   );

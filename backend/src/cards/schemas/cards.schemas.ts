@@ -9,7 +9,7 @@ export class Cards {
   name: string; 
 
   @Prop()
-  price: string;
+  price: number;
 
   @Prop()
   description: string;

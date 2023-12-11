@@ -1,7 +1,7 @@
 
 export interface ICard {
     name: string;
-    price: string;
+    price: number;
     description: string;
     maker: string;
     product_availability: string;
@@ -10,6 +10,7 @@ export interface ICard {
     unit_of_measurement: string;
     picture: string[];
     _id: string;
+    quantity: number
 }
 
 export interface CardState {

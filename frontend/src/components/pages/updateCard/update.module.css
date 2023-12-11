@@ -64,6 +64,7 @@
     color: #ffffff; 
     border: none;
     cursor: pointer;
+    margin: 10px;
 } 
 .menu {
   width: 100%;

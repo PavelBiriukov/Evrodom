@@ -130,7 +130,7 @@
     touch-action: pan-x
 }
 
-.swiper-button-next,.swiper-button-prev {
+.swiper-button-next-slider,.swiper-button-prev-slider {
     position: absolute;
     top: 50%;
     width: 27px;
@@ -143,21 +143,22 @@
     background-repeat: no-repeat
 }
 
-.swiper-button-next.swiper-button-disabled,.swiper-button-prev.swiper-button-disabled {
+.swiper-button-next-slider.swiper-button-disabled,.swiper-button-prev-slider.swiper-button-disabled {
     opacity: .35;
     cursor: auto;
     pointer-events: none
 }
 
-.swiper-button-prev,.swiper-container-rtl .swiper-button-next {
+.swiper-button-prev-slider,.swiper-container-rtl .swiper-button-next-slider {
     left: 10px;
     right: auto
 }
 
-.swiper-button-next,.swiper-container-rtl .swiper-button-prev {
+.swiper-button-next-slider,.swiper-container-rtl .swiper-button-prev-slider {
     right: 10px;
     left: auto
 }
+
 
 .swiper-button-lock {
     display: none

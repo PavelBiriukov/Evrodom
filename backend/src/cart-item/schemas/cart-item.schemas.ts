@@ -6,6 +6,8 @@ export type BasketItem = {
   name: string;
   picture: any[];
   price: number;
+  category: string;
+  maker: string
   quantity: number;
 };
 

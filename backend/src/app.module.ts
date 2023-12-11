@@ -8,6 +8,7 @@ import { CategoriesModule } from "./category/category.module";
 import { BasketModule } from "./cart-item/cart-item.module";
 import { UserModule } from "./user/user.module";
 import { TokenModule } from "./token/token.module";
+import { OrdersModule } from "./orders/orders.module";
 
 @Module({
     imports: [
@@ -18,6 +19,7 @@ import { TokenModule } from "./token/token.module";
         BasketModule,
         UserModule,
         TokenModule,
+        OrdersModule,
         ServeStaticModule.forRoot({
             rootPath: join(__dirname, '..', 'static'),
         }),

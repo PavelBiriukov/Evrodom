@@ -41,6 +41,8 @@ export class CardsController {
     ]))
     update(@UploadedFiles() files, @Param('id') id: ObjectId, @Body() dto: CreateCardDto) {
         const {picture} = files
+        console.log(picture);
+        
         return this.cardsServis.update(id, dto, picture);
     }   
 

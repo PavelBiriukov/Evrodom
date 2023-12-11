@@ -20,36 +20,47 @@ const CreateCard = () => {
     const product_availability = useInput('')
     const unique_parameters: any = useInput('')
     const unit_of_measurement = useInput('')
-    const {categories, error} = useTypedSelector(state => state.categories);    
-    const {fetchCategories} = useActions()
+    const { categories, error } = useTypedSelector(state => state.categories);
+    const { fetchCategories } = useActions()
+    const [sending, setSending] = useState(false); // Состояние для отслеживания статуса отправки
+    const [operationStatus, setOperationStatus] = useState(''); // Состояние для отображения статуса операции
+
     useEffect(() => {
         fetchCategories()
-    },[])
+    }, [])
     const handleSubmit = () => {
         if (picture === null) {
             console.error('Files array is empty or undefined');
             return; // Или выполните другие действия, например, показ сообщения пользователю
         }
-        const formData = new FormData();
-        formData.append('name', name.value)
-        formData.append('price', price.value)
-        formData.append('description', description.value)
-        formData.append('maker', maker.value)
-        formData.append('product_availability', product_availability.value)
-        formData.append('category', category)
-        formData.append('unique_parameters', unique_parameters.value)
-        formData.append('unit_of_measurement', unit_of_measurement.value)
-        for (let i = 0; i < picture.length; i++) {
-            formData.append('picture', picture[i]);
-          }
-        axios.post('http://localhost:5000/cards', formData)
-            .then(response => {
-                console.log('Данные успешно отправлены:', response.data);
-            })
-            .catch(error => {
-                console.error('Ошибка при отправке данных:', error);
-            });
-        console.log('Отправка данных на сервер:', formData);
+        setSending(true);
+        setTimeout(() => {
+            const formData = new FormData();
+            formData.append('name', name.value)
+            formData.append('price', price.value)
+            formData.append('description', description.value)
+            formData.append('maker', maker.value)
+            formData.append('product_availability', product_availability.value)
+            formData.append('category', category)
+            formData.append('unique_parameters', unique_parameters.value)
+            formData.append('unit_of_measurement', unit_of_measurement.value)
+            for (let i = 0; i < picture.length; i++) {
+                formData.append('picture', picture[i]);
+            }
+            axios.post('http://localhost:5000/cards', formData)
+                .then(response => {
+                    console.log('Данные успешно отправлены:', response.data);
+                    setSending(false);
+                    setOperationStatus('Успешно отправлено!');
+                })
+                .catch(error => {
+                    console.error('Ошибка при отправке данных:', error);
+                    setSending(false);
+                    setOperationStatus('Ошибка при отправке данных');
+
+                });
+            console.log('Отправка данных на сервер:', formData);
+        }, 1000);
         // Здесь вызывайте функцию для отправки данных на сервер
     };
     const renderFormFields = () => {
@@ -105,7 +116,10 @@ const CreateCard = () => {
                 )}
             </label>
             {renderFormFields()}
-            <button className={cl.button} onClick={handleSubmit}>Отправить форму</button>
+            <p>{operationStatus}</p>
+            <button className={cl.button} onClick={handleSubmit}>
+                {sending ? 'Отправка данных...' : 'Отправить форму'}
+            </button>
         </div>
     );
 };
