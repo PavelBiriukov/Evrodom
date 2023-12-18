@@ -12,17 +12,19 @@
     background-color: #C32033;
     transition: all .2s ease;
     border: 2px solid var(--mainContrastSchemeColor);
+    border-radius: 5px;
 }
 
 .more_category a {
     text-decoration: none;
     line-height: 30px;
+    color: #fff;
 }
 
 .more_category:hover {
     text-decoration: none;
-    background-color: #00ADEF;
-    color: #000;
+    background-color: #C32033;
     background-position: bottom center;
-    cursor: pointer
+    cursor: pointer;
+    border: 3px solid #000000;
 }

@@ -1,0 +1,17 @@
+.input{
+    width: 100%;
+    max-width: 300px;
+    height: 35px;
+    border: 2px solid red;
+    font-size: 18px;
+    border-radius: 4px;
+}
+.button {
+    width: 100%;
+    max-width: 250px;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 19px;
+    margin-bottom: 10px;
+    background-color: #00aded;
+}

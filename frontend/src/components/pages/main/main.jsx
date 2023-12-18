@@ -26,8 +26,8 @@ const Main = () => {
               <Main_category_items/>
               <More_category/>
               <New_items/>
-             {/*  <Shop_advantages/> */}
-              {/* <Main_text/> */}
+              <Shop_advantages/>
+              <Main_text/>
             </div>
           </div>
         </div>

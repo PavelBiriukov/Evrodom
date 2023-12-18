@@ -14,8 +14,8 @@ const Block_slider = () => {
         transform: 'translate3d(0px, 0px, 0px)'
     });
     const [windowDimensions, setWindowDimensions] = useState({
-        width: window.innerWidth,
-        height: window.innerHeight
+        width: 1910,
+        height: 1910
     });
     const [currentSlide, setCurrentSlide] = useState(0);
     const numberOfSlides = 2;
@@ -23,8 +23,8 @@ const Block_slider = () => {
     useEffect(() => {
         const handleResize = () => {
             setWindowDimensions({
-                width: window.innerWidth,
-                height: window.innerHeight
+                width: 1910,
+                height: 1910
             });
         };
 
@@ -95,7 +95,7 @@ const Block_slider = () => {
                                 <div className="item_content">
                                     <div className="title">Мы делаем ваш дом красивым и надежным.</div>
                                     <div className="descr">Евродом - это качество, надежность, доступность. Мы знаем толк в стройке.</div>
-                                    <a href="/categories/hleba/">
+                                    <a style={{borderRadius: '5px'}} href="/categories/hleba/">
                                         <div className={cl.button}>
                                             Купить двери
                                         </div>
@@ -111,7 +111,7 @@ const Block_slider = () => {
                                     <div className="descr">
                                         Добро пожаловать в мир качественных стройматериалов — добро пожаловать в Евродом!
                                     </div>
-                                    <a href="/categories">
+                                    <a style={{borderRadius: '5px'}} href="/categories">
                                         <div className={cl.button}>
                                             В каталог
                                         </div>

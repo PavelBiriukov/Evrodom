@@ -40,8 +40,9 @@
 }
 
 .title:hover{
-    text-decoration: underline;
-    color: #15bc26;
+    text-decoration: none;
+    color: #2c0791;
+    font-weight: 700;
 }
 .all_prices {
     display: flex;

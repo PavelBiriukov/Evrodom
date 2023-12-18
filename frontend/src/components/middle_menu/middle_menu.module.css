@@ -34,6 +34,7 @@
     background-color: #c4262636;
 }
 .img_item_list {
-    width: 45px;
+    width: 60px;
+    margin-right: 10px;
     height: auto;
 }

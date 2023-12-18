@@ -14,6 +14,7 @@ import { relative } from 'path';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 import Basket_popup_wrapper from '../basket_popup_wrapper/basket_popup_wrapper';
+import cl from '../registration/registration.module.css';
 
 const CardID: React.FC<CardItemProps> = () => {
     const { id } = useParams<{ id: string }>();
@@ -147,8 +148,8 @@ const CardID: React.FC<CardItemProps> = () => {
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="swiper-button-next"></div>
-                                            <div className="swiper-button-prev"></div>
+                                            {/* <div className="swiper-button-next"></div>
+                                            <div className="swiper-button-prev"></div> */}
                                             <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                                         </div>
                                     </div>
@@ -178,7 +179,7 @@ const CardID: React.FC<CardItemProps> = () => {
                                             <span className="total_new">37.05 руб.</span>
                                         </div>
                                         <div>
-                                            <button onClick={() => handleAddToCart(card)} style={{ width: '250px', alignItems: 'end' }} className="item_add_to_cart">В корзину</button>
+                                            <button  onClick={() => handleAddToCart(card)} style={{ marginTop: '10px', width: '250px', alignItems: 'end' }} className={`"item_add_to_cart" ${cl.button}`}>В корзину</button>
                                         </div>
                                         <Basket_popup_wrapper style={showPopup} handleClosePopup={handleClosePopup} />
                                     </div>

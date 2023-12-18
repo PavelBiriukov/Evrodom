@@ -26,7 +26,7 @@ const CardItem: React.FC<CardItemProps> = ({card}) => {
                     </div>
                     <div className={cl.all_prices} data-discount="">
                         <div className={cl.price}>
-                            {card.price} сом.
+                            {card.price} сом
                         </div>
                     </div>
                 </div>

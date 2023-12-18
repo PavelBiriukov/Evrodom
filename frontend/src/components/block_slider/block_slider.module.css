@@ -13,11 +13,14 @@
     color: var(--menuColor);
     background-color: #C32033;
     border: 1px solid var(--mainContrastSchemeColor);
+    border-radius: 5px;
 }
 
 .button:hover {
-    background-color: #00ADEF;
-    color: #000;
+    background-color: #C32033;
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: none;
 }
 
 .iconsSlider {

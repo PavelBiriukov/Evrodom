@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import useActions from '../../hooks/useAcrions';
 import Footer from '../footer/footer';
 import Header from '../header/header';
+import cl from '../registration/registration.module.css';
 
 const Login = () => {
     const [email, setEmail] = useState<string>('')
@@ -36,6 +37,7 @@ const Login = () => {
                                             <input type="hidden" name="action" value="login" />
                                             <div className="field">
                                                 <input
+                                                 className={`${cl.input}`}
                                                     name="customer_email"
                                                     autoComplete="off"
                                                     autoCapitalize="none"
@@ -48,6 +50,7 @@ const Login = () => {
                                             </div>
                                             <div className="field">
                                                 <input
+                                                 className={`${cl.input}`}
                                                     name="customer_password_first"
                                                     autoComplete="off"
                                                     autoCapitalize="none"
@@ -60,7 +63,7 @@ const Login = () => {
                                             </div>
 
                                             <div className="btn_wrapper login">
-                                                <button onClick={handlLogin}>Войти</button>
+                                                <button className={cl.button} onClick={handlLogin}>Войти</button>
                                                 <a href="/forgot-password/">Забыли пароль?</a>
                                             </div>
                                         </div>

@@ -70,7 +70,7 @@
     --checkboxCheckedBG: #f3f3f3;
     --gray-subtext: #777777;
     --inner-width: 90%;
-    --inner-max-width: 1170px;
+    --inner-max-width: 1440px;
     --danger-color: #A61E16;
     --border-color: #f3f3f3;
     --triggers-count: 4;
@@ -2178,8 +2178,8 @@ footer .bottom ul,footer .top .inner ul,ul {
 }
 
 .content h1,.content h2,.content h3 {
-    font-size: 28px;
-    font-weight: 300;
+    font-size: 30px;
+    font-weight: 700;
     margin: 0 0 30px
 }
 
@@ -2211,7 +2211,7 @@ footer .bottom ul,footer .top .inner ul,ul {
 .content .breadcrumb {
     display: -webkit-box;
     display: flex;
-    font-size: 14px;
+    font-size: 17px;
     margin-top: 0;
     margin-bottom: 15px;
     line-height: 1;
@@ -2229,7 +2229,7 @@ footer .bottom ul,footer .top .inner ul,ul {
 
 .content .breadcrumb a[href*="/"] {
     display: block;
-    color: #9e9e9e;
+    color: #2e3192;
     text-decoration: none;
     margin-right: 5px;
     margin-left: 5px
@@ -3530,10 +3530,9 @@ footer .bottom .footer_site_info a {
 
 #basket_list .item_in_basket .remove,#basket_list .item_in_basket_titles .remove {
     width: 15px;
-    height: 15px;
+    height: 30px;
     color: var(--mainSchemeColor);
     cursor: pointer;
-    background: url('http://new16303841753545.myaddshop.ru/img/main/close.svg') no-repeat center;
     background-size: 100%
 }
 
