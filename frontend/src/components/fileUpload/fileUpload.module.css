@@ -1,7 +1,7 @@
 .block {
     width: 30%;
     height: 100px;
-    border: 3px #0366d6 solid;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,4 +11,5 @@
     font-size: 20px;
     color: #000;
     font-weight: 700;
+    background-color: #fff;
 }

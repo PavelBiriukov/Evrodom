@@ -18,6 +18,7 @@
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    color: #000;
   }
 .block_div {
     width: 100%;
@@ -41,7 +42,10 @@
     margin-bottom: 10px;
     width: 20%;
     box-sizing: border-box;
+    color: #000;
   }
+  .input::placeholder {color: #000000;}
+  .textarea::placeholder {color: #000000;}
   
   /* Стили для метки "Выберите категорию товара" */
   .label {

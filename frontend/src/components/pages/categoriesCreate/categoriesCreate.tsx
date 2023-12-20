@@ -39,7 +39,7 @@ const CategoriesCreate = () => {
             <h1>СОЗДАНИЕ категории</h1>
             <input className={cl.input} {...name} type="text" name="НАЗВАНИЕ" placeholder="НАЗВАНИЕ" />
             <FileUpload  setFile={setPicture} accept="image/*"> 
-                <div>Загрузить изображение</div>
+                <div >Загрузить изображение</div>
             </FileUpload>
             <button className={cl.button} onClick={handleSubmit}>Отправить форму</button>
         </div>

@@ -153,12 +153,12 @@ const Middle_menu = () => {
                     <div className="basket">
                         <a href="/basket/">
                             <img src={shopping} />
-                            <div className="pop_up_count">{items?.length || 0} </div>
+                            <div className="pop_up_count">{isAuth ? `${items?.length || 0}`: '0'} </div>
                         </a>
                         <div className="icon_cont">
                             <div className="basket-title">Товаров на сумму: </div>
 
-                            <div className="pop_up_price">{totalPrice} сом.</div>
+                            <div className="pop_up_price">{isAuth ? `${totalPrice} сом.` : '0 сом'}</div>
                         </div>
                     </div>
                 </div>
