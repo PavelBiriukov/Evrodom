@@ -5,6 +5,7 @@ import "../../styles/swiper.css";
 import cl from "./block_slider.module.css";
 import Background from '../../img/77da07047e0be99b5c5b1a850bd325ac.jpg'
 import Background1 from '../../img/quelle-ecole-de-commerce-choisir.png'
+import Background2 from '../../img/1680159178_design-pibig-info-p-belie-dveri-temnii-pol-v-interere-dizain-o-2.jpg' 
 import left_arrow from '../../img/icon/free-icon-left-arrow-line-symbol-54321.png'
 import right_arrow from '../../img/icon/free-icon-right-arrow-angle-54833.png'
 const Block_slider = () => {
@@ -89,7 +90,7 @@ const Block_slider = () => {
             <div className="slider">
                 <div className="swiper-container swiper-container-initialized swiper-container-horizontal">
                     <div className="swiper-wrapper" style={nextStyle}>
-                        <div className="swiper-slide swiper-slide-prev" style={{ backgroundImage: `url(${Background})`, backgroundSize: 'cover', width: '1910px' }}>
+                        <div className="swiper-slide swiper-slide-prev" style={{ backgroundImage: `url(${Background2})`, backgroundSize: 'cover', width: '1910px' }}>
                             <div className="bg"></div>
                             <div className="inner">
                                 <div className="item_content">
@@ -103,7 +104,7 @@ const Block_slider = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="swiper-slide swiper-slide-active" style={{ backgroundImage: `url(${Background1})`, backgroundSize: 'cover', width: '1910px' }}>
+                        <div className="swiper-slide swiper-slide-active" style={{ backgroundImage: `url(${Background1})`, backgroundSize: 'cover', width: '1910px' , backgroundPosition: `${'30% 42%'}`}}>
                             <div className="bg"></div>
                             <div className="inner">
                                 <div className="item_content">

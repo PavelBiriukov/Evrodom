@@ -12,7 +12,7 @@ export class CategoriesServis {
         private fileService: FileService) {}
 
     async create(dto: CreateCategoriesDto, picture): Promise<Categories> {
-        const picturePath = this.fileService.createFile(FileType.IMAGE, picture);
+        const picturePath = await this.fileService.createFile(FileType.IMAGE, picture);
         const categories = await this.CategoriesModel.create({...dto, listens: 0, picture: picturePath})
         return categories;
     }А

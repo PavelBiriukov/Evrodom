@@ -15,6 +15,8 @@ const Categories = () => {
     useEffect(() => {
         fetchCategories()
     }, [])
+    console.log(categories);
+    
     return (
         <div className='wrapper'>
             <Header />

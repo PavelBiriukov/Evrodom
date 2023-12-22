@@ -227,6 +227,7 @@ const CardID: React.FC<CardItemProps> = () => {
                                 <div className="item_description_title">Описание товара</div>
                                 <div className="item_description">
                                     {arrayUniqueParameters?.map((parameter: string, index: any) =>
+                                        
                                         <p key={index}>{parameter}</p>
                                     )}
                                 </div>
