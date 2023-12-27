@@ -13,8 +13,8 @@ const start = async () => {
             credentials: true,
             origin: process.env.CLIENT_URL
         });
-        app.use(cookieParser());
-        app.use(errorHandler);
+        app.use('/api', cookieParser());
+        app.use('/api', errorHandler);
         await app.listen(PORT, () => console.log(`server started on PORT ${PORT}`))
     } catch (e) {
         console.log(e)
