@@ -24,12 +24,13 @@ const Footer = () => {
                         <li><a href="/categories/novaya-kategoriya/" title="МДФ ПАНЕЛИ">Мдф панели</a></li>
                     </ul>
                 </div>
-                <div className={[cl.fmenu, cl.contact_us].join(' ')}>
+                <div className={[cl.fmenu, cl.contact_us].join(' ') }>
                     <div className={cl.footer_subtitle}>Мы на связи</div>
                     <div style={{display:'flex', flexDirection: 'column'}}>
                         <a className={cl.footer_phone} href="tel:84950554698">+996 501 23 03 90</a>
                         <a className={cl.footer_phone} href="tel:84950554698">+996 557 23 03 90</a>
                         <a className={cl.footer_phone} href="tel:84950554698">+996 555 46 28 90</a>
+                        {/* <a className={cl.footer_phone} href="tel:84950554698">+996 555 46 28 90</a> */}
                     </div>
 
                     <div className={cl.social}>
