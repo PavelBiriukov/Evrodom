@@ -5,8 +5,10 @@ import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { ICard } from '../../../type/cards';
 import FileUpload from '../../fileUpload/FileUpload';
 import cl from './update.module.css';
+require('dotenv').config();
 
 const UpdateCard = () => {
+  const URL_BACK: string = process.env.URL_BACK || '';
   const id = useInput('');
   const [card, setCard] = useState<ICard | any>();
   const [picture, setPicture] = useState<any>();
@@ -171,7 +173,7 @@ const UpdateCard = () => {
         {card?._id 
         ? 
           <button className={cl.button}> 
-            <a target="_blank" href={`http://localhost:3000/items/${card?._id}`}>Передти на странницу товара</a>
+            <a target="_blank" href={`${URL_BACK}/items/${card?._id}`}>Передти на странницу товара</a>
           </button> 
         : <a></a>}
       </div>

@@ -9,8 +9,10 @@ import katalogIMG from "../../img/icon/free-icon-font-menu-burger-3917215.png";
 import dawn from "../../img/icon/angle-small-down.png";
 import up from "../../img/icon/angle-small-up.png";
 import useActions from '../../hooks/useAcrions';
-
+require('dotenv').config();
 const Bottom_menu = () => {
+    const URL_BACK: string = process.env.URL_BACK || '';
+
     const { searchCard } = useActions()
     const [query, setQuery] = useState<string>('');
     const [cards, setCards] = useState<ICard[] | any>();
@@ -179,7 +181,7 @@ const Bottom_menu = () => {
                                                     </a>
                                                 </li>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
-                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="http://localhost:3000/categories/Унитазы">
+                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href={`${URL_BACK}/categories/Унитазы`}>
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>Унитазы</span>
                                                     </a>
                                                 </li>

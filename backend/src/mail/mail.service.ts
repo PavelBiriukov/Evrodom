@@ -10,8 +10,8 @@ export class MailService {
             SMTP_PORT = 465,
             SMTP_USER,
             SMTP_PASSWORD,
-            API_URL = 'http://localhost:5000',
-            CLIENT_URL = 'http://localhost:3000'
+            API_URL = 'http://eurodom.kg/api/',
+            CLIENT_URL = 'http://eurodom.kg/'
         } = process.env;
 
         this.transporter = createTransport({
