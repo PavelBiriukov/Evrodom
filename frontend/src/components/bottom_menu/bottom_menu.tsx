@@ -9,7 +9,6 @@ import katalogIMG from "../../img/icon/free-icon-font-menu-burger-3917215.png";
 import dawn from "../../img/icon/angle-small-down.png";
 import up from "../../img/icon/angle-small-up.png";
 import useActions from '../../hooks/useAcrions';
-require('dotenv').config();
 const Bottom_menu = () => {
     const URL_BACK: string = process.env.URL_BACK || '';
 

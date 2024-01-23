@@ -5,7 +5,6 @@ import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { ICard } from '../../../type/cards';
 import FileUpload from '../../fileUpload/FileUpload';
 import cl from './update.module.css';
-require('dotenv').config();
 
 const UpdateCard = () => {
   const URL_BACK: string = process.env.URL_BACK || '';
