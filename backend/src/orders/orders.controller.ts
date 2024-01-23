@@ -5,7 +5,7 @@ import { ApiError } from 'src/exceptions/api-error';
 import { OrdersService } from './orders.service';
 import { Orders } from './schemas/orders.schemas';
 
-@Controller('orders')
+@Controller('/api/orders')
 export class OrdersController {
     constructor(
         private readonly ordersService: OrdersService,

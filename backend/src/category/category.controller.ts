@@ -5,7 +5,7 @@ import { CategoriesServis } from "./category.service";
 import { CreateCategoriesDto } from "./dto/create-categories.dto";
 
 
-@Controller('/categories')
+@Controller('/api/categories')
 export class CategoriesController {
     constructor(private categoriesServis: CategoriesServis) { }
 

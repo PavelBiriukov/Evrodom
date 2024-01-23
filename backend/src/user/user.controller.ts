@@ -4,7 +4,7 @@ import { BasketService } from 'src/cart-item/cart-item.service';
 import { ApiError } from 'src/exceptions/api-error';
 import { UserService } from './user.service';
 
-@Controller('users')
+@Controller('/api/users')
 export class UserController {
     constructor(
         private readonly userService: UserService,

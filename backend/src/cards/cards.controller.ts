@@ -5,7 +5,7 @@ import { CardsServis } from "./cards.service";
 import { CreateCardDto } from "./dto/create-card.dto";
 
 
-@Controller('/cards')
+@Controller('/api/cards')
 export class CardsController {
     constructor(private cardsServis: CardsServis) {}
 
