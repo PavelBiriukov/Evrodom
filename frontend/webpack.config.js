@@ -1,10 +1,14 @@
-const path = require('path');
-
-module.exports = {
-  resolve: {
-    fallback: {
-      "path": require.resolve("path-browserify")
+module.exports = function (webpackEnv) {
+  // ...
+  return {
+   // ...
+    resolve: {
+      // ...
+      fallback: {
+        // 👇️👇️👇️ add this 👇️👇️👇️
+        path: require.resolve("path-browserify"),
+        stream: require.resolve("stream-browserify"),
+      }
     }
-  },
-  // Другие настройки webpack, если они нужны
-};
+  }
+}
