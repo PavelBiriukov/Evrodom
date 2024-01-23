@@ -103,7 +103,7 @@ const UpdateCard = () => {
         Выберите категорию товара:
         <select style={{ visibility: 'visible' }} className={cl.select} value={card?.category || ''} onChange={handleInputChange} name='category'>
           <option className={cl.option} value="">Выберите категорию товара:</option>
-          {categories.map((category_item) =>
+          {categories.map((category_item: any) =>
             <option key={category_item._id} className={cl.option} value={category_item.name}>{category_item.name}</option>
           )}
         </select>

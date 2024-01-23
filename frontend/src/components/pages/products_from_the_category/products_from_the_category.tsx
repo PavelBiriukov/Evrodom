@@ -32,7 +32,7 @@ const Products_from_the_category = () => {
     }, []);
 
     useEffect(() => {
-        const filteredCards = cards.filter((card) => card.category === categoryName);
+        const filteredCards = cards.filter((card: any) => card.category === categoryName);
         setCardsItem(filteredCards);
     }, [cards, categoryName]);
 
