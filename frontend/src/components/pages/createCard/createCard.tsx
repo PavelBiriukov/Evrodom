@@ -47,7 +47,7 @@ const CreateCard = () => {
             for (let i = 0; i < picture.length; i++) {
                 formData.append('picture', picture[i]);
             }
-            axios.post('http://localhost:5000/cards', formData)
+            axios.post('https://eurodom.kg/api/cards', formData)
                 .then(response => {
                     console.log('Данные успешно отправлены:', response.data);
                     setSending(false);

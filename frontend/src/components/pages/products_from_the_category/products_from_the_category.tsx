@@ -303,7 +303,7 @@ const Products_from_the_category = () => {
                                             <div className="image">
                                                 <div className="item_tags"></div>
                                                 <div className="bg_dark"></div>
-                                                <img src={`http://localhost:5000/${card.picture[0]}`} alt={card.name} width="280px" height="280px" loading="lazy" />
+                                                <img src={`https://eurodom.kg/api/${card.picture[0]}`} alt={card.name} width="280px" height="280px" loading="lazy" />
                                                 <a href={`/items/${card._id}`}></a>
                                             </div>
                                             <div className="item_content">

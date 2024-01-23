@@ -93,7 +93,7 @@ const Basket = () => {
                                                 </div>
                                                 <div className="item_in_basket" key={index}>
                                                     <div className="image">
-                                                        <img src={`http://localhost:5000/${item.picture[0]}`} alt={item.name} />
+                                                        <img src={`https://eurodom.kg/api/${item.picture[0]}`} alt={item.name} />
                                                     </div>
                                                     <div className="title">
                                                         <a href={`/items/${item._id}`}>

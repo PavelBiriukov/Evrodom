@@ -26,7 +26,7 @@ const Basket_popup_wrapper: React.FC<PopupProps> = ({ style, handleClosePopup })
                                         <a className={cl.a} href={`/items/${item._id}`}>
                                             <div className={cl.image}>
                                                 {item.picture && item.picture.length > 0 && (
-                                                    <img className={cl.img} style={{ height: '65px' }} src={`http://localhost:5000/${item.picture[0]}`} />
+                                                    <img className={cl.img} style={{ height: '65px' }} src={`https://eurodom.kg/api/${item.picture[0]}`} />
                                                 )}
                                             </div>
                                             <div className={cl.descr}>

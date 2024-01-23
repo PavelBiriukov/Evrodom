@@ -30,10 +30,10 @@ const Categories = () => {
                             </div>
                             <h1 className="categories_title">Категории</h1>
                             <div className="category_items size_220x150">
-                                {categories.map((category) => (
+                                {categories.map((category: any) => (
                                     <div key={category._id} className="category_item">
                                         <Link to={`/categories/${category.name}`}>
-                                            <img src={`http://localhost:5000/${category.picture[0]}`} className={cl.item_img} loading="lazy" />
+                                            <img src={`https://eurodom.kg/api/${category.picture[0]}`} className={cl.item_img} loading="lazy" />
                                             <span>{category.name}</span>
                                         </Link>
                                     </div>

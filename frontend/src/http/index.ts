@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { AuthResponse } from '../type/user';
 
-export const API_URL = `http://localhost:5000/users`
+export const API_URL = `https://eurodom.kg/api/users`
 
 const $api = axios.create({
     withCredentials: true,

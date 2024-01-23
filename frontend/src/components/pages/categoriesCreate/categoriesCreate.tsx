@@ -24,7 +24,7 @@ const CategoriesCreate = () => {
             formData.append('picture', picture[i]);
         }
         
-        axios.post('http://localhost:5000/categories', formData)
+        axios.post('https://eurodom.kg/api/categories', formData)
             .then(response => {
                 console.log('Данные успешно отправлены:', response.data);
                 setSending(false);

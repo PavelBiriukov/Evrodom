@@ -44,7 +44,7 @@ const DeleteCard = () => {
       setSending(true);
 
       setTimeout(async () => {
-        await axios.delete(`http://localhost:5000/cards/${card?._id}`)
+        await axios.delete(`https://eurodom.kg/api/cards/${card?._id}`)
           .then(response => {
             console.log('Данные успешно удалены:', response.data);
             setSending(false);
@@ -128,7 +128,7 @@ const DeleteCard = () => {
       <div className={cl.blockImg}>
         {card?.picture?.length > 0 && (
           card?.picture.map((cardImg: string) =>
-            <img key={cardImg} className={cl.img} src={cardImg ? 'http://localhost:5000/' + cardImg : 'Изображение не найдено'} alt={card?.name || 'Изображение не найдено'} />
+            <img key={cardImg} className={cl.img} src={cardImg ? 'https://eurodom.kg/api/' + cardImg : 'Изображение не найдено'} alt={card?.name || 'Изображение не найдено'} />
           )
         )}
       </div>

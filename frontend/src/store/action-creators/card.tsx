@@ -5,7 +5,7 @@ import { CardAction, CardActionType, ICard } from '../../type/cards';
 export const fetchCard = () => {    
     return async (dispatch: Dispatch<CardAction>) => {
         try {
-           const response = await axios.get('http://localhost:5000/cards');
+           const response = await axios.get('https://eurodom.kg/api/cards');
            
            dispatch({type: CardActionType.FETCH_CARDS, payload: response.data})
         } catch (error) {
@@ -20,7 +20,7 @@ export const fetchCard = () => {
 export const searchCard = (query: string) => {    
     return async (dispatch: Dispatch<CardAction>) => {
         try {
-           const response = await axios.get('http://localhost:5000/cards/search?query='+ query);
+           const response = await axios.get('https://eurodom.kg/api/cards/search?query='+ query);
            console.log(response.data);
            dispatch({type: CardActionType.FETCH_CARDS, payload: response.data})
            return response.data
@@ -36,7 +36,7 @@ export const searchCard = (query: string) => {
 export const getCardById = (id: string | undefined) => {    
     return async (dispatch: Dispatch<CardAction>) => {
         try {
-           const response = await axios.get('http://localhost:5000/cards/'+ id);
+           const response = await axios.get('https://eurodom.kg/api/cards/'+ id);
            dispatch({type: CardActionType.FETCH_CARDS, payload: response.data})
            return response.data
         } catch (error) {
@@ -53,7 +53,7 @@ export const updateCardById = (id: string | undefined, dto: any) => {
         try {
             console.log(dto);
             
-           const response = await axios.put(`http://localhost:5000/cards/${id}`, dto);
+           const response = await axios.put(`https://eurodom.kg/api/cards/${id}`, dto);
            console.log(response.data);
            
            dispatch({type: CardActionType.FETCH_CARDS, payload: response.data})
@@ -71,7 +71,7 @@ export const updateCardById = (id: string | undefined, dto: any) => {
 export const deleteCard = (id: string | undefined,) => {    
     return async (dispatch: Dispatch<CardAction>) => {
         try {
-           const response = await axios.delete(`http://localhost:5000/cards/${id}`);
+           const response = await axios.delete(`https://eurodom.kg/api/cards/${id}`);
            dispatch({type: CardActionType.FETCH_CARDS, payload: response.data})
            return response.data
         } catch (error) {

@@ -5,7 +5,7 @@ import { CategoriesAction, CategoriesActionType } from '../../type/categories';
 export const fetchCategories = () => {    
     return async (dispatch: Dispatch<CategoriesAction>) => {
         try {
-           const response = await axios.get('http://localhost:5000/categories');
+           const response = await axios.get('https://eurodom.kg/api/categories');
            console.log(response.data);
            
            dispatch({type: CategoriesActionType.FETCH_CATEGORIES, payload: response.data})
@@ -21,7 +21,7 @@ export const fetchCategories = () => {
 export const searchCategories = (query: string) => {    
     return async (dispatch: Dispatch<CategoriesAction>) => {
         try {
-           const response = await axios.get('http://localhost:5000/categories/search?query='+ query);
+           const response = await axios.get('https://eurodom.kg/api/categories/search?query='+ query);
            console.log(response.data);
            dispatch({type: CategoriesActionType.FETCH_CATEGORIES, payload: response.data})
            return response.data
@@ -37,7 +37,7 @@ export const searchCategories = (query: string) => {
 export const getCategoriesById = (id: string | undefined) => {    
     return async (dispatch: Dispatch<CategoriesAction>) => {
         try {
-           const response = await axios.get('http://localhost:5000/categories/'+ id);
+           const response = await axios.get('https://eurodom.kg/api/categories/'+ id);
            dispatch({type: CategoriesActionType.FETCH_CATEGORIES, payload: response.data})
            return response.data
         } catch (error) {
@@ -52,7 +52,7 @@ export const getCategoriesById = (id: string | undefined) => {
 export const updateCategoriesById = (id: string | undefined, dto: any) => {    
     return async (dispatch: Dispatch<CategoriesAction>) => {
         try {
-           const response = await axios.put(`http://localhost:5000/categories/${id}`, dto);
+           const response = await axios.put(`https://eurodom.kg/api/categories/${id}`, dto);
            console.log(response.data);
            
            dispatch({type: CategoriesActionType.FETCH_CATEGORIES, payload: response.data})
@@ -70,7 +70,7 @@ export const updateCategoriesById = (id: string | undefined, dto: any) => {
 export const deleteCategories = (id: string | undefined,) => {    
     return async (dispatch: Dispatch<CategoriesAction>) => {
         try {
-           const response = await axios.delete(`http://localhost:5000/categories/${id}`);
+           const response = await axios.delete(`https://eurodom.kg/api/categories/${id}`);
            dispatch({type: CategoriesActionType.FETCH_CATEGORIES, payload: response.data})
            return response.data
         } catch (error) {

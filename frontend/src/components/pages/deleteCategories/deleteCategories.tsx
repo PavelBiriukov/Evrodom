@@ -33,7 +33,7 @@ const DeleteCategories = () => {
 
     const deleteCategories = async () => {
       try {
-        await axios.delete(`http://localhost:5000/categories/${categories?._id}`);
+        await axios.delete(`https://eurodom.kg/api/categories/${categories?._id}`);
         console.log('Categories delete successfully!');
       } catch (error) {
         console.error('Error updating categories:', error);
@@ -59,7 +59,7 @@ const DeleteCategories = () => {
         <FileUpload setFile={setPicture} accept="image/*"> 
           <div>Загрузить изображение</div>
         </FileUpload>
-        <img src={'http://localhost:5000/' + categories?.picture} alt={categories?.name || 'Изображение не найдено '} />
+        <img src={'https://eurodom.kg/api/' + categories?.picture} alt={categories?.name || 'Изображение не найдено '} />
         <button className={cl.button} onClick={deleteCategories}>Удалить товар</button>
       </div>
     );

@@ -5,7 +5,7 @@ import { IOrders, OrdersAction, OrdersActionType } from '../../type/orders';
 export const orderCreate = (order: IOrders) => {
     return async (dispatch: Dispatch<OrdersAction>) => {
         try {
-            const response = await axios.post('http://localhost:5000/orders', order);
+            const response = await axios.post('https://eurodom.kg/api/orders', order);
             console.log(response.data);
 
             dispatch({ type: OrdersActionType.FETCH_ORDERS, payload: response.data });

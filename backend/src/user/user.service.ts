@@ -28,7 +28,7 @@ export class UserService {
         const activationLink = uuid.v4(); // v34fa-asfasf-142saf-sa-asf
         const user = await this.userModel.create({ email, password: hashPassword, activationLink });
 
-        await this.mailService.sendActivationMail(email, `http://localhost:5000/users/activate/${activationLink}`);
+        await this.mailService.sendActivationMail(email, `https://eurodom.kg/api/users/activate/${activationLink}`);
         
         const userDto = new UserDto(user); // id, email, isActivated
         const tokens = this.tokenService.generateTokens({ ...userDto });

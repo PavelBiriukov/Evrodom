@@ -141,7 +141,7 @@ const CardID: React.FC<CardItemProps> = () => {
                                                 {card.picture.map((imgCard: string, index: number) => (
                                                     <div  key={index} className="swiper-slide">
                                                         <img
-                                                            src={'http://localhost:5000/' + imgCard}
+                                                            src={'https://eurodom.kg/api' + imgCard}
                                                             alt={`Image ${index}`}
                                                             className="swiper-zoom"
                                                             onClick={() => handleThumbnailClick(imgCard)} // Добавляем обработчик клика
@@ -160,8 +160,8 @@ const CardID: React.FC<CardItemProps> = () => {
                                                             width: 440,
                                                             height: 440,
                                                             zoomWidth: 500,
-                                                            img: `http://localhost:5000/${mainImage}`,
-                                                            zoomImg: `http://localhost:5000/${mainImage}`,
+                                                            img: `https://eurodom.kg/api/${mainImage}`,
+                                                            zoomImg: `https://eurodom.kg/api/${mainImage}`,
                                                             offset: {
                                                                 horizontal: -440,
                                                             },
@@ -242,7 +242,7 @@ const CardID: React.FC<CardItemProps> = () => {
                                                 <div className="item_tags">
                                                 </div>
                                                 <div className="bg_dark"></div>
-                                                <img src={`http://localhost:5000/${cardCatigor.picture[0]}`} alt={cardCatigor.name} width="280px" height="280px" loading="lazy" />
+                                                <img src={`https://eurodom.kg/api/${cardCatigor.picture[0]}`} alt={cardCatigor.name} width="280px" height="280px" loading="lazy" />
                                                 <a href={`/items/${cardCatigor._id}/`}></a>
                                             </div>
                                             <div className="item_content">
@@ -266,7 +266,7 @@ const CardID: React.FC<CardItemProps> = () => {
                     <button  style={{}} className={clPOPAP.close } onClick={() => openClosePopapImg('Закрыть')}>
                         <img className={clPOPAP.img } style={{ padding: '0px',width: '30px' , margin: "10px"}} src={close} alt="" />
                     </button>
-                    <img className={clPOPAP.img} src={`http://localhost:5000/${mainImage}`} alt="" />
+                    <img className={clPOPAP.img} src={`https://eurodom.kg/api/${mainImage}`} alt="" />
                 </div>
             </main>
             <Footer />

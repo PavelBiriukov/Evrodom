@@ -65,7 +65,7 @@ const UpdateCategories = () => {
           <div>Загрузить изображение</div>
         </FileUpload>
 
-        <img src={'http://localhost:5000/' + categories?.picture} alt={categories?.name || 'Изображение не найдено '} />
+        <img src={'https://eurodom.kg/api/' + categories?.picture} alt={categories?.name || 'Изображение не найдено '} />
 
         <button className={cl.button} onClick={updateCategories}>Update categories</button>
       </div>

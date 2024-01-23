@@ -121,7 +121,7 @@ const Middle_menu = () => {
                                 cards.map((card: ICard) => (
                                     <a key={card._id} href={`/items/${card._id}`}>
                                         <li className={cl.item_list} key={card._id}>
-                                            <img className={cl.img_item_list} src={`http://localhost:5000/${card?.picture[0]}`} alt={card.name} />
+                                            <img className={cl.img_item_list} src={`https://eurodom.kg/api/${card?.picture[0]}`} alt={card.name} />
                                             {card.name}
                                         </li>
                                     </a>

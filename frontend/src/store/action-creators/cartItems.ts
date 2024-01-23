@@ -5,7 +5,7 @@ import { BasketAction, BasketActionType } from "../../type/basket";
 export const addToBasket = (item: any,) => {
     return async (dispatch: Dispatch<BasketAction>) => {
         try {
-            const response = await axios.post('http://localhost:5000/users/basket/add', item);
+            const response = await axios.post('https://eurodom.kg/api/users/basket/add', item);
             // Асинхронные операции, если необходимо
             console.log(response.data);
             dispatch({ type: BasketActionType.ADD_TO_BASKET, payload: response.data });
@@ -21,7 +21,7 @@ export const addToBasket = (item: any,) => {
 export const updateBasketAction = (basketItems: any) => {
     return async (dispatch: Dispatch<BasketAction>) => {
         try {
-            const response = await axios.post('http://localhost:5000/users/basket/update', basketItems);
+            const response = await axios.post('https://eurodom.kg/api/users/basket/update', basketItems);
             dispatch({ type: BasketActionType.UPDATE_BASKET, payload: response.data });
         } catch (error) {
             dispatch({
@@ -35,7 +35,7 @@ export const updateBasketAction = (basketItems: any) => {
 export const removeFromCart = (items: any, itemId: string) => {
     return async (dispatch: Dispatch<BasketAction>) => {
         try {
-            const response = await axios.post('http://localhost:5000/users/basket/remove', {items, itemId});
+            const response = await axios.post('https://eurodom.kg/api/users/basket/remove', {items, itemId});
             
             dispatch({ type: BasketActionType.REMOVE_FROM_BASKET, payload: response.data});
         } catch (error) {
@@ -50,7 +50,7 @@ export const removeFromCart = (items: any, itemId: string) => {
 export const clearCart = (id: string) => {
     return async (dispatch: Dispatch<BasketAction>) => {
         try {
-            const response = await axios.post(`http://localhost:5000/users/basket/clear/${id}`);
+            const response = await axios.post(`https://eurodom.kg/api/users/basket/clear/${id}`);
             dispatch({ type: BasketActionType.CLEAR_BASKET });
         } catch (error) {
             dispatch({
@@ -64,7 +64,7 @@ export const clearCart = (id: string) => {
 export const getBasket = (userId: string) => {
     return async (dispatch: Dispatch<BasketAction>) => {
         try {
-            const response = await axios.get(`http://localhost:5000/users/basket/user/${userId}`);
+            const response = await axios.get(`https://eurodom.kg/api/users/basket/user/${userId}`);
             console.log(response.data);
             
             dispatch({ type: BasketActionType.GET_BASKET, payload: response.data });

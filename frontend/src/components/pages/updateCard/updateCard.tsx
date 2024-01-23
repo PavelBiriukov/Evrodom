@@ -161,7 +161,7 @@ const UpdateCard = () => {
       <div className={cl.blockImg}>
         {card?.picture?.length > 0 && (
           card?.picture.map((cardImg: string) =>
-            <img key={cardImg} className={cl.img} src={cardImg ? 'http://localhost:5000/' + cardImg : 'Изображение не найдено'} alt={card?.name || 'Изображение не найдено'} />
+            <img key={cardImg} className={cl.img} src={cardImg ? 'https://eurodom.kg/api/' + cardImg : 'Изображение не найдено'} alt={card?.name || 'Изображение не найдено'} />
           )
         )}
       </div>
