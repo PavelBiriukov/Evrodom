@@ -26,7 +26,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/" element={<Main/>} />
           <Route path="/o-kompanii" element={<About_company/>} />
           <Route path="/kontakty" element={<Contacts/>} />
           <Route path="/dostavka-i-oplata" element={<Delivery_and_payment/>} />
@@ -47,6 +46,7 @@ const App = () => {
           <Route path="/registration" element={<RegistrationForm/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/checkout" element={<Order_registration/>}/>
+          <Route path="/" element={<Main/>} />
       </Routes>
     </BrowserRouter>
   );
