@@ -21,7 +21,7 @@ export class FileService{
                 files.map(async (file) => {
                     const fileExtension = file.originalname.split('.').pop();
                     const fileName = uuid.v4() + '.' + fileExtension;
-                    const filePath = path.join(__dirname, '../..', 'static', type);
+                    const filePath = path.join(__dirname, '../', 'static', type);
     
                     if (!fs.existsSync(filePath)) {
                         fs.mkdirSync(filePath, { recursive: true });
