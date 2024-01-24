@@ -141,7 +141,7 @@ const CardID: React.FC<CardItemProps> = () => {
                                                 {card.picture.map((imgCard: string, index: number) => (
                                                     <div  key={index} className="swiper-slide">
                                                         <img
-                                                            src={'https://eurodom.kg/api' + imgCard}
+                                                            src={'https://eurodom.kg/api/' + imgCard}
                                                             alt={`Image ${index}`}
                                                             className="swiper-zoom"
                                                             onClick={() => handleThumbnailClick(imgCard)} // Добавляем обработчик клика
