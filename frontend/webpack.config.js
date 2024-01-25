@@ -1,5 +1,21 @@
 module.exports = function (webpackEnv) {
   // ...
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+            },
+          },
+        ],
+      }
+    ]
+  }  
   return {
    // ...
     resolve: {
@@ -11,4 +27,5 @@ module.exports = function (webpackEnv) {
       }
     }
   }
+  
 }
