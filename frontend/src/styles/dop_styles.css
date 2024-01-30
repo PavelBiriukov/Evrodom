@@ -360,7 +360,8 @@ a:hover {
 .middle_menu .search_form {
     background: #fff;
     -webkit-transition: .2s;
-    transition: .2s
+    transition: .2s;
+    width: 30%;
 }
 
 .middle_menu .middle-right,.middle_menu .search_form form {

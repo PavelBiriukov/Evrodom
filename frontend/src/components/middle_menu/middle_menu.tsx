@@ -90,21 +90,34 @@ const Middle_menu = () => {
     }
     return (
         <div className="middle_menu">
-            <div className="inner">
-                <div className="logo_wrapper">
-                    <a href="/" className="logo">
-                        <img src={ava} alt="Вкусный хлебушек" />
-                    </a>
-                    <p className="slogan">Качественные материалы для вашего дома с бесплатной доставкой.</p>
+            <div className={cl.inner}>
+            <div className={cl.block_phone_planshet}>
+                    <div className={cl.phone_blosk_too}>
+                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
+                        <a className={cl.phone} href="tel:996501230390">+996 557 23 03 90</a>
+                    </div>
+                    <div className={cl.phone_blosk_too}>
+                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={telephon} />
+                        <a className={cl.phone} href="tel:996501230390">+996 501 23 03 90</a>
+                    </div>
+                    <div className={cl.phone_blosk_too}>
+                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
+                        <a className={cl.phone} href="tel:996501230390">+996 555 46 28 90</a>
+                    </div>
                 </div>
-                <div className="search_form" style={{ width: '30%' }}>
+                <div className={cl.logo_wrapper}>
+                    <a href="/" className={cl.logo}>
+                        <img src={ava} alt="logo" />
+                    </a>
+                    <p className={cl.slogan}>Качественные материалы для вашего дома с бесплатной доставкой.</p>
+                </div>
+                <div className={cl.search_form}>
                     <form method="GET" action="/search/">
                         <input
-                            style={{ width: '100%' }}
                             type="text"
                             name="search"
                             id="search"
-                            placeholder="Что будем искать?"
+                            placeholder="Поиск"
                             title="Поиск по товарам на сайте"
                             autoComplete="off"
                             onChange={search}
@@ -132,52 +145,52 @@ const Middle_menu = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="middle-right">
-                    <div className="search_open">
+                <div className={cl.middle_right}>
+                    <div className={cl.search_open}>
                         <img src={searchIMG} />
                     </div>
-                    <div className="login_or_reg">
+                    <div className={cl.login_or_reg}>
                         <img src={icon_user} />
                         {isAuth ? (
-                            <div className="icon_cont">
+                            <div className={cl.icon_cont_user}>
                                 <p>{user?.email}</p>
                                 <a onClick={handleLogout} href="/">Выйти</a>
                             </div>
                         ) : (
-                            <div className="icon_cont">
+                            <div className={cl.icon_cont_user}>
                                 <a href="/login/">Вход</a>
                                 <a href="/registration/">Регистрация</a>
                             </div>
                         )}
                     </div>
-                    <div className="basket">
+                    <div className={cl.basket}>
                         <a href="/basket/">
                             <img src={shopping} />
-                            <div className="pop_up_count">{isAuth ? `${items?.length || 0}`: '0'} </div>
+                            <div className={cl.pop_up_count}>{isAuth ? `${items?.length || 0}`: '0'} </div>
                         </a>
-                        <div className="icon_cont">
-                            <div className="basket-title">Товаров на сумму: </div>
+                        <div className={cl.icon_cont}>
+                            <div className={cl.basket_title}>Товаров на сумму: </div>
 
-                            <div className="pop_up_price">{isAuth ? `${totalPrice} сом.` : '0 сом'}</div>
+                            <div className={cl.pop_up_price}>{isAuth ? `${totalPrice} сом.` : '0 сом'}</div>
                         </div>
                     </div>
                 </div>
-                <div style={{ marginLeft: '10px' }}>
+                <div className={cl.block_phone}>
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
-                        <img style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
-                        <a style={{ fontSize: "20px", textDecoration: 'none' }} href="tel:996501230390">+996 557 23 03 90</a>
+                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
+                        <a className={cl.phone} href="tel:996501230390">+996 557 23 03 90</a>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
-                        <img style={{ width: '25px', marginRight: "10px" }} src={telephon} />
-                        <a style={{ fontSize: "20px", textDecoration: 'none' }} href="tel:996501230390">+996 501 23 03 90</a>
+                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={telephon} />
+                        <a className={cl.phone} href="tel:996501230390">+996 501 23 03 90</a>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
-                        <img style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
-                        <a style={{ fontSize: "20px", textDecoration: 'none' }} href="tel:996501230390">+996 555 46 28 90</a>
+                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
+                        <a className={cl.phone} href="tel:996501230390">+996 555 46 28 90</a>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
-                        <img style={{ width: '25px', marginRight: "10px" }} src={pochta} />
-                        <a style={{ fontSize: "20px", textDecoration: 'none' }} href="mailto:elisey_2004@mail.ru" target="_blank">elisey_2004@mail.ru</a>
+                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={pochta} />
+                        <a className={cl.phone} href="mailto:eurodom.kg@gmail.com" target="_blank">eurodom.kg@gmail.com</a>
                     </div>
                 </div>
             </div>
