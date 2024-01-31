@@ -89,7 +89,7 @@ const Middle_menu = () => {
         return <div>Загрузка...</div>
     }
     return (
-        <div className="middle_menu">
+        <div className={cl.middle_menu}>
             <div className={cl.inner}>
             <div className={cl.block_phone_planshet}>
                     <div className={cl.phone_blosk_too}>

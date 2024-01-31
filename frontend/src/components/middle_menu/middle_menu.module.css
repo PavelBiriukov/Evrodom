@@ -1,3 +1,13 @@
+.middle_menu {
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    max-width: var(--inner-max-width);
+    padding: 15px 0;
+    position: relative;
+    width: var(--inner-width);
+    flex-wrap: nowrap;
+}
 .serch_icon {
     width: 24px;
     height: 24px;
@@ -41,7 +51,7 @@
 .search_form {
     background: #fff;
     transition: .2s;
-    width: 30%;
+    width: 100%;
 }
 .search_form form {
     display: flex;
@@ -136,7 +146,7 @@ button {
 .middle_right {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-end;
     box-sizing: border-box;
 }
 .login_or_reg {
