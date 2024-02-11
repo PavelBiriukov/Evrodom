@@ -20,3 +20,9 @@
     line-height: 1.7;
     font-weight: 200
 }
+@media (max-width: 431px) {
+    .main_text p {
+        font-size: 16px;
+        font-weight: 600;
+    }
+}

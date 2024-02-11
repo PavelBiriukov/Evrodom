@@ -14,3 +14,8 @@
     display: flex;
     box-sizing: border-box;
 }
+@media (max-width: 320px) {
+    .shop_title{
+        font-size: 26px;
+    }
+  }

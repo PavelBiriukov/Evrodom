@@ -14,7 +14,7 @@ const CardItem: React.FC<CardItemProps> = ({card}) => {
     return (      
         <div className={`item ${cl.block}`} data-discount-type="absolute" data-discount="0.00" data-code="184978">
             <a className={cl.link} href={`/items/${card._id}`}>
-                <div className="image">
+                <div className={cl.image}>
                     <div className="item_tags"></div>
                     <div className="bg_dark"></div>
                     <img  className={cl.img} src={'https://eurodom.kg/api/' + card.picture[0]} alt={card.name}/>

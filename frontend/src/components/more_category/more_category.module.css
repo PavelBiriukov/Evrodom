@@ -28,3 +28,12 @@
     cursor: pointer;
     border: 3px solid #000000;
 }
+@media (max-width: 320px) {
+    .more_category{
+        width: calc(100%/1 - 30px);
+        margin: 11px auto 30px;
+        padding: 9px 9px;
+        font-weight: 700;
+        border-radius: 9px;
+    }
+  }

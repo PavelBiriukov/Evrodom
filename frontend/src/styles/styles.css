@@ -5324,3 +5324,9 @@ footer .callback-toggler {
 .pl-5,.px-5 {
     padding-left: 3rem!important
 }
+@media (max-width: 320px) {
+    .content h2{
+      font-size: 23px;
+      font-weight: 700;
+    }
+  }

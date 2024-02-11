@@ -35,7 +35,7 @@ footer .inner {
     justify-content: space-between
 }
 
-footer .inner .fmenu {
+.fmenu {
     max-width: 25%
 }
 
@@ -55,13 +55,13 @@ footer .inner .fmenu ul li a {
     color: #333
 }
 
-footer .inner .fmenu .footer_phone {
+.footer_phone {
     font-size: 24px;
     text-decoration: none;
     color: #333
 }
 
-footer .inner .fmenu .footer_phone:hover,footer .inner .fmenu .policy a:hover,footer .inner .fmenu .user_agreement_link a:hover {
+.footer_phone:hover{
     color: var(--mainContrastSchemeColor)
 }
 
@@ -72,6 +72,37 @@ footer .inner .fmenu .copyright {
 footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
     font-size: 14px;
     margin: 5px 0
+}
+
+
+@media (max-width: 896px) {
+    .footer_phone {
+        font-size: 18px;
+    }
+    footer .inner {
+        font-size: 12px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 220px;
+    }
+    .fmenu {
+        max-width: 100%;
+    }
+    .fmenu_soglaheniy{
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+   
+}
+@media (max-width: 520px) {
+    .footer_phone {
+        font-size: 15px;
+    }
+}
+@media (max-width: 420px) {
+    
 }
 
 

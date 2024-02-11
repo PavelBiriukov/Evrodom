@@ -10,7 +10,7 @@ const Main_category_items = () => {
         <div className={cl.main_category_items}>
             <div className={cl.main_category_item}>
                 <a className={cl.category_link} href="/categories/Двери/">
-                    <span>Двери</span>
+                    <span className={cl.category_tytle}>Двери</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
                         <img src={dveri} alt="Двери"/>
                     </div>
@@ -18,7 +18,7 @@ const Main_category_items = () => {
             </div>
             <div className={cl.main_category_item}>
                 <a className={cl.category_link} href="/categories/Линолеум/">
-                    <span>Линолеум</span>
+                    <span className={cl.category_tytle}>Линолеум</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
                         <img src={linolium} alt="Линолеум"/>
                     </div>
@@ -26,7 +26,7 @@ const Main_category_items = () => {
             </div>
             <div className={cl.main_category_item}>
                 <a className={cl.category_link} href="/categories/САЙДИНГ ВИНИЛОВЫЙ ФОСАДНЫЙ/">
-                    <span>САЙДИНГ ВИНИЛОВЫЙ ФОСАДНЫЙ</span>
+                    <span className={cl.category_tytle}>САЙДИНГ ВИНИЛОВЫЙ ФОСАДНЫЙ</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
                         <img src={Caideng_veniloviy} alt="САЙДИНГ ВИНИЛОВЫЙ ФОСАДНЫЙ"/>
                     </div>
@@ -34,7 +34,7 @@ const Main_category_items = () => {
             </div>
             <div className={cl.main_category_item}>
                 <a className={cl.category_link} href="/categories/ПЛАСТИК ПОТОЛОЧНЫЙ ПВХ/">
-                    <span>ПЛАСТИК ПОТОЛОЧНЫЙ ПВХ</span>
+                    <span className={cl.category_tytle}>ПЛАСТИК ПОТОЛОЧНЫЙ ПВХ</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
                         <img src={Plastic_potoloxysq_PVH} alt="ПЛАСТИК ПОТОЛОЧНЫЙ ПВХ"/>
                     </div>
@@ -42,7 +42,7 @@ const Main_category_items = () => {
             </div>
             <div className={cl.main_category_item}>
                 <a className={cl.category_link} href="/categories/МДФ ПАНЕЛИ/">
-                    <span>МДФ ПАНЕЛИ</span>
+                    <span className={cl.category_tytle}>МДФ ПАНЕЛИ</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
                         <img src={mdf_paneli} alt="МДФ ПАНЕЛИ"/>
                     </div>

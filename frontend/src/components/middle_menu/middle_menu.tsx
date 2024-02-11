@@ -91,7 +91,7 @@ const Middle_menu = () => {
     return (
         <div className={cl.middle_menu}>
             <div className={cl.inner}>
-            <div className={cl.block_phone_planshet}>
+                <div className={cl.block_phone_planshet}>
                     <div className={cl.phone_blosk_too}>
                         <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
                         <a className={cl.phone} href="tel:996501230390">+996 557 23 03 90</a>
@@ -105,94 +105,97 @@ const Middle_menu = () => {
                         <a className={cl.phone} href="tel:996501230390">+996 555 46 28 90</a>
                     </div>
                 </div>
-                <div className={cl.logo_wrapper}>
-                    <a href="/" className={cl.logo}>
-                        <img src={ava} alt="logo" />
-                    </a>
-                    <p className={cl.slogan}>Качественные материалы для вашего дома с бесплатной доставкой.</p>
-                </div>
-                <div className={cl.search_form}>
-                    <form method="GET" action="/search/">
-                        <input
-                            type="text"
-                            name="search"
-                            id="search"
-                            placeholder="Поиск"
-                            title="Поиск по товарам на сайте"
-                            autoComplete="off"
-                            onChange={search}
-                            value={query}
-                        />
-                        <button type="submit" >
-                            <img className={`f7-icons ${cl.serch_icon}`} src={searchIMG} alt="поиск" />
-                        </button>
-                        <div id="autocomplete"></div>
-                    </form>
-                    <div className={`${cl.mimi_popup_serch} ${isPopupVisible ? cl.mimi_popup_serch_visibiliti : ''}`}>
-                        <ul>
-                            {cards && cards.length > 0 ? (
-                                cards.map((card: ICard) => (
-                                    <a key={card._id} href={`/items/${card._id}`}>
-                                        <li className={cl.item_list} key={card._id}>
-                                            <img className={cl.img_item_list} src={`https://eurodom.kg/api/${card?.picture[0]}`} alt={card.name} />
-                                            {card.name}
-                                        </li>
-                                    </a>
-                                ))
-                            ) : (
-                                <li>Такого товара нет!</li>
-                            )}
-                        </ul>
-                    </div>
-                </div>
-                <div className={cl.middle_right}>
-                    <div className={cl.search_open}>
-                        <img src={searchIMG} />
-                    </div>
-                    <div className={cl.login_or_reg}>
-                        <img src={icon_user} />
-                        {isAuth ? (
-                            <div className={cl.icon_cont_user}>
-                                <p>{user?.email}</p>
-                                <a onClick={handleLogout} href="/">Выйти</a>
-                            </div>
-                        ) : (
-                            <div className={cl.icon_cont_user}>
-                                <a href="/login/">Вход</a>
-                                <a href="/registration/">Регистрация</a>
-                            </div>
-                        )}
-                    </div>
-                    <div className={cl.basket}>
-                        <a href="/basket/">
-                            <img src={shopping} />
-                            <div className={cl.pop_up_count}>{isAuth ? `${items?.length || 0}`: '0'} </div>
+                <div className={cl.block_content}> 
+                    <div className={cl.logo_wrapper}>
+                        <a href="/" className={cl.logo}>
+                            <img src={ava} alt="logo" />
                         </a>
-                        <div className={cl.icon_cont}>
-                            <div className={cl.basket_title}>Товаров на сумму: </div>
+                        <p className={cl.slogan}>Качественные материалы для вашего дома с бесплатной доставкой.</p>
+                    </div>
+                    <div className={cl.search_form}>
+                        <form method="GET" action="/search/">
+                            <input
+                                type="text"
+                                name="search"
+                                id="search"
+                                placeholder="Поиск"
+                                title="Поиск по товарам на сайте"
+                                autoComplete="off"
+                                onChange={search}
+                                value={query}
+                            />
+                            <button type="submit" >
+                                <img className={`f7-icons ${cl.serch_icon}`} src={searchIMG} alt="поиск" />
+                            </button>
+                            <div id="autocomplete"></div>
+                        </form>
+                        <div className={`${cl.mimi_popup_serch} ${isPopupVisible ? cl.mimi_popup_serch_visibiliti : ''}`}>
+                            <ul>
+                                {cards && cards.length > 0 ? (
+                                    cards.map((card: ICard) => (
+                                        <a key={card._id} href={`/items/${card._id}`}>
+                                            <li className={cl.item_list} key={card._id}>
+                                                <img className={cl.img_item_list} src={`https://eurodom.kg/api/${card?.picture[0]}`} alt={card.name} />
+                                                {card.name}
+                                            </li>
+                                        </a>
+                                    ))
+                                ) : (
+                                    <li>Такого товара нет!</li>
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className={cl.middle_right}>
+                        <div className={cl.search_open}>
+                            <img src={searchIMG} />
+                        </div>
+                        <div className={cl.login_or_reg}>
+                            <img src={icon_user} />
+                            {isAuth ? (
+                                <div className={cl.icon_cont_user}>
+                                    <p>{user?.email}</p>
+                                    <a onClick={handleLogout} href="/">Выйти</a>
+                                </div>
+                            ) : (
+                                <div className={cl.icon_cont_user}>
+                                    <a href="/login/">Вход</a>
+                                    <a href="/registration/">Регистрация</a>
+                                </div>
+                            )}
+                        </div>
+                        <div className={cl.basket}>
+                            <a href="/basket/">
+                                <img src={shopping} />
+                                <div className={cl.pop_up_count}>{isAuth ? `${items?.length || 0}` : '0'} </div>
+                            </a>
+                            <div className={cl.icon_cont}>
+                                <div className={cl.basket_title}>Товаров на сумму: </div>
 
-                            <div className={cl.pop_up_price}>{isAuth ? `${totalPrice} сом.` : '0 сом'}</div>
+                                <div className={cl.pop_up_price}>{isAuth ? `${totalPrice} сом.` : '0 сом'}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={cl.block_phone}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
+                            <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
+                            <a className={cl.phone} href="tel:996501230390">+996 557 23 03 90</a>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
+                            <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={telephon} />
+                            <a className={cl.phone} href="tel:996501230390">+996 501 23 03 90</a>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
+                            <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
+                            <a className={cl.phone} href="tel:996501230390">+996 555 46 28 90</a>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
+                            <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={pochta} />
+                            <a className={cl.phone} href="mailto:eurodom.kg@gmail.com" target="_blank">eurodom.kg@gmail.com</a>
                         </div>
                     </div>
                 </div>
-                <div className={cl.block_phone}>
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
-                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
-                        <a className={cl.phone} href="tel:996501230390">+996 557 23 03 90</a>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
-                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={telephon} />
-                        <a className={cl.phone} href="tel:996501230390">+996 501 23 03 90</a>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
-                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
-                        <a className={cl.phone} href="tel:996501230390">+996 555 46 28 90</a>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="phone">
-                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={pochta} />
-                        <a className={cl.phone} href="mailto:eurodom.kg@gmail.com" target="_blank">eurodom.kg@gmail.com</a>
-                    </div>
-                </div>
+
             </div>
         </div>
     );
