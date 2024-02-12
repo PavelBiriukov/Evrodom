@@ -92,10 +92,13 @@ const Middle_menu = () => {
         let newNumber = '';
         if (num === 1) {
             newNumber = '+996 501 23 03 90';
-        } else if (num === 2 || num === 3) {
+        }
+        if (num === 3) {
+            newNumber = 'https://wa.me/996 557 23 03 90'
+        } else if (num === 2 ) {
             newNumber = '+996 557 23 03 90';
         } else if (num === 4) {
-            newNumber = '+996 555 46 28 90';
+            newNumber = 'https://wa.me/996 555 46 28 90';
         }
         setNumber(newNumber);
     }
