@@ -96,7 +96,7 @@
         font-size: 10px;
         font-weight: 900;
         margin-left: 5px;
-        padding: 2px;
+        padding: 5px;
     }
 }
 @media (max-width: 656px) {
@@ -130,8 +130,8 @@
         min-width: 172px;
     }
     .main_category_items .main_category_item .category_link span { 
-        font-size: 13px;
-        font-weight: 900;
+        font-size: 17px;
+        font-weight: 700;
     }
 }
 

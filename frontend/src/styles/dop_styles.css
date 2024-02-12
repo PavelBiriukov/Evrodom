@@ -1356,17 +1356,17 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
         margin-left: 70px;
     }
     .slider .title {
-        font-size: 15px;
+        font-size: 17px;
         max-width: 30%;
     }
     .slider .descr {
-        font-size: 11px;
+        font-size: 16px;
         max-width: 30%;
     }
     .slider a {
         width: 150px;
         height: 30px;
-        font-size: 11px;
+        font-size: 14px;
     }
 }
 @media (max-width: 375px) {
