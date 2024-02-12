@@ -302,6 +302,7 @@ button {
     }
     .middle_right {
         max-width: 79%;
+        margin-top: 15px;
     }
     .block_phone_planshet {
         display: flex;
@@ -318,7 +319,7 @@ button {
 }
 @media (max-width: 555px) {
     .logo img{
-        max-width: 110px;
+        max-width: 150px;
     }
     .search_form{
         width: 100%;  

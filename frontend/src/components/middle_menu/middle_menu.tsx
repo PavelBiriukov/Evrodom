@@ -85,7 +85,7 @@ const Middle_menu = () => {
         // Можешь добавить здесь дополнительные действия, если необходимо
     };
     const [number, setNumber] = useState('+996 557 23 03 90');
-    const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
+    const [selectedNumber, setSelectedNumber] = useState<number | null>(1);
 
     const telefon = (num: number) => {
         setSelectedNumber(num);

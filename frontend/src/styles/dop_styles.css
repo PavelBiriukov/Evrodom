@@ -1317,6 +1317,20 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
     :root {
         --items-count-grid: 3;
     }
+    .slider {
+        height: 400px;
+    }
+    .slider .title {
+        font-size: 20px;
+        max-width: 37%;
+    }
+    .slider .descr {
+        font-size: 16px;
+        max-width: 37%;
+    }
+    .slider .inner {
+        margin-left: 100px;
+    }
 }
 @media (max-width: 594px) {
     :root {
@@ -1337,6 +1351,27 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
     }
     .shop-descr, .shop-title {
         font-size: 30px;
+    }
+    .slider .inner {
+        margin-left: 70px;
+    }
+    .slider .title {
+        font-size: 15px;
+        max-width: 30%;
+    }
+    .slider .descr {
+        font-size: 11px;
+        max-width: 30%;
+    }
+    .slider a {
+        width: 150px;
+        height: 30px;
+        font-size: 11px;
+    }
+}
+@media (max-width: 375px) {
+    .slider .inner {
+        margin-left: 35px;
     }
 }
 @media (max-width: 363px) {
