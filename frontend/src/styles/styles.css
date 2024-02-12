@@ -2168,8 +2168,7 @@ footer .bottom ul,footer .top .inner ul,ul {
 }
 
 .content {
-    width: calc(100% - 270px);
-    padding: 0 0 0 35px
+    width: 100%;
 }
 
 .content ul {

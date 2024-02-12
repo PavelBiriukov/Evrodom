@@ -892,7 +892,8 @@ a:hover {
 }
 
 .category_items .category_item a img {
-    width: 100%
+    width: 100%;
+    height: 20vh;
 }
 
 .category_items .category_item a span {
@@ -1303,6 +1304,12 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
         font-size: 30px;
     }
 }
+@media (max-width: 1016px) {
+    .category_items .category_item a span {
+        -webkit-line-clamp: 3;
+    }
+}
+
 @media (max-width: 879px) {
     .shop-advantages .triggers .trigger i{
         height: 100px;
@@ -1332,9 +1339,22 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
         margin-left: 100px;
     }
 }
+
+@media (max-width: 703px) {
+    .category_items .category_item a span {
+        -webkit-line-clamp: 4;
+    }
+    .category_items .category_item a span, .items .item .item_content .descr .item_link {
+        font-size: 14px;
+    }
+}
 @media (max-width: 594px) {
     :root {
         --items-count-grid: 2;
+    }
+    .category_items .category_item {
+        width: calc(100%/2 - 30px);
+        margin: 10px;
     }
 }
 
@@ -1342,6 +1362,10 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
     .shop-advantages .triggers .trigger {
         width: 50%;
         padding: 8px 0px;
+    }
+    .category_items, .shop-advantages .triggers .trigger {
+        display: flex;
+        justify-content: center;
     }
 }
 
