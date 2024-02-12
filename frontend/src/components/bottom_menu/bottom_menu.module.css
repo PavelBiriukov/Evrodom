@@ -212,3 +212,11 @@
 .mosaic-shop2-folders{
     box-sizing: border-box;
 }
+.link_text {
+    font-size: 17px;
+}
+@media (max-width: 363px) {
+    .link_text {
+        font-size: 14px;
+    }
+}

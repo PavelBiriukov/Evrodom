@@ -102,7 +102,23 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
     }
 }
 @media (max-width: 420px) {
-    
+    footer .inner {
+        font-size: 12px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 20px 0;
+    }
+    .fmenu {
+        min-width: 30%;
+        margin-bottom: 20px;
+        margin-left: 10px;
+        max-width: 45%;
+    }
+    .fmenu_soglaheniy{
+        min-width: 100%;
+    }
 }
 
 

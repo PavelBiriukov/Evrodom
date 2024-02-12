@@ -84,28 +84,50 @@ const Middle_menu = () => {
         console.log("After logout:", isAuth);
         // Можешь добавить здесь дополнительные действия, если необходимо
     };
+    const [number, setNumber] = useState('+996 557 23 03 90');
+    const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
 
+    const telefon = (num: number) => {
+        setSelectedNumber(num);
+        let newNumber = '';
+        if (num === 1) {
+            newNumber = '+996 501 23 03 90';
+        } else if (num === 2 || num === 3) {
+            newNumber = '+996 557 23 03 90';
+        } else if (num === 4) {
+            newNumber = '+996 555 46 28 90';
+        }
+        setNumber(newNumber);
+    }
     if (isLoading) {
         return <div>Загрузка...</div>
     }
+
     return (
         <div className={cl.middle_menu}>
             <div className={cl.inner}>
                 <div className={cl.block_phone_planshet}>
-                    <div className={cl.phone_blosk_too}>
-                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
-                        <a className={cl.phone} href="tel:996501230390">+996 557 23 03 90</a>
+                    <div style={{ display: 'flex' }}>
+                        <div onClick={() => telefon(1)} className={cl.phone_blosk_too}>
+                            {selectedNumber === 1 && '*'} {/* Отображаем звездочку, если выбран номер 1 */}
+                            <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={telephon} />
+                        </div>
+                        <div onClick={() => telefon(2)} className={cl.phone_blosk_too}>
+                            {selectedNumber === 2 && '*'} {/* Отображаем звездочку, если выбран номер 2 */}
+                            <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={telephon} />
+                        </div>
+                        <div onClick={() => telefon(3)} className={cl.phone_blosk_too}>
+                            {selectedNumber === 3 && '*'} {/* Отображаем звездочку, если выбран номер 3 */}
+                            <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
+                        </div>
+                        <div onClick={() => telefon(4)} className={cl.phone_blosk_too}>
+                            {selectedNumber === 4 && '*'} {/* Отображаем звездочку, если выбран номер 4 */}
+                            <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
+                        </div>
                     </div>
-                    <div className={cl.phone_blosk_too}>
-                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={telephon} />
-                        <a className={cl.phone} href="tel:996501230390">+996 501 23 03 90</a>
-                    </div>
-                    <div className={cl.phone_blosk_too}>
-                        <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
-                        <a className={cl.phone} href="tel:996501230390">+996 555 46 28 90</a>
-                    </div>
+                    <a className={cl.phone} href={`tel:${number}`}>{number}</a>
                 </div>
-                <div className={cl.block_content}> 
+                <div className={cl.block_content}>
                     <div className={cl.logo_wrapper}>
                         <a href="/" className={cl.logo}>
                             <img src={ava} alt="logo" />

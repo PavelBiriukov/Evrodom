@@ -92,8 +92,7 @@ const Bottom_menu = () => {
                 <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', }} className='categories'>
                     <ul id="menu_list" style={{ overflow: 'visible', width: '100%', display: 'flex',flexDirection: 'row',alignContent: 'center',justifyContent: 'space-evenly',}}>
                         <li onClick={(e) => { e.preventDefault(); handleButtonClick(); }} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="li">
-                            <a  style={{ paddingRight: '5px' }} href="/">Каталог</a>
-                            {/* <img  style={{ cursor: 'pointer', width: '20px', marginRight: '15px' }} src={katalogIMG} alt="каталог" /> */}
+                            <a style={{ paddingRight: '5px' }} href="/">Каталог</a>
                         </li>
 
                         <li className="li">

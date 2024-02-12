@@ -1339,6 +1339,12 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
         font-size: 30px;
     }
 }
+@media (max-width: 363px) {
+    .bottom_menu .inner .categories a, .bottom_menu .inner .categories span.current {
+        font-size: 14px;
+        padding: 8px 0px 10px 0;
+    }
+}
 @media (max-width: 320px) {
     .shop-descr, .shop-title {
         font-size: 26px;

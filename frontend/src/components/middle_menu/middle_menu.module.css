@@ -227,7 +227,8 @@ button {
 }
 @media (max-width: 1250px) {
     .phone{
-        font-size: 15px;
+        font-size: 20px;
+        margin-top: 10px;
     }
     .phoneIMG{
         width: 20px;
@@ -235,6 +236,9 @@ button {
     .block_phone_planshet {
         display: flex;
         margin-bottom: 10px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
     .block_phone{
         display: none;
@@ -296,14 +300,8 @@ button {
     .search_form{
         width: 70%;  
     }
-    .icon_cont{
-        display: flex;
-    }
     .middle_right {
         max-width: 79%;
-    }
-    .login_or_reg {
-        margin-left: 49px;
     }
     .block_phone_planshet {
         display: flex;
@@ -322,10 +320,13 @@ button {
     .logo img{
         max-width: 110px;
     }
+    .search_form{
+        width: 100%;  
+    }
 }
-@media (max-width: 500px) {
-    .icon_cont_user{
-        display: none;
+@media (max-width: 425px) {
+    .search_form{
+        width: 100%;  
     }
 }
 
