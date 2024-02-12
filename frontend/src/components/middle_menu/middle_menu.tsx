@@ -94,11 +94,11 @@ const Middle_menu = () => {
             newNumber = '+996 501 23 03 90';
         }
         if (num === 3) {
-            newNumber = 'https://wa.me/996 557 23 03 90'
-        } else if (num === 2 ) {
+            newNumber = '+996 557 23 03 90'
+        } else if (num === 2) {
             newNumber = '+996 557 23 03 90';
         } else if (num === 4) {
-            newNumber = 'https://wa.me/996 555 46 28 90';
+            newNumber = '+996 555 46 28 90';
         }
         setNumber(newNumber);
     }
@@ -128,7 +128,13 @@ const Middle_menu = () => {
                             <img className={cl.phone} style={{ width: '25px', marginRight: "10px" }} src={whatsapp} />
                         </div>
                     </div>
-                    <a className={cl.phone} href={`tel:${number}`}>{number}</a>
+                    {
+                        selectedNumber === 1 || selectedNumber === 2 ? (
+                            <a className={cl.phone} href={`tel:${number.replace(/\s/g, '')}`}>{number}</a>
+                        ) : (
+                            <a className={cl.phone} href={`https://wa.me/${number.replace(/\s/g, '')}`}>{number}</a>
+                        )
+                    }
                 </div>
                 <div className={cl.block_content}>
                     <div className={cl.logo_wrapper}>
