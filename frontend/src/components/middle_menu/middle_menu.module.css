@@ -307,6 +307,11 @@ button {
     .block_phone_planshet {
         display: flex;
     }
+    .mimi_popup_serch {
+        width: 70%;
+        z-index: 12;
+        font-size: 19px;
+    }
 
 }
 @media (max-width: 640px) {
@@ -324,12 +329,28 @@ button {
     .search_form{
         width: 100%;  
     }
+    .mimi_popup_serch {
+        width: 100%;
+    }
 }
 @media (max-width: 425px) {
     .search_form{
         width: 100%;  
     }
+    .mimi_popup_serch {
+        width: 100%;
+        font-size: 14px;
+    }
 }
+@media (max-width: 328px) {
+    .search_form{
+        width: 100%;  
+    }
+    .mimi_popup_serch {
+        font-size: 13px;
+    }
+}
+
 
 
 
