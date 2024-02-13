@@ -802,7 +802,11 @@ a:hover {
 }
 
 .items.list .item .item_content .all_prices {
-    margin-top: 15px
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .shop-advantages {
@@ -1320,6 +1324,16 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
         width: 50%;
     }
 }
+@media (max-width: 802px) {
+    :root {
+        --category-items-count-grid: 2;
+    }
+    .sort_show .show_style {
+        margin-left: 15px;
+    }
+}
+
+
 @media (max-width: 768px) {
     :root {
         --items-count-grid: 3;
@@ -1339,7 +1353,11 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
         margin-left: 100px;
     }
 }
-
+@media (max-width: 751px) {
+    :root {
+        --category-items-count-grid: 3;
+    }
+}
 @media (max-width: 703px) {
     .category_items .category_item a span {
         -webkit-line-clamp: 4;
@@ -1357,6 +1375,11 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
         margin: 10px;
     }
 }
+@media (max-width: 469px) {
+    :root {
+        --category-items-count-grid: 2;
+    }
+}
 
 @media (max-width: 448px) {
     .shop-advantages .triggers .trigger {
@@ -1372,6 +1395,7 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
 @media (max-width: 425px) {
     :root {
         --items-count-grid: 1;
+        --category-items-count-grid: 1;
     }
     .shop-descr, .shop-title {
         font-size: 30px;

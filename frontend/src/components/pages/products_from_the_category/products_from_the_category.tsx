@@ -62,13 +62,15 @@ const Products_from_the_category = () => {
 
     const productWithMinPrice = Array.isArray(cardsItem) && cardsItem.length > 0 ?
         cardsItem.reduce((minProduct, currentProduct) => {
-            return (currentProduct.price < minProduct) ? currentProduct.price : minProduct;
+            return (currentProduct.price < minProduct.price) ? currentProduct : minProduct;
         }, cardsItem[0]) : null;
-
+        console.log(productWithMinPrice);
+        
     const productWithMaxPrice = Array.isArray(cardsItem) && cardsItem.length > 0 ?
         cardsItem.reduce((maxProduct, currentProduct) => {
-            return (currentProduct.price > maxProduct) ? currentProduct.price : maxProduct;
+            return (currentProduct.price > maxProduct.price) ? currentProduct : maxProduct;
         }, cardsItem[0]) : null;
+
 
     const filterByPriceRange = (products: [any], minPrice: any, maxPrice: any) => {
         return products?.filter((product: any) => product.price >= minPrice && product.price <= maxPrice);
@@ -147,6 +149,23 @@ const Products_from_the_category = () => {
     const handleClosePopup = () => {
         setShowPopup(false);
     };
+    ///
+    const [showPrice, setShowPrice] = useState(false);
+    const [showManufacturer, setShowManufacturer] = useState(false);
+    const [show, setShow] = useState(false);
+
+    const handleShowClick = () => {
+        setShow(!show);
+    };
+
+    const handlePriceClick = () => {
+        setShowPrice(!showPrice);
+    };
+
+    const handleManufacturerClick = () => {
+        setShowManufacturer(!showManufacturer);
+    };
+    ///
     return (
         <div className='wrapper'>
             <Header />
@@ -164,7 +183,7 @@ const Products_from_the_category = () => {
                                         <div className="field">
                                             <input
                                                 className="f_price min"
-                                                placeholder={`от ${productWithMinPrice}`}
+                                                placeholder={`от ${productWithMinPrice?.price}`}
                                                 name="min_price"
                                                 id="min_price"
                                                 type="text"
@@ -214,56 +233,65 @@ const Products_from_the_category = () => {
                             <div className="sort_show">
                                 <form method="GET" className="filter_items mobile">
                                     <div className="filter_bar">
-                                        <div className="title"><span>Фильтр по параметрам</span>
+                                        <div className="title" onClick={handleShowClick}>
+                                            <span >Фильтр по параметрам</span>
                                         </div>
-                                        <div className="price_range range_all">
-                                            <div className="f_title">Цена сом
-                                            </div>
-                                            <div className="list price_wrapp" style={{ display: 'block' }}>
-                                                <div className="field">
-                                                    <input
-                                                        className="f_price min"
-                                                        placeholder={`от ${productWithMinPrice}`}
-                                                        name="min_price"
-                                                        id="min_price"
-                                                        type="text"
-                                                        value={priсeMin}
-                                                        onChange={(e) => setPriсeMin(Number(e.target.value))}
-                                                    />
-                                                    <input
-                                                        className="f_price max"
-                                                        placeholder={`до ${productWithMaxPrice?.price}`}
-                                                        name="max_price"
-                                                        id="max_price"
-                                                        type="text"
-                                                        value={priсeMax}
-                                                        onChange={(e) => setPriсeMax(Number(e.target.value))}
-                                                    />
+                                        {show && (
+                                        <>  
+                                            <div className="price_range range_all">
+                                                <div className="f_title" onClick={handlePriceClick}>Цена сом
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div className="filter_checkbox filter_checkbox_all ">
-                                            <div className="f_title">Производитель</div>
-                                            <div className="list active" style={{ display: 'block' }}>
-                                                {sortedUniqueManufacturers.map((maker: string) =>
-                                                    <label key={maker} className="checkbox_container maker">
-                                                        <div className="radio_title">{maker}</div>
+                                                {showPrice && (
+                                                <div className="list price_wrapp" style={{ display: 'block' }}>
+                                                    <div className="field">
                                                         <input
-                                                            data-type="ur"
-                                                            name={maker}
-                                                            type="checkbox"
-                                                            value={maker}
-                                                            checked={selectedManufacturers.includes(maker)}
-                                                            onChange={() => handleManufacturerChange(maker)}
+                                                            className="f_price min"
+                                                            placeholder={`от ${productWithMinPrice?.price}`}
+                                                            name="min_price"
+                                                            id="min_price"
+                                                            type="text"
+                                                            value={priсeMin}
+                                                            onChange={(e) => setPriсeMin(Number(e.target.value))}
                                                         />
-                                                        <span className="checkmark"></span>
-                                                    </label>
+                                                        <input
+                                                            className="f_price max"
+                                                            placeholder={`до ${productWithMaxPrice?.price}`}
+                                                            name="max_price"
+                                                            id="max_price"
+                                                            type="text"
+                                                            value={priсeMax}
+                                                            onChange={(e) => setPriсeMax(Number(e.target.value))}
+                                                        />
+                                                    </div>
+                                                </div>
                                                 )}
                                             </div>
-                                        </div>
+                                            <div className="filter_checkbox filter_checkbox_all ">
+                                                <div className="f_title" onClick={handleManufacturerClick}>Производитель</div>
+                                                {showManufacturer && (
+                                                <div className="list active" style={{ display: 'block' }}>
+                                                    {sortedUniqueManufacturers.map((maker: string) =>
+                                                        <label key={maker} className="checkbox_container maker">
+                                                            <div className="radio_title">{maker}</div>
+                                                            <input
+                                                                data-type="ur"
+                                                                name={maker}
+                                                                type="checkbox"
+                                                                value={maker}
+                                                                checked={selectedManufacturers.includes(maker)}
+                                                                onChange={() => handleManufacturerChange(maker)}
+                                                            />
+                                                            <span className="checkmark"></span>
+                                                        </label>
+                                                    )}
+                                                </div>
+                                                )}
+                                            </div>
+                                        </>  
+                                        )}    
                                     </div>
                                 </form>
-                                <div className="sort">
+                                <div className="sort sort_mobile">
                                     <div className="title">Сортировка</div>
                                     <Select
                                         value={sortType}
@@ -274,27 +302,28 @@ const Products_from_the_category = () => {
                                             { name: 'по убыванию цены', value: 'price_desc' },
                                         ]}
                                     />
-                                </div>
-                                <div className="show">
-                                    <div className="show_style">
-                                        <div className={`grid ${isGridView ? 'active' : ''}`} data-id="grid" title="Показывать в виде плиток" onClick={switchToGridView}>
-                                            {!isGridView ?
-                                                <img style={{ width: '20px', height: '20px' }} src={blocks_icon} alt="Grid View" />
-                                                :
-                                                <img style={{ width: '20px', height: '20px' }} src={blocks_icon_Green} alt="Grid View" />
-                                            }
-                                        </div>
-                                        <span></span>
-                                        <div className={`list ${!isGridView ? 'active' : ''}`} data-id="list" title="Показывать в виде списка" onClick={switchToListView}>
-                                            {!isGridView ?
-                                                <img style={{ width: '22px', height: '22px' }} src={longs_icon_Green} alt="List View" />
-                                                :
-                                                <img style={{ width: '22px', height: '22px' }} src={longs_icon} alt="List View" />
+                                    <div className="show">
+                                        <div className="show_style">
+                                            <div className={`grid ${isGridView ? 'active' : ''}`} data-id="grid" title="Показывать в виде плиток" onClick={switchToGridView}>
+                                                {!isGridView ?
+                                                    <img style={{ width: '20px', height: '20px' }} src={blocks_icon} alt="Grid View" />
+                                                    :
+                                                    <img style={{ width: '20px', height: '20px' }} src={blocks_icon_Green} alt="Grid View" />
+                                                }
+                                            </div>
+                                            <span></span>
+                                            <div className={`list ${!isGridView ? 'active' : ''}`} data-id="list" title="Показывать в виде списка" onClick={switchToListView}>
+                                                {!isGridView ?
+                                                    <img style={{ width: '22px', height: '22px' }} src={longs_icon_Green} alt="List View" />
+                                                    :
+                                                    <img style={{ width: '22px', height: '22px' }} src={longs_icon} alt="List View" />
 
-                                            }
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                             {displayItems && displayItems.length > 0 ? (
                                 <div className={`items items_table ${isGridView ? 'grid' : 'list'}`}>
@@ -314,15 +343,15 @@ const Products_from_the_category = () => {
                                                     {card.description}
                                                 </div>
                                                 <div className="all_prices item_price" data-discount="">
-                                                    <div className="price ">{card.price} сом
+                                                    <div className="price ">{card.price} сом</div>
+                                                    <div className="btn_wrapp">
+                                                        <div>
+                                                            <button onClick={() => handleAddToCart(card)} className="item_basket_add" title={`Добавить в корзину: ${card.name}`}>В корзину</button>
+                                                        </div>
+                                                        <Basket_popup_wrapper style={showPopup} handleClosePopup={handleClosePopup} />
                                                     </div>
                                                 </div>
-                                                <div className="btn_wrapp">
-                                                    <div>
-                                                        <button onClick={() => handleAddToCart(card)}  className="item_basket_add" title={`Добавить в корзину: ${card.name}`}>В корзину</button>
-                                                    </div>
-                                                    <Basket_popup_wrapper style={showPopup} handleClosePopup={handleClosePopup}/>
-                                                </div>
+
                                             </div>
                                         </div>
                                     )}
