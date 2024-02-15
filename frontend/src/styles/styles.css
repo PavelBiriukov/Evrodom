@@ -5379,6 +5379,11 @@ footer .callback-toggler {
     .main .filter_bar>div:last-child {
         border-bottom: 1px solid #000000;
     }
+    .main .registration_login_wrapper .registr_descr {
+        width: 40%;
+        padding: 0px;
+
+    }
     
 }
 
@@ -5431,6 +5436,45 @@ footer .callback-toggler {
         width: 90%;
         margin: 5px;
         border: solid 1px #f4aeae;
+    }
+    .main .btn_wrapper.login, .main .registration_login_wrapper {
+        flex-direction: column-reverse;
+    }
+    .main .registration_login_wrapper .form {
+        width: 100%;
+    }
+    .main .registration_login_wrapper .registr_descr {
+        width: 100%;
+
+    }
+}
+@media (max-width: 545px) {
+    .content h1, .content h2, .content h3 {
+        font-size: 25px;
+    }
+    .main .registration_login_wrapper .registr_descr p {
+        font-size: 17px;
+        margin: 0;
+        padding: 0;
+    }
+    .content h1, .content h2, .content h3 {
+        margin: 0 0 10px;
+    }
+    .main .registration_login_wrapper .registr_descr .title {
+        font-size: 20px;
+    }
+    .main .checkbox_container {
+        font-size: 15px;
+    }
+    .main .registration_login_wrapper .btn_wrapper {
+        margin-top: 0px;
+    }
+    .main .registration_login_wrapper a {
+        margin-bottom: 10px;
+        font-size: 17px;
+    }
+    .main .registration_login_wrapper .form {
+        margin-top: 20px;
     }
 }
 

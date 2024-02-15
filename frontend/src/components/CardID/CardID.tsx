@@ -95,8 +95,7 @@ const CardID: React.FC<CardItemProps> = () => {
     const arrayUniqueParameters = card?.unique_parameters.split(';');
     //карзина
     const [showPopup, setShowPopup] = useState(false);
-
-    const handleAddToCart = (item: ICard) => {
+    /* const handleAddToCart = (item: ICard) => {
         if (isAuth) {
             const basketDto = {
                 userId: user.id,
@@ -105,10 +104,10 @@ const CardID: React.FC<CardItemProps> = () => {
             addToBasket(basketDto)
             setShowPopup(true);
         }
-        else {
-            return 'Пользователь не авторизован'
-        }
 
+    }; */
+    const handleAddToCart = () => {
+        setShowPopup(true);
     };
 
     const handleClosePopup = () => {
@@ -218,7 +217,7 @@ const CardID: React.FC<CardItemProps> = () => {
                                             <span className="total_new">{card.price} сом</span>
                                         </div>
                                         <div>
-                                            <button onClick={() => handleAddToCart(card)} style={{ marginTop: '10px', width: '250px', alignItems: 'end' }} className={`"item_add_to_cart" ${cl.button}`}>В корзину</button>
+                                            <button onClick={() => handleAddToCart()} style={{ marginTop: '10px', width: '250px', alignItems: 'end' }} className={`"item_add_to_cart" ${cl.button}`}>В корзину</button>
                                         </div>
                                         <Basket_popup_wrapper style={showPopup} handleClosePopup={handleClosePopup} />
                                     </div>

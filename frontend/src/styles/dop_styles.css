@@ -1405,6 +1405,9 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
     :root {
         --category-items-count-grid: 2;
     }
+    .shop-descr, .shop-title {
+        padding-bottom: 20px;
+    }
 }
 
 @media (max-width: 448px) {

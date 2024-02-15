@@ -56,7 +56,7 @@ const Basket_popup_wrapper: React.FC<PopupProps> = ({ style, handleClosePopup })
                 :
                     (
                         <div className={cl.auntif}>
-                            <h1>Пользователь не авторизован</h1>
+                            <h1>Пользователь <br className={cl.phone_login}></br> не авторизован</h1>
                             <div className="icon_cont">
                                 <a className={cl.link} href="/login/">Вход</a>
                                 <a className={cl.link} href="/registration/">Регистрация</a>

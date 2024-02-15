@@ -1,0 +1,13 @@
+.page_text {
+    font-size: 21px;
+}
+@media (max-width: 425px) {
+    .page_text {
+        font-size: 15px;
+    }
+}
+@media (max-width: 320px) {
+    .page_text {
+        font-size: 13px;
+    }
+}

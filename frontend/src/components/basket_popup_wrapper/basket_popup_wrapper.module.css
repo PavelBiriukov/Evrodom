@@ -108,3 +108,19 @@
     font-size: 25px;
     font-weight: 700;
 }
+.phone_login{
+    display: none;
+}
+@media (max-width: 545px) {
+    .close {
+        right: 5px;
+        top: 5px;
+    }
+    .basket_popup{
+        padding: 20px;
+        text-align: center;
+    }
+    .phone_login {
+        display: block;
+    }
+}

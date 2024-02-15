@@ -3,6 +3,8 @@ import "../../../styles/styles.css";
 import "../../../styles/dop_styles.css";
 import Header from '../../header/header';
 import Footer from '../../footer/footer';
+import cl from './privacy_policy.module.css';
+
 const Privacy_policy = () => {
     return (
         <div className='wrapper'>
@@ -16,8 +18,8 @@ const Privacy_policy = () => {
                                 <span>Политика конфиденциальности</span>
                             </div>
                             <h1 className="shop-title">Политика конфиденциальности</h1>
-                            <div className="page_text">
-                                <ol>
+                            <div className={cl.page_text}>
+                                <ol style={{margin: 0, padding: 0}}>
                                     <li>
                                         <p style={{textAlign:"center"}}>ОБЩИЕ ПОЛОЖЕНИЯ</p>
                                         <ol>
