@@ -555,3 +555,9 @@ button.swiper-pagination-bullet {
 .swiper-container-coverflow .swiper-wrapper {
     -ms-perspective: 1200px
 }
+
+@media (max-width: 636px) {
+    .swiper-container-vertical>.swiper-wrapper {
+        flex-direction: row;
+    }
+}

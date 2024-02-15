@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useFetcher, useParams } from 'react-router-dom';
 import useActions from '../../hooks/useAcrions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
@@ -24,17 +24,17 @@ const CardID: React.FC<CardItemProps> = () => {
     const { getCardById, fetchCard, addToBasket, getBasket } = useActions()
     const [cardsItem, setCardsItem] = useState<ICard[] | any>();
     const { cards } = useTypedSelector(state => state.card);
-    const { user,isAuth } = useTypedSelector(state => state.users);
+    const { user, isAuth } = useTypedSelector(state => state.users);
     const { items } = useTypedSelector(state => state.basket);
-    
+
     const [popapImg, setPopapImg] = useState('');
     const [closeOpenImg, setCloseOpenImg] = useState('');
 
     const openClosePopapImg = (imgName: string) => {
-        if(imgName === 'Открыть'){
+        if (imgName === 'Открыть') {
             setCloseOpenImg('flex')
         }
-        if(imgName === 'Закрыть'){
+        if (imgName === 'Закрыть') {
             setCloseOpenImg('none')
         }
     }
@@ -47,14 +47,11 @@ const CardID: React.FC<CardItemProps> = () => {
             const filteredCards = cards.filter((cardCategory: ICard) => cardCategory.category === card?.category);
             setCardsItem(filteredCards);
         }
-        console.log(card);
-        
     }, [cards, card?.category]);
 
     const fetchData = async () => {
         try {
             const cardData = await getCardById(id);
-            console.log('Card data:', cardData);
             setCard(cardData)
             // Теперь у вас есть доступ к данным из response.data
         } catch (error) {
@@ -100,7 +97,7 @@ const CardID: React.FC<CardItemProps> = () => {
     const [showPopup, setShowPopup] = useState(false);
 
     const handleAddToCart = (item: ICard) => {
-        if(isAuth) {
+        if (isAuth) {
             const basketDto = {
                 userId: user.id,
                 items: [item],
@@ -108,15 +105,36 @@ const CardID: React.FC<CardItemProps> = () => {
             addToBasket(basketDto)
             setShowPopup(true);
         }
-        else{
+        else {
             return 'Пользователь не авторизован'
         }
-        
+
     };
 
     const handleClosePopup = () => {
         setShowPopup(false);
     };
+    const imageRef = useRef<any>(null);
+    const [imageSize, setImageSize] = useState({ width: 0 });
+
+    useEffect(() => {
+        const updateImageSize = () => {
+            if (imageRef.current) {
+                const { width } = imageRef.current.getBoundingClientRect();
+                setImageSize({ width });
+            }
+        };
+
+        // Вызываем функцию обновления размеров при загрузке контента и изменении размеров окна
+        updateImageSize(); // При первой отрисовке страницы
+        window.addEventListener('resize', updateImageSize);
+        // Очищаем слушатель события при размонтировании компонента
+        return () => {
+            window.removeEventListener('resize', updateImageSize);
+        };
+
+    }, []); // Пустой массив зависимостей означает, что эффект будет запускаться только после монтирования и размонтирования компонента
+    console.log(imageSize.width);
 
     if (!card) {
         return <div>Карточка не найдена.</div>;
@@ -139,7 +157,7 @@ const CardID: React.FC<CardItemProps> = () => {
                                         <div className="swiper-container gallery-thumbs swiper-container-initialized swiper-container-vertical swiper-container-thumbs">
                                             <div className="swiper-wrapper" style={{ transform: 'translate3d(0px, 0px, 0px)', transitionDuration: '0ms' }}>
                                                 {card.picture.map((imgCard: string, index: number) => (
-                                                    <div  key={index} className="swiper-slide">
+                                                    <div key={index} className="swiper-slide">
                                                         <img
                                                             src={'https://eurodom.kg/api/' + imgCard}
                                                             alt={`Image ${index}`}
@@ -151,14 +169,14 @@ const CardID: React.FC<CardItemProps> = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="image">
+                                    <div className="image" ref={imageRef}>
                                         <div className="swiper-container gallery-top swiper-container-initialized swiper-container-horizontal swiper-container-autoheight">
-                                            <div className="swiper-wrapper" style={{ transform: 'translate3d(0px, 0px, 0px)', height: '440px', transitionDuration: "0ms" }}>
-                                                <div onClick={() => openClosePopapImg('Открыть')} className="swiper-slide offer_image_0 swiper-slide-active" style={{ width: "440px" }}>
+                                            <div className="swiper-wrapper" style={{ transform: 'translate3d(0px, 0px, 0px)', height: '100%', transitionDuration: "0ms" }}>
+                                                <div onClick={() => openClosePopapImg('Открыть')} className="swiper-slide offer_image_0 swiper-slide-active" style={{ width: "100%" }}>
                                                     <ReactImageZoom
                                                         {...{
-                                                            width: 440,
-                                                            height: 440,
+                                                            width: imageSize.width,
+                                                            height: imageSize.width,
                                                             zoomWidth: 500,
                                                             img: `https://eurodom.kg/api/${mainImage}`,
                                                             zoomImg: `https://eurodom.kg/api/${mainImage}`,
@@ -200,7 +218,7 @@ const CardID: React.FC<CardItemProps> = () => {
                                             <span className="total_new">{card.price} сом</span>
                                         </div>
                                         <div>
-                                            <button  onClick={() => handleAddToCart(card)} style={{ marginTop: '10px', width: '250px', alignItems: 'end' }} className={`"item_add_to_cart" ${cl.button}`}>В корзину</button>
+                                            <button onClick={() => handleAddToCart(card)} style={{ marginTop: '10px', width: '250px', alignItems: 'end' }} className={`"item_add_to_cart" ${cl.button}`}>В корзину</button>
                                         </div>
                                         <Basket_popup_wrapper style={showPopup} handleClosePopup={handleClosePopup} />
                                     </div>
@@ -227,7 +245,7 @@ const CardID: React.FC<CardItemProps> = () => {
                                 <div className="item_description_title">Описание товара</div>
                                 <div className="item_description">
                                     {arrayUniqueParameters?.map((parameter: string, index: any) =>
-                                        
+
                                         <p key={index}>{parameter}</p>
                                     )}
                                 </div>
@@ -236,7 +254,7 @@ const CardID: React.FC<CardItemProps> = () => {
                             <div className='items equivalent_items'>
                                 {cardsItem
                                     ?.filter((cardCatigor: ICard) => cardCatigor._id !== card._id)
-                                    .map((cardCatigor: ICard, index: string) => 
+                                    .map((cardCatigor: ICard, index: string) =>
                                         <div key={index} className="item" data-discount-type="" data-code="89238">
                                             <div className="image">
                                                 <div className="item_tags">
@@ -262,11 +280,14 @@ const CardID: React.FC<CardItemProps> = () => {
                         </div>
                     </div>
                 </div>
-                <div style={{display:`${closeOpenImg}`}} className={clPOPAP.blockPopapIMG}>
-                    <button  style={{}} className={clPOPAP.close } onClick={() => openClosePopapImg('Закрыть')}>
-                        <img className={clPOPAP.img } style={{ padding: '0px',width: '30px' , margin: "10px"}} src={close} alt="" />
-                    </button>
-                    <img className={clPOPAP.img} src={`https://eurodom.kg/api/${mainImage}`} alt="" />
+                <div style={{ display: `${closeOpenImg}` }} className={clPOPAP.blockPopapIMG}>
+                    <div className={clPOPAP.block_img}>
+                        <button style={{}} className={clPOPAP.close} onClick={() => openClosePopapImg('Закрыть')}>
+                            <img className={clPOPAP.img_close}  src={close} alt=""/>
+                        </button>
+                        <img className={clPOPAP.img} src={`https://eurodom.kg/api/${mainImage}`} alt="" />
+                    </div>
+
                 </div>
             </main>
             <Footer />
