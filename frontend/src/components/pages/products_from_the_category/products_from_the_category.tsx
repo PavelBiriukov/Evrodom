@@ -141,9 +141,18 @@ const Products_from_the_category = () => {
 
     //кoрзина
     const [showPopup, setShowPopup] = useState(false);
-
+    const { user, isAuth } = useTypedSelector(state => state.users);
+    const { addToBasket} = useActions()
     const handleAddToCart = (item: ICard) => {
-        setShowPopup(true);
+        if (isAuth) {
+            const basketDto = {
+                userId: user.id,
+                items: [item],
+            };
+            addToBasket(basketDto)
+            setShowPopup(true);
+        }
+
     };
 
     const handleClosePopup = () => {

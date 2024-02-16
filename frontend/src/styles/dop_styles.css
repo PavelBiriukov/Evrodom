@@ -1425,6 +1425,7 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
     :root {
         --items-count-grid: 1;
         --category-items-count-grid: 1;
+        --bodyFontSize: 17px;
     }
     .shop-descr, .shop-title {
         font-size: 30px;
