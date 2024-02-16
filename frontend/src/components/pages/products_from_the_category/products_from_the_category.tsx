@@ -15,7 +15,7 @@ import Footer from '../../footer/footer';
 import Basket_popup_wrapper from '../../basket_popup_wrapper/basket_popup_wrapper';
 
 const Products_from_the_category = () => {
-    const { fetchCard, } = useActions();
+    const { fetchCard,addToBasket } = useActions();
     const { cards } = useTypedSelector(state => state.card);
     const { categoryName } = useParams();
     const [cardsItem, setCardsItem] = useState<ICard[] | any>();
@@ -25,7 +25,8 @@ const Products_from_the_category = () => {
     const [priсeMax, setPriсeMax] = useState<any>();
     const [filteredProducts, setFilteredProducts] = useState<ICard[] | any>();
     const displayItems = filteredProducts && filteredProducts.length > 0 ? filteredProducts : cardsItem;
-
+    const [showPopup, setShowPopup] = useState(false);
+    const { user, isAuth } = useTypedSelector(state => state.users);
     /* Добавление товров */
     useEffect(() => {
         fetchCard();
@@ -140,9 +141,6 @@ const Products_from_the_category = () => {
     }, [cardsItem, priсeMin, priсeMax, selectedManufacturers]);
 
     //кoрзина
-    const [showPopup, setShowPopup] = useState(false);
-    const { user, isAuth } = useTypedSelector(state => state.users);
-    const { addToBasket} = useActions()
     const handleAddToCart = (item: ICard) => {
         if (isAuth) {
             const basketDto = {
@@ -152,7 +150,7 @@ const Products_from_the_category = () => {
             addToBasket(basketDto)
             setShowPopup(true);
         }
-
+        console.log(item);
     };
 
     const handleClosePopup = () => {
