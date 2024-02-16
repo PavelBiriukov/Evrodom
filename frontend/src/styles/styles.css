@@ -5527,6 +5527,12 @@ footer .callback-toggler {
         font-size: 19px;
         cursor: pointer;
     }
+    #checkout_form .delivery_block, #checkout_form .user_data, #checkout_form .user_type {
+        padding: 15px;
+    }
+    #checkout_form .delivery_pay .delivery, #checkout_form .delivery_pay .pay {
+        padding: 15px;
+    }
     
 }
 @media (max-width: 400px) {
