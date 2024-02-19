@@ -1301,6 +1301,19 @@ footer .inner .fmenu .policy,footer .inner .fmenu .user_agreement_link {
     font-size: 14px;
     margin: 5px 0
 }
+
+@media (max-width: 1165px) {
+    #basket_list .basket_item_wrapp {
+        overflow-x: scroll;
+        box-sizing: border-box;
+    }
+    #basket_list .item_in_basket_titles {
+        min-width: 1070px;
+    }
+    #basket_list .item_in_basket, #basket_list .item_in_basket_titles {
+        min-width: 1070px;
+    }
+}
 @media (max-width: 1088px) {
     .shop-advantages .triggers .trigger i {
         height: 80px;
