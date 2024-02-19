@@ -132,9 +132,7 @@ const Basket = () => {
                                                         <div className=""> </div>
                                                     </div>
                                                 </div>
-
                                             ))
-
                                         ) : (
                                             <div className={`empty-cart-message`}>Корзина пуста</div>
                                         )}
