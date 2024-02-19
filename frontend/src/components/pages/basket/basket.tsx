@@ -78,9 +78,9 @@ const Basket = () => {
                             <div className="promo-descr"></div>
                             {isAuth ? (
                                 <div id="basket_list">
-                                    <div className='basket_items_list'>
-                                        {items && items?.length > 0 ? (
-                                            items.map((item: any, index: number) => (
+                                    {items && items?.length > 0 ? (
+                                        items.map((item: any, index: number) => (
+                                            <div className='basket_items_list'>
                                                 <div key={index} className="basket_item_wrapp">
                                                     <div className="item_in_basket_titles">
                                                         <div className="title">Наименование товара</div>
@@ -131,23 +131,24 @@ const Basket = () => {
                                                         <div className=""> </div>
                                                     </div>
                                                 </div>
-                                            ))
-                                        ) : (
-                                            <div className={`empty-cart-message`}>Корзина пуста</div>
-                                        )}
-                                        <div className="basket_end">
-                                            <div className="right">
-                                                <div className="total_basket_wrapp">
-                                                    <span>Итоговая сумма: </span>
-                                                    <span id="basket_total">
-                                                        <span className="">{totalPrice}</span>
-                                                        &nbsp;
-                                                    </span> сом.
-                                                </div>
-                                                <a className="checkout_btn" href="/checkout/">Оформить заказ</a>
                                             </div>
+                                        ))
+                                    ) : (
+                                        <div className={`empty-cart-message`}>Корзина пуста</div>
+                                    )}
+                                    <div className="basket_end">
+                                        <div className="right">
+                                            <div className="total_basket_wrapp">
+                                                <span>Итоговая сумма: </span>
+                                                <span id="basket_total">
+                                                    <span className="">{totalPrice}</span>
+                                                    &nbsp;
+                                                </span> сом.
+                                            </div>
+                                            <a className="checkout_btn" href="/checkout/">Оформить заказ</a>
                                         </div>
                                     </div>
+
                                 </div>
                             ) : (
                                 <div className={cl.auntif}>
