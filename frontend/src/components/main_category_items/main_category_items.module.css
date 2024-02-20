@@ -22,9 +22,9 @@
     width: calc(100%/3 - 30px)
 }
 
-.main_category_items .main_category_item:nth-child(5n) {
-    width: calc(100%/3*2 - 30px)
-}
+/* .main_category_items .main_category_item:nth-child(5n) {
+    width: calc(100%/3 - 30px)
+} */
 
 .main_category_items .main_category_item .category_link img {
     -webkit-transition: .4s all;

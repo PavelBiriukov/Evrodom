@@ -141,7 +141,7 @@ const Middle_menu = () => {
                         <a href="/" className={cl.logo}>
                             <img src={ava} alt="logo" />
                         </a>
-                        <p className={cl.slogan}>Качественные материалы для вашего дома с бесплатной доставкой.</p>
+                        <p className={cl.slogan}>Качественные материалы для вашего дома с доставкой.</p>
                     </div>
                     <div className={cl.search_form}>
                         <form method="GET" action="/search/">
