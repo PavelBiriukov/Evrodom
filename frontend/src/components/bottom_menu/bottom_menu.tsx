@@ -143,17 +143,17 @@ const Bottom_menu = () => {
                                             </a>
                                             <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Двери'] ? 'flex': 'none'}`, flexDirection: 'column'}}>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item} >
-                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/magazin/folder/klassik-9">
+                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/МЕЖКОМНАТНЫЕ">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>Межкомнатные</span>
                                                     </a>
                                                 </li>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
-                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/magazin/folder/lirika-1">
+                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/ВХОДНЫЕ%20(БРОНИРОВАННЫЕ)">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>{'Входные (бронированные)'}</span>
                                                     </a>
                                                 </li>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
-                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/magazin/folder/elegiya-1">
+                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/СОПУТСТВУЮЩИЕ%20ТОВАРЫ%20ДЛЯ%20ДВЕРЕЙ">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>Сопутствующие товары для дверей</span>
                                                     </a>
                                                 </li>
@@ -170,24 +170,24 @@ const Bottom_menu = () => {
                                             </a>
                                             <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Линолеум'] ? 'flex': 'none'}`}}>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
-                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/magazin/folder/klassik-9">
+                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/КЛАСС%20ТИП%20Б">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>Класс тип "Б"</span>
                                                     </a>
                                                 </li>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
-                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/magazin/folder/lirika-1">
+                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href={`/categories/КЛАСС%20"ПАРМА"`}>
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>Класс "Парма"</span>
                                                     </a>
                                                 </li>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
-                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/magazin/folder/elegiya-1">
+                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href={`/categories/КЛАСС%20"ВЕРСАЛЬ"`}>
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>Класс "Версаль"</span>
                                                     </a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a onClick={(e) => handleCategoryClick(e, "Сайдинг фасадный (виниловый)")} style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/magazin/folder/mezhkomnatnye-dveri">
+                                            <a style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/САЙДИНГ%20ФАСАДНЫЙ%20(ВИНИЛОВЫЙ)">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Сайдинг фасадный (виниловый)</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Сайдинг фасадный (виниловый)")}>
@@ -210,22 +210,22 @@ const Bottom_menu = () => {
                                             </a>
                                             <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Панели PVC (пластиковые)'] ? 'flex': 'none'}`}}>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
-                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/magazin/folder/klassik-9">
+                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/ЛИСТОВЫЕ%20(ГИБКИЙ%20МРАМОР)">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>{"Листовые (Гибкий мрамор)"}</span>
                                                     </a>
                                                 </li>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
-                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/magazin/folder/lirika-1">
+                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/ПАНЕЛИ%20PVC%20ПОТОЛОЧНЫЕ">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>Потолочные</span>
                                                     </a>
                                                 </li>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
-                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/magazin/folder/elegiya-1">
+                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/ПАНЕЛИ%20PVC%20СТЕНОВЫЕ">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>Стеновые</span>
                                                     </a>
                                                 </li>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
-                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/magazin/folder/elegiya-1">
+                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/КОМПЛЕКТУЮЩИЕ%20ДЛЯ%20ПАНЕЛЕЙ%20PVC">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>Комплектующие для панелей</span>
                                                     </a>
                                                 </li>
