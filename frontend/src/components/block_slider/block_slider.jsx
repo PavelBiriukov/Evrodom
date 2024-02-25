@@ -53,7 +53,7 @@ const Block_slider = () => {
                         transform: `translate3d(0px, 0px, 0px)`
                     });
                 }
-            }, 100000000);
+            }, 10000);
             setIntervalId(id); // Сохраняем id интервала
         };
         autoScroll();
