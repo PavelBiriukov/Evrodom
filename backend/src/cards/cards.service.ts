@@ -28,6 +28,7 @@ export class CardsServis {
         return cards;
     }
 
+
     async search(query: string): Promise<Cards[]> {
         const cards = await this.cardsModel.find({
             name: { $regex: new RegExp(query, 'i') }
@@ -42,7 +43,6 @@ export class CardsServis {
 
     async update(id: ObjectId, dto: CreateCardDto, picture: any[]): Promise<Cards> {
         try {
-            console.log(picture);
             if(picture === undefined || picture[0] === ''){
                 const updatedCard = await this.cardsModel.findByIdAndUpdate(id, { ...dto, listens: 0});
                 return updatedCard;
