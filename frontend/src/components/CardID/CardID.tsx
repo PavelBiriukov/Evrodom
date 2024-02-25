@@ -39,7 +39,7 @@ const CardID: React.FC<CardItemProps> = () => {
         }
     }
     useEffect(() => {
-        fetchCard(20, 0);
+        fetchCard(0,0);
     }, []);
 
     useEffect(() => {

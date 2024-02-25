@@ -15,7 +15,7 @@ const CardList: React.FC<CardListProps> = () => {
     const {cards, error} = useTypedSelector(state => state.card);    
     const {fetchCard} = useActions()
     useEffect(() => {
-        fetchCard(20, 0)
+        fetchCard(0, 0)
     },[])
 
     if (error) {
