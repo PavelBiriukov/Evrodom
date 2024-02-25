@@ -2,10 +2,15 @@ import axios from 'axios';
 import { Dispatch} from 'react';
 import { CardAction, CardActionType, ICard } from '../../type/cards';
 
-export const fetchCard = () => {    
+export const fetchCard = (count: number,offset: number) => {    
     return async (dispatch: Dispatch<CardAction>) => {
         try {
-           const response = await axios.get('https://eurodom.kg/api/cards');
+           const response = await axios.get('https://eurodom.kg/api/cards',{
+            params: {
+                count: count,
+                offset: offset
+            }
+        });
            
            dispatch({type: CardActionType.FETCH_CARDS, payload: response.data})
         } catch (error) {

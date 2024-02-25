@@ -10,7 +10,7 @@ const Main_category_items = () => {
     return (
         <div className={cl.main_category_items}>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/Двери/">
+                <a className={cl.category_link} href="/categories/МЕЖКОМНАТНЫЕ">
                     <span className={cl.category_tytle}>Двери</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
                         <img src={dveri} alt="Двери"/>
@@ -18,7 +18,7 @@ const Main_category_items = () => {
                 </a>
             </div>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/Линолеум/">
+                <a className={cl.category_link} href={`/categories/КЛАСС%20"ПАРМА"`}>
                     <span className={cl.category_tytle}>Линолеум</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
                         <img src={linolium} alt="Линолеум"/>
@@ -26,7 +26,7 @@ const Main_category_items = () => {
                 </a>
             </div>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/САЙДИНГ ФАСАДНЫЙ ВИНИЛОВЫЙ/">
+                <a className={cl.category_link} href="/categories/САЙДИНГ%20ФАСАДНЫЙ%20(ВИНИЛОВЫЙ)">
                     <span className={cl.category_tytle}>САЙДИНГ ФАСАДНЫЙ ВИНИЛОВЫЙ </span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
                         <img src={Caideng_veniloviy} alt="САЙДИНГ ФАСАДНЫЙ ВИНИЛОВЫЙ"/>
@@ -34,7 +34,7 @@ const Main_category_items = () => {
                 </a>
             </div>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/Панели PVC (Пластиковые)/">
+                <a className={cl.category_link} href="/categories/ЛИСТОВЫЕ%20(ГИБКИЙ%20МРАМОР)">
                     <span className={cl.category_tytle}>Панели PVC (Пластиковые)</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
                         <img src={Plastic_potoloxysq_PVH} alt="Панели PVC (Пластиковые)"/>
@@ -42,7 +42,7 @@ const Main_category_items = () => {
                 </a>
             </div>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/ПАНЕЛИ МДФ/">
+                <a className={cl.category_link} href="/categories/Панели%20МДФ%20ЛИСТОВЫЕ%20(ЖЁСТКИЕ%20ОБОИ)">
                     <span className={cl.category_tytle}>ПАНЕЛИ МДФ</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
                         <img src={mdf_paneli} alt="ПАНЕЛИ МДФ"/>
@@ -50,7 +50,7 @@ const Main_category_items = () => {
                 </a>
             </div>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/Сантехника/">
+                <a className={cl.category_link} href="/categories/Унитазы">
                     <span className={cl.category_tytle}>Сантехника</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
                         <img src={Santehnica} alt="Сантехника"/>

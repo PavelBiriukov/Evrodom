@@ -39,7 +39,7 @@ const CardID: React.FC<CardItemProps> = () => {
         }
     }
     useEffect(() => {
-        fetchCard();
+        fetchCard(20, 0);
     }, []);
 
     useEffect(() => {
@@ -92,7 +92,22 @@ const CardID: React.FC<CardItemProps> = () => {
     const handleThumbnailClick = (image: string) => {
         setMainImage(image); // Обновляем главное изображение при клике на миниатуре
     };
-    const arrayUniqueParameters = card?.unique_parameters.split(';');
+    //Пораметры товара
+    const parseParameters = (parametersString: string) => {
+        const parametersArray = parametersString.split(';'); // Разбиваем строку на массив по точке с запятой
+        const parametersObject: any = {};
+
+        parametersArray.forEach((parameter) => {
+            const [key, value] = parameter.split(':'); // Разбиваем элемент массива на ключ и значение по двоеточию
+            if (key && value) {
+                parametersObject[key.trim()] = value.trim(); // Удаляем лишние пробелы в ключе и значении и добавляем в объект
+            }
+        });
+
+        return parametersObject;
+    };
+    const parsedParameters = card?.unique_parameters ? parseParameters(card.unique_parameters) : {};
+
     //карзина
     const [showPopup, setShowPopup] = useState(false);
     const handleAddToCart = (item: ICard) => {
@@ -222,29 +237,29 @@ const CardID: React.FC<CardItemProps> = () => {
                                     <div className="properties">
                                         <div className="properties_basis">
                                             <div className="prop_row">
-                                                <div className="prop_title">Производитель</div>
+                                                <div className="prop_title">Производитель:</div>
                                                 <div className="separator_tabulator"></div>
                                                 <div className="prop_val">
                                                     <p>{card.maker}</p>
                                                 </div>
                                             </div>
                                             <div className="prop_row">
-                                                <div className="prop_title">Единица измерения</div>
+                                                <div className="prop_title">Единица измерения:</div>
                                                 <div className="separator_tabulator"></div>
                                                 <div className="prop_val">{card.unit_of_measurement}</div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                             <div className="main description">
                                 <div className="item_description_title">Описание товара</div>
                                 <div className="item_description">
-                                    {arrayUniqueParameters?.map((parameter: string, index: any) =>
-
-                                        <p key={index}>{parameter}</p>
-                                    )}
+                                    {Object.keys(parsedParameters).map((key, index) => (
+                                        <p className='style_porametr_object' key={index}>
+                                            {key}: <p className='style_porametr_object_type'>{parsedParameters[key]}</p>
+                                        </p>
+                                    ))}
                                 </div>
                             </div>
                             <h2 className="shop-title">Рекомендуем посмотреть</h2>
@@ -280,7 +295,7 @@ const CardID: React.FC<CardItemProps> = () => {
                 <div style={{ display: `${closeOpenImg}` }} className={clPOPAP.blockPopapIMG}>
                     <div className={clPOPAP.block_img}>
                         <button style={{}} className={clPOPAP.close} onClick={() => openClosePopapImg('Закрыть')}>
-                            <img className={clPOPAP.img_close}  src={close} alt=""/>
+                            <img className={clPOPAP.img_close} src={close} alt="" />
                         </button>
                         <img className={clPOPAP.img} src={`https://eurodom.kg/api/${mainImage}`} alt="" />
                     </div>

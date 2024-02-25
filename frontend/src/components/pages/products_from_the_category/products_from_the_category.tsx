@@ -29,7 +29,7 @@ const Products_from_the_category = () => {
     const { user, isAuth } = useTypedSelector(state => state.users);
     /* Добавление товров */
     useEffect(() => {
-        fetchCard();
+        fetchCard(20, 0);
     }, []);
 
     useEffect(() => {

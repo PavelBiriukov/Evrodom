@@ -44,7 +44,17 @@
     color: #fff;
     margin-right: 5px;
 }
-
+.sliders_image {
+    background-size: cover;
+    width: 1910px; 
+    background-position: 0% 42%; 
+}
+@media (max-width: 580px) {
+    .sliders_image {
+        background-size: contain;
+        background-position: 0% 42%;
+    }
+}
 @media (max-width: 425px) {
     .button {
         width: 150px;
@@ -56,3 +66,4 @@
         justify-content: center;
     }
 }
+

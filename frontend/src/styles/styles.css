@@ -5330,6 +5330,18 @@ footer .callback-toggler {
     flex-direction: row;
     justify-content: flex-start;
 }
+.style_porametr_object {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    font-weight: 700;
+}
+.style_porametr_object_type {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    margin-left: 5px;
+}
 @media (max-width: 1005px) {
     .item_preview .left {
         width: 50%;
@@ -5477,6 +5489,9 @@ footer .callback-toggler {
     }
 }
 @media (max-width: 545px) {
+    body:not(.superior):not(.victoria) .slider .swiper-slide {
+        background-size: contain;
+    }
     .content h1, .content h2, .content h3 {
         font-size: 25px;
     }

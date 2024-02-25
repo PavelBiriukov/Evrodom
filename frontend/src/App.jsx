@@ -23,6 +23,7 @@ import Login from './components/login/login';
 import Order_registration from './components/pages/order_registration/order_registration';
 /* цвет: #45dcdd */
 const App = () => {
+  
   return (
     <BrowserRouter>
       <Routes>
