@@ -242,7 +242,7 @@ const Bottom_menu = () => {
                                             </a>
                                             <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Панели МДФ'] ? 'flex': 'none'}`}}>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
-                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/Панели%20МДФ%20ЛИСТОВЫЕ%20(ЖЁСТКИЕ%20ОБОИ)">
+                                                    <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/Панели%20МДФ%20ЛИСТОВЫЕ%20(ЖЁСТКИЕ%20ОБОИ)%20/">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>{"Листовые (Жёсткие обои)"}</span>
                                                     </a>
                                                 </li>
