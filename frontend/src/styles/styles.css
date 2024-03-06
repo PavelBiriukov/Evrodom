@@ -2580,7 +2580,8 @@ footer .bottom ul,footer .top .inner ul,ul {
     -webkit-transition: .3s all;
     transition: .3s all;
     margin: 15px;
-    position: relative
+    position: relative;
+    height: 100%;
 }
 
 .items .item .image:hover .bg_dark,.items .item .image:hover .favorite_btn {
@@ -2615,7 +2616,7 @@ footer .bottom ul,footer .top .inner ul,ul {
 .items .item img {
     display: block;
     width: 100%;
-    height: auto
+    height: 100%;
 }
 
 .items .item .btn_wrapp {
