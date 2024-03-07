@@ -45,7 +45,7 @@ const Main_category_items = () => {
                 <a className={cl.category_link} href="/categories/Панели%20МДФ%20ЛИСТОВЫЕ%20(ЖЁСТКИЕ%20ОБОИ)">
                     <span className={cl.category_tytle}>ПАНЕЛИ МДФ</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
-                        <img src={mdf_paneli} alt="ПАНЕЛИ МДФ"/>
+                        <img style={{width: '118.2%%'}} src={mdf_paneli} alt="ПАНЕЛИ МДФ"/>
                     </div>
                 </a>
             </div>
@@ -53,7 +53,7 @@ const Main_category_items = () => {
                 <a className={cl.category_link} href="/categories/Унитазы">
                     <span className={cl.category_tytle}>Сантехника</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
-                        <img src={Santehnica} alt="Сантехника"/>
+                        <img style={{width: '117%'}} src={Santehnica} alt="Сантехника"/>
                     </div>
                 </a>
             </div>

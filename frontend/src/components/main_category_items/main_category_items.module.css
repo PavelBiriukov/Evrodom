@@ -85,6 +85,9 @@
 .category_tytle {
     font-size: 16px;
 }
+.category_tytle_img_mdf {
+    width: 122%;
+}
 @media (max-width: 1162px) {
     .main_category_items .main_category_item .category_link span { 
         font-size: 12px;
