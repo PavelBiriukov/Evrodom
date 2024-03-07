@@ -190,6 +190,7 @@ const CardID: React.FC<CardItemProps> = () => {
                                                             width: imageSize.width,
                                                             height: imageSize.width,
                                                             zoomWidth: 500,
+                                                            scale: 1,
                                                             img: `https://eurodom.kg/api/${mainImage}`,
                                                             zoomImg: `https://eurodom.kg/api/${mainImage}`,
                                                             offset: {

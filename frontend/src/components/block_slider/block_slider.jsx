@@ -75,7 +75,7 @@ const Block_slider = () => {
 
             setCurrentSlide(currentSlide + 1);
             setNextStyle({
-                transitionDuration: '300ms',
+                transitionDuration: '2000ms',
                 transform: `translate3d(${-windowDimensions.width * (currentSlide + 1)}px, 0px, 0px)`
             });
         }
@@ -94,7 +94,7 @@ const Block_slider = () => {
 
             setCurrentSlide(currentSlide - 1);
             setNextStyle({
-                transitionDuration: '300ms',
+                transitionDuration: '2000ms',
                 transform: `translate3d(${newPosition}px, 0px, 0px)`
             });
         }

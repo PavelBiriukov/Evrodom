@@ -21,9 +21,10 @@ const CardList: React.FC<CardListProps> = () => {
     if (error) {
         return <h1>{error}</h1>  
     }
+    const first8Cards = cards.reverse().slice(0, 8);
     return (
         <>
-            {cards.map(card =>
+            {first8Cards.map(card =>
                 <CardItem
                     key={card._id}
                     card={card}

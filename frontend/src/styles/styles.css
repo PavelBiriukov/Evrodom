@@ -1767,7 +1767,7 @@ body:not(.superior):not(.victoria) .slider .swiper-slide {
 body:not(.superior):not(.victoria) .slider div.swiper-button-next-slider,body:not(.superior):not(.victoria) .slider div.swiper-button-prev-slider {
     width: 33px;
     height: 57px;
-    background-color: rgba(196,196,196,.18)
+    background-color: #C32033;
 }
 
 
