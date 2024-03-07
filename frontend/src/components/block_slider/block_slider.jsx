@@ -23,6 +23,7 @@ const Block_slider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const numberOfSlides = 6;
 
+
     useEffect(() => {
         const handleResize = () => {
             setWindowDimensions({
@@ -41,17 +42,33 @@ const Block_slider = () => {
     }, []);
 
     const [intervalId, setIntervalId] = useState(null); // Объявляем intervalId
+    const [isMouseOverSlider, setIsMouseOverSlider] = useState(false);
+
+    const handleMouseEnterSlider = () => {
+        setIsMouseOverSlider(true);
+    };
+
+    const handleMouseLeaveSlider = () => {
+        setIsMouseOverSlider(false);
+    };
+
     useEffect(() => {
         const autoScroll = () => {
             const id = setInterval(() => {
-                if (currentSlide < numberOfSlides - 1) {
-                    clickNext();
-                } else {
-                    setCurrentSlide(0); // Возвращаемся к первому слайду
-                    setNextStyle({
-                        transitionDuration: '300ms',
-                        transform: `translate3d(0px, 0px, 0px)`
-                    });
+                if (!isMouseOverSlider) {
+                    clearInterval(intervalId);
+                    if (currentSlide < numberOfSlides - 1) {
+                        clickNext();
+                        clearInterval(intervalId);
+                    } else {
+                        clearInterval(intervalId);
+                        setCurrentSlide(0); // Возвращаемся к первому слайду
+                        setNextStyle({
+                            transitionDuration: '2000ms',
+                            transform: `translate3d(0px, 0px, 0px)`
+                        });
+                        
+                    }
                 }
             }, 10000);
             setIntervalId(id); // Сохраняем id интервала
@@ -60,7 +77,7 @@ const Block_slider = () => {
         return () => {
             clearInterval(intervalId);
         };
-    }, [currentSlide, numberOfSlides]);
+    }, [currentSlide, numberOfSlides, isMouseOverSlider]);
 
 
     const clickNext = () => {
@@ -101,7 +118,11 @@ const Block_slider = () => {
     };
     return (
         <div className="block_slider">
-            <div className="slider">
+            <div
+                onMouseEnter={handleMouseEnterSlider}
+                onMouseLeave={handleMouseLeaveSlider}
+                className="slider">
+
                 <div className="swiper-container swiper-container-initialized swiper-container-horizontal">
                     <div className="swiper-wrapper" style={nextStyle}>
                         <div className={`swiper-slide swiper-slide-prev ${cl.sliders_image}`} style={{ backgroundImage: `url(${Background1})` }}>
@@ -176,7 +197,7 @@ const Block_slider = () => {
                                 <div className="item_content">
                                     <div className="title">Линолеум для вас.</div>
                                     <div className="descr">
-                                        Наша компания предлагает широкий выбор линолеума высокого качества для различных потребностей и предпочтений. 
+                                        Наша компания предлагает широкий выбор линолеума высокого качества для различных потребностей и предпочтений.
                                     </div>
                                     <a style={{ borderRadius: '5px' }} href={`/categories/КЛАСС%20"ПАРМА"`}>
                                         <div className={cl.button}>
@@ -193,7 +214,7 @@ const Block_slider = () => {
                                     <div className="title">Панели МДФ</div>
                                     <div className="descr">
                                         Наши панели МДФ представляют собой идеальное сочетание эстетики,
-                                         прочности и функциональности для вашего интерьера.
+                                        прочности и функциональности для вашего интерьера.
                                     </div>
                                     <a style={{ borderRadius: '5px' }} href="/categories/Панели%20МДФ%20ЛИСТОВЫЕ%20(ЖЁСТКИЕ%20ОБОИ)">
                                         <div className={cl.button}>

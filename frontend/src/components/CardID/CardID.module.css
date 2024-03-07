@@ -23,6 +23,7 @@
     max-width: 40px;
 }
 .img{
+    max-height: 1100px;
     width: 80vw;
     height: auto;
     max-width: 700px;

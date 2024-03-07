@@ -27,24 +27,24 @@ const Bottom_menu = () => {
         const handleMouseEnter = () => {
             setIsMouseOverPopup(true);
         };
-    
+
         const handleMouseLeave = () => {
             setIsMouseOverPopup(false);
             setPopupVisible(false);
         };
-    
+
         if (popup) {
             popup.addEventListener('mouseenter', handleMouseEnter);
             popup.addEventListener('mouseleave', handleMouseLeave);
         }
-    
+
         return () => {
             if (popup) {
                 popup.removeEventListener('mouseenter', handleMouseEnter);
                 popup.removeEventListener('mouseleave', handleMouseLeave);
             }
         };
-        
+
     }, [isMouseOverPopup]);
 
 
@@ -71,7 +71,7 @@ const Bottom_menu = () => {
         // Инициализация состояний для всех категорий
         'Двери': false,
         'Линолеум': false,
-        'Сайдинг фасадный (виниловый)': false, 
+        'Сайдинг фасадный (виниловый)': false,
         'Панели PVC (Пластиковые)': false,
         'Панели МДФ': false,
         'Сантехника': false,
@@ -96,14 +96,20 @@ const Bottom_menu = () => {
         e.preventDefault();
         setPopupVisible(!subMenuStates[category]);
     };
-    
+
     return (
         <div className='bottom_menu'>
             <div className='inner'>
                 <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', }} className='categories'>
-                    <ul id="menu_list" style={{ overflow: 'visible', width: '100%', display: 'flex',flexDirection: 'row',alignContent: 'center',justifyContent: 'space-evenly',}}>
-                        <li onMouseEnter={(e) =>  handleButtonClick()} onMouseLeave={() => {setPopupVisible(false)}} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="li">
-                            <a style={{ paddingRight: '5px' }} href="/">Каталог</a>
+                    <ul id="menu_list" style={{ overflow: 'visible', width: '100%', display: 'flex', flexDirection: 'row', alignContent: 'center', justifyContent: 'space-evenly', }}>
+                        <li
+                            /* onMouseEnter={(e) => { e.preventDefault(); handleButtonClick() }}
+                            onMouseLeave={(e) => { e.preventDefault(); setPopupVisible(false) }} */
+                            onMouseEnter={(e) => {window.innerWidth > 425 && setIsMouseOverPopup(true); e.preventDefault()}}
+                            onMouseLeave={(e) => {window.innerWidth > 425 && setPopupVisible(false); e.preventDefault()}}
+                            onClick={(e) => {e.preventDefault(); window.innerWidth <= 425 && setIsMouseOverPopup(!isMouseOverPopup)}}
+                            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="li">
+                            <a style={{ paddingRight: '5px' }}>Каталог</a>
                         </li>
 
                         <li className="li">
@@ -122,8 +128,8 @@ const Bottom_menu = () => {
                             <a href="/kontakty/" className="" title="Контакты">Контакты</a>
                         </li>
                     </ul>
-                    <div onMouseEnter={() => setIsMouseOverPopup(true)}
-                        onMouseLeave={() => setIsMouseOverPopup(false)}
+                    <div onMouseEnter={(e) => {window.innerWidth > 425 && setIsMouseOverPopup(true);e.preventDefault()}}
+                        onMouseLeave={(e) => {window.innerWidth > 425 && setIsMouseOverPopup(false);e.preventDefault()}}
                         className={`${clbottom.dropdown__content_wrapper} ${isMouseOverPopup ? '' : clbottom.closed}`}
                         id="i1zw16m4u_0"
                         style={{ width: '100%', maxWidth: '320px', height: 'auto', opacity: '1', display: `${isMouseOverPopup ? 'flex' : 'none'}` }}
@@ -132,8 +138,8 @@ const Bottom_menu = () => {
                             <div className={`div ${clbottom.div_u_inrzchron}`} id="inrzchron_0">
                                 <div className={`mosaic-shop2-folders ${clbottom.mosaic_shop2_folders_u_iwvpglffu}`} id="iwvpglffu_0">
                                     <ul className={clbottom.mosaic_shop2_folders__list}>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a onClick={(e) => handleCategoryClick(e, "Двери")} style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders__link} href="">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a onClick={(e) => handleCategoryClick(e, "Двери")} style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders__link} href="">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Двери</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Двери")}>
@@ -141,7 +147,7 @@ const Bottom_menu = () => {
                                                     </span>
                                                 </span>
                                             </a>
-                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Двери'] ? 'flex': 'none'}`, flexDirection: 'column'}}>
+                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{ display: `${subMenuStates['Двери'] ? 'flex' : 'none'}`, flexDirection: 'column' }}>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item} >
                                                     <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/МЕЖКОМНАТНЫЕ">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>Межкомнатные</span>
@@ -159,8 +165,8 @@ const Bottom_menu = () => {
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a onClick={(e) => handleCategoryClick(e, "Линолеум")} style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a onClick={(e) => handleCategoryClick(e, "Линолеум")} style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Линолеум</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Линолеум")}>
@@ -168,7 +174,7 @@ const Bottom_menu = () => {
                                                     </span>
                                                 </span>
                                             </a>
-                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Линолеум'] ? 'flex': 'none'}`}}>
+                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{ display: `${subMenuStates['Линолеум'] ? 'flex' : 'none'}` }}>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
                                                     <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/КЛАСС%20ТИП%20Б">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>Класс тип "Б"</span>
@@ -186,8 +192,8 @@ const Bottom_menu = () => {
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/САЙДИНГ%20ФАСАДНЫЙ%20(ВИНИЛОВЫЙ)">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/САЙДИНГ%20ФАСАДНЫЙ%20(ВИНИЛОВЫЙ)">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Сайдинг фасадный (виниловый)</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Сайдинг фасадный (виниловый)")}>
@@ -195,12 +201,12 @@ const Bottom_menu = () => {
                                                     </span>
                                                 </span>
                                             </a>
-                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Сайдинг фасадный (виниловый)'] ? 'flex': 'none'}`}}>
-                                                
+                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{ display: `${subMenuStates['Сайдинг фасадный (виниловый)'] ? 'flex' : 'none'}` }}>
+
                                             </ul>
                                         </li>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a onClick={(e) => handleCategoryClick(e, "Панели PVC (пластиковые)")} style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a onClick={(e) => handleCategoryClick(e, "Панели PVC (пластиковые)")} style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Панели PVC (пластиковые)</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Панели PVC (пластиковые)")}>
@@ -208,7 +214,7 @@ const Bottom_menu = () => {
                                                     </span>
                                                 </span>
                                             </a>
-                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Панели PVC (пластиковые)'] ? 'flex': 'none'}`}}>
+                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{ display: `${subMenuStates['Панели PVC (пластиковые)'] ? 'flex' : 'none'}` }}>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
                                                     <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/ЛИСТОВЫЕ%20(ГИБКИЙ%20МРАМОР)">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>{"Листовые (Гибкий мрамор)"}</span>
@@ -231,8 +237,8 @@ const Bottom_menu = () => {
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a onClick={(e) => handleCategoryClick(e, "Панели МДФ")} style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a onClick={(e) => handleCategoryClick(e, "Панели МДФ")} style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Панели МДФ</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Панели МДФ")}>
@@ -240,7 +246,7 @@ const Bottom_menu = () => {
                                                     </span>
                                                 </span>
                                             </a>
-                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Панели МДФ'] ? 'flex': 'none'}`}}>
+                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{ display: `${subMenuStates['Панели МДФ'] ? 'flex' : 'none'}` }}>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
                                                     <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/Панели%20МДФ%20ЛИСТОВЫЕ%20(ЖЁСТКИЕ%20ОБОИ)%20/">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>{"Листовые (Жёсткие обои)"}</span>
@@ -258,8 +264,8 @@ const Bottom_menu = () => {
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a onClick={(e) => handleCategoryClick(e, "Сантехника")} style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a onClick={(e) => handleCategoryClick(e, "Сантехника")} style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Сантехника</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Сантехника")}>
@@ -267,7 +273,7 @@ const Bottom_menu = () => {
                                                     </span>
                                                 </span>
                                             </a>
-                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Сантехника'] ? 'flex': 'none'}`}}>
+                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{ display: `${subMenuStates['Сантехника'] ? 'flex' : 'none'}` }}>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
                                                     <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/Ванны">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>{"Ванны"}</span>
@@ -295,8 +301,8 @@ const Bottom_menu = () => {
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a onClick={(e) => handleCategoryClick(e, "Ламинат напольный")} style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a onClick={(e) => handleCategoryClick(e, "Ламинат напольный")} style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Ламинат напольный</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Ламинат напольный")}>
@@ -304,7 +310,7 @@ const Bottom_menu = () => {
                                                     </span>
                                                 </span>
                                             </a>
-                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Ламинат напольный'] ? 'flex': 'none'}`}}>
+                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{ display: `${subMenuStates['Ламинат напольный'] ? 'flex' : 'none'}` }}>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
                                                     <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/Ламинат%208мм%2032%20класс/">
                                                         <span className={[clbottom.mosaic_shop2_folders_sub_text, clbottom.tovar_unik].join(' ')}>{"8мм 32 класс"}</span>
@@ -322,8 +328,8 @@ const Bottom_menu = () => {
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a  style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/ПОТОЛОЧНАЯ%20ПЛИТКА">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/ПОТОЛОЧНАЯ%20ПЛИТКА">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Потолочная плитка</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Потолочная плитка")}>
@@ -331,7 +337,7 @@ const Bottom_menu = () => {
                                                     </span>
                                                 </span>
                                             </a>
-                                            <ul  className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Потолочная плитка'] ? 'flex': 'none'}`}}>
+                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{ display: `${subMenuStates['Потолочная плитка'] ? 'flex' : 'none'}` }}>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
                                                     <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/ПОТОЛОЧНАЯ%20ПЛИТКА%20ПЛИНТУСЫ">
                                                         <span className={clbottom.mosaic_shop2_folders_sub_text}>{"Плинтусы"}</span>
@@ -339,7 +345,7 @@ const Bottom_menu = () => {
                                                 </li>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
                                                     <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/ПОТОЛОЧНАЯ%20ПЛИТКА%20МОЛДИНГИ">
-                                                    <span className={clbottom.mosaic_shop2_folders_sub_text}>{"Молдинги"}</span>
+                                                        <span className={clbottom.mosaic_shop2_folders_sub_text}>{"Молдинги"}</span>
                                                     </a>
                                                 </li>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
@@ -354,8 +360,8 @@ const Bottom_menu = () => {
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a onClick={(e) => handleCategoryClick(e, "Плинтусы и пороги напольные")} style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="https://eurodom.kg/categories/Унитазы/">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a onClick={(e) => handleCategoryClick(e, "Плинтусы и пороги напольные")} style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="https://eurodom.kg/categories/Унитазы/">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Плинтусы и пороги напольные</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Плинтусы и пороги напольные")}>
@@ -363,7 +369,7 @@ const Bottom_menu = () => {
                                                     </span>
                                                 </span>
                                             </a>
-                                            <ul  className={clbottom.mosaic_shop2_folders_sub_list} style={{display: `${subMenuStates['Плинтусы и пороги напольные'] ? 'flex': 'none'}`}}>
+                                            <ul className={clbottom.mosaic_shop2_folders_sub_list} style={{ display: `${subMenuStates['Плинтусы и пороги напольные'] ? 'flex' : 'none'}` }}>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
                                                     <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/Плинтуса%20напольные%2055мм">
                                                         <span className={[clbottom.mosaic_shop2_folders_sub_text, clbottom.tovar_unik].join(' ')}>{"55мм"}</span>
@@ -371,7 +377,7 @@ const Bottom_menu = () => {
                                                 </li>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
                                                     <a className={clbottom.mosaic_shop2_folders_sub_link} href="/categories/Плинтуса%20напольные%2070мм">
-                                                    <span className={[clbottom.mosaic_shop2_folders_sub_text, clbottom.tovar_unik].join(' ')}>{"70мм"}</span>
+                                                        <span className={[clbottom.mosaic_shop2_folders_sub_text, clbottom.tovar_unik].join(' ')}>{"70мм"}</span>
                                                     </a>
                                                 </li>
                                                 <li className={clbottom.mosaic_shop2_folders_sub_item}>
@@ -386,8 +392,8 @@ const Bottom_menu = () => {
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/РЕЙКА%20ДЕКОРАТИВНАЯ">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/РЕЙКА%20ДЕКОРАТИВНАЯ">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Рейка Декоративная</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Рейка Декоративная")}>
@@ -395,8 +401,8 @@ const Bottom_menu = () => {
                                                 </span>
                                             </a>
                                         </li>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/ПЛИНТУСЫ%20И%20МОЛДИНГИ%20PVC%20(ЗОЛОТО%20И%20СЕРЕБРО)">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/ПЛИНТУСЫ%20И%20МОЛДИНГИ%20PVC%20(ЗОЛОТО%20И%20СЕРЕБРО)">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Плинтусы и молдинги PVC (золото и серебро)</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Плинтусы и молдинги PVC (золото и серебро)")}>
@@ -404,8 +410,8 @@ const Bottom_menu = () => {
                                                 </span>
                                             </a>
                                         </li>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/РЕЙКА%20И%20ПРОФИЛЬ">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/РЕЙКА%20И%20ПРОФИЛЬ">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Рейка и профиль</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Рейка и профиль")}>
@@ -413,8 +419,8 @@ const Bottom_menu = () => {
                                                 </span>
                                             </a>
                                         </li>
-                                        <li style={{ position: 'relative'}} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
-                                            <a  style={{display: 'flex',flexDirection: 'row',alignContent: 'center',alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/СОПУТСТВУЮЩИЕ%20ТОВАРЫ%20РАЗНЫЕ">
+                                        <li style={{ position: 'relative' }} className={`${clbottom.mosaic_shop2_folders_item} has-child`}>
+                                            <a style={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center' }} className={clbottom.mosaic_shop2_folders_link} href="/categories/СОПУТСТВУЮЩИЕ%20ТОВАРЫ%20РАЗНЫЕ">
                                                 <span className={clbottom.mosaic_shop2_folders_text}>Сопутствующие товары разные</span>
                                                 <span className={clbottom.mosaic_shop2_folders_icon}>
                                                     <span id="i2ex1ba1n_0" className={`svg_image ${clbottom.svg_image_u_i2ex1ba1n}`} onClick={() => handleSubMenuToggle("Сопутствующие товары разные")}>
