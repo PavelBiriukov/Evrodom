@@ -28,8 +28,7 @@ const Contacts = () => {
                                         </ul> 
                                     </strong> 
                                 </p>
-                                <iframe allowfullscreen="" height="450" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d649.3212371974854!2d73.8471229233014!3d42.8242855537232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389f38794e26b4bf%3A0x9ba61178d7d113d2!2z0JrQsNGE0LUg0JDQu9C10LrRgQ!5e1!3m2!1sru!2skg!4v1698069028843!5m2!1sru!2skg" style={{border:'0', width:"100%",height: '50vh'}}></iframe>
-                                
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d229.56977564010293!2d73.84713809830308!3d42.82427191551872!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389f390006dbfe33%3A0xe0c1fceb0596d158!2z0JXQstGA0L7QtNC-0Lw!5e1!3m2!1sru!2skg!4v1709888853847!5m2!1sru!2skg" width="600" height="450" style={{border:0 ,width: '100%', height: '100vh'}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
