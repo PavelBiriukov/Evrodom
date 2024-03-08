@@ -70,7 +70,7 @@ const Block_slider = () => {
                         
                     }
                 }
-            }, 10000);
+            }, 5000);
             setIntervalId(id); // Сохраняем id интервала
         };
         autoScroll();
