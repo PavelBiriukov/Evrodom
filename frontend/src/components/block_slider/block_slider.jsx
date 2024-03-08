@@ -56,18 +56,24 @@ const Block_slider = () => {
         const autoScroll = () => {
             const id = setInterval(() => {
                 if (!isMouseOverSlider) {
-                    clearInterval(intervalId);
                     if (currentSlide < numberOfSlides - 1) {
                         clickNext();
-                        clearInterval(intervalId);
                     } else {
-                        clearInterval(intervalId);
-                        setCurrentSlide(0); // Возвращаемся к первому слайду
-                        setNextStyle({
-                            transitionDuration: '2000ms',
-                            transform: `translate3d(0px, 0px, 0px)`
-                        });
-                        
+                        if (currentSlide > 0) {
+                            const newPosition = 0;
+                            setTimeout(() => {
+                                setNextStyle({
+                                    transitionDuration: '0ms',
+                                    transform: `translate3d(${newPosition}px, 0px, 0px)`
+                                });
+                            }, 10);
+                
+                            setCurrentSlide(0);
+                            setNextStyle({
+                                transitionDuration: '1000ms',
+                                transform: `translate3d(${newPosition}px, 0px, 0px)`
+                            });
+                        }
                     }
                 }
             }, 5000);
@@ -88,7 +94,7 @@ const Block_slider = () => {
                     transitionDuration: '0ms',
                     transform: `translate3d(${-windowDimensions.width * (currentSlide + 1)}px, 0px, 0px)`
                 });
-            }, 1000);
+            }, 10);
 
             setCurrentSlide(currentSlide + 1);
             setNextStyle({
@@ -107,7 +113,7 @@ const Block_slider = () => {
                     transitionDuration: '0ms',
                     transform: `translate3d(${newPosition}px, 0px, 0px)`
                 });
-            }, 1000);
+            }, 10);
 
             setCurrentSlide(currentSlide - 1);
             setNextStyle({
