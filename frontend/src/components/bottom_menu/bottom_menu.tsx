@@ -106,7 +106,7 @@ const Bottom_menu = () => {
                             /* onMouseEnter={(e) => { e.preventDefault(); handleButtonClick() }}
                             onMouseLeave={(e) => { e.preventDefault(); setPopupVisible(false) }} */
                             onMouseEnter={(e) => {window.innerWidth > 425 && setIsMouseOverPopup(true); e.preventDefault()}}
-                            onMouseLeave={(e) => {window.innerWidth > 425 && setPopupVisible(false); e.preventDefault()}}
+                            onMouseLeave={(e) => {window.innerWidth > 425 && setIsMouseOverPopup(false); e.preventDefault()}}
                             onClick={(e) => {e.preventDefault(); window.innerWidth <= 425 && setIsMouseOverPopup(!isMouseOverPopup)}}
                             style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="li">
                             <a style={{ paddingRight: '5px' }}>Каталог</a>
