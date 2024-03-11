@@ -42,7 +42,7 @@ const Main_category_items = () => {
                 </a>
             </div>
             <div className={cl.main_category_item}>
-                <a className={cl.category_link} href="/categories/Панели%20МДФ%20ЛИСТОВЫЕ%20(ЖЁСТКИЕ%20ОБОИ)">
+                <a className={cl.category_link} href="/categories/Панели%20МДФ%20ЛИСТОВЫЕ%20(ЖЁСТКИЕ%20ОБОИ)%20/">
                     <span className={cl.category_tytle}>ПАНЕЛИ МДФ</span>
                     <div style={{overflow: 'hidden', maxHeight: '530px'}}>
                         <img style={{width: '118.2%'}} src={mdf_paneli} alt="ПАНЕЛИ МДФ"/>

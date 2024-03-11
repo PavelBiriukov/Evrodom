@@ -17,11 +17,11 @@ const Footer = () => {
                 <div className={[cl.fmenu, cl.catalog].join(' ')}>
                     <div className={cl.footer_subtitle}>Каталог</div>
                     <ul>
-                        <li><a href="/categories/hleba/" title="Двери">Двери</a></li>
-                        <li><a href="/categories/bulochnye-izdeliya/" title="Линолиум">Линолиум</a></li>
-                        <li><a href="/categories/gastronomiya/" title="САЙДЕНГ ВИНИЛОВЫЙ ФОСАДНЫЙ">Сайденг виниловый фосадный</a></li>
-                        <li><a href="/categories/konditerskie-izdeliya/" title="ПЛАСТИК ПОТОЛОЧНЫЙ ПВХ">Пластик потолочный пвх</a></li>
-                        <li><a href="/categories/novaya-kategoriya/" title="МДФ ПАНЕЛИ">Мдф панели</a></li>
+                        <li><a href="/categories/МЕЖКОМНАТНЫЕ" title="Двери">Двери</a></li>
+                        <li><a href={`/categories/КЛАСС%20"ПАРМА"`} title="Линолиум">Линолиум</a></li>
+                        <li><a href="/categories/САЙДИНГ%20ФАСАДНЫЙ%20(ВИНИЛОВЫЙ)" title="САЙДЕНГ ВИНИЛОВЫЙ ФОСАДНЫЙ">Сайденг виниловый фосадный</a></li>
+                        <li><a href="/categories/ЛИСТОВЫЕ%20(ГИБКИЙ%20МРАМОР)" title="ПЛАСТИК ПОТОЛОЧНЫЙ ПВХ">Пластик потолочный пвх</a></li>
+                        <li><a href="/categories/Панели%20МДФ%20ЛИСТОВЫЕ%20(ЖЁСТКИЕ%20ОБОИ)%20/" title="МДФ ПАНЕЛИ">Мдф панели</a></li>
                     </ul>
                 </div>
                 <div className={[cl.fmenu, cl.contact_us].join(' ') }>
