@@ -12,7 +12,7 @@ import { OrdersModule } from "./orders/orders.module";
 
 @Module({
     imports: [
-        MongooseModule.forRoot('mongodb+srv://user:<user>@cluster0.6ds8idn.mongodb.net/'),
+        MongooseModule.forRoot('mongodb+srv://user:user@cluster0.6ds8idn.mongodb.net/?retryWrites=true&w=majority'),
         CardsModule,
         FileModule,
         CategoriesModule,
